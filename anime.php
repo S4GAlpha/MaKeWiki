@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
+  <title>Anime</title>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/home_page_style.css">
@@ -84,28 +84,8 @@
 
   <!-- Main -->
   <main id="main" class="flexbox-col">
-    <div id="ain">
-      <h2 style="text-align: center;">Lorem ipsum!</h2>
-      <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum corporis, rerum doloremque iste sed voluptates omnis <br> molestias molestiae animi recusandae labore sit amet delectus ad necessitatibus laudantium qui! Magni quisquam <br> illum quaerat necessitatibus sint quibusdam perferendis! Aut ipsam cumque deleniti error perspiciatis iusto <br> accusamus consequuntur assumenda. Obcaecati minima sed natus?</p>
-      
-      <div class="void" id="void">
-        <div class="crop">
-          <ul class="void-ul" id="card-list" style="--count: 6;">
-            <li class="void-li"><div class="card"><a href=""><span class="model-name">Anime News</span><span>Novità anime arrivate direttamente dal Sol Levante</span></a></div></li>
-            <li class="void-li"><div class="card"><a href=""><span class="model-name">Game News</span><span>Novità giochi da parte di Oasis</span></a></div></li>
-            <li class="void-li"><div class="card"><a href=""><span class="model-name">Preferiti</span><span>Visuallizza di nuovo forum che ti hanno fatto dire "TI LOVVO"</span></a></div></li>
-            <li class="void-li"><div class="card"><a href=""><span class="model-name">Random Wiki</span><span>Per gi amanti del rischio, oppure per chi vuole perdere tempo</span></a></div></li>
-            <li class="void-li"><div class="card"><a href=""><span class="model-name">WIKI</span><span>La WIKI delle WIIIIIIIKKKKKIII è qui che ti aspetta che fai non clicchi?!</span></a></div></li>
-            <li class="void-li"><div class="card"><a href=""><span class="model-name">Casual</span><span>Le Wiki che non sapevi ti potessero interessare ti aspettano</span></a></div></li>
-          </ul>
-          <div class="last-circle"></div>
-          <div class="second-circle"></div>
-        </div>
-        <div class="mask"></div>
-        <div class="center-circle"></div>
-      <div>
-    </div>
   </main>
 </div>
+
 </body>
 </html>
