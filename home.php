@@ -84,10 +84,15 @@
 
   <!-- Main -->
   <main id="main" class="flexbox-col">
-    <div id="ain">
-      <h2 style="text-align: center;">Lorem ipsum!</h2>
-      <p style="text-align: center;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum corporis, rerum doloremque iste sed voluptates omnis <br> molestias molestiae animi recusandae labore sit amet delectus ad necessitatibus laudantium qui! Magni quisquam <br> illum quaerat necessitatibus sint quibusdam perferendis! Aut ipsam cumque deleniti error perspiciatis iusto <br> accusamus consequuntur assumenda. Obcaecati minima sed natus?</p>
-      
+    <div id="ain" style="max-width: 60%;">
+        <h2 style="text-align: center; color: #ffff;">Lorem ipsum!</h2>
+        <div class="typing-text" id="autoType" style="color: #ffff;"></div>
+
+        <script src="scripts/typingtext_index.js"></script><br>
+
+        <img src="images/gif/WallPaper.gif" alt="" class="centered-image"/>
+    </div>
+    <div id="ain" style="margin-top: 2px; width: 60%;">
       <div class="void" id="void">
         <div class="crop">
           <ul class="void-ul" id="card-list" style="--count: 6;">
