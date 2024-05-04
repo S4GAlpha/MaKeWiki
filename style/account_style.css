@@ -297,7 +297,7 @@ input::placeholder {
   font-size: 1rem;
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
-  color: #fff;
+  color: #ccc;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
   -webkit-transition: background-color 0.2s ease-in-out;
