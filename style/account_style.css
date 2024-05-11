@@ -383,3 +383,231 @@ input::placeholder {
     padding: 50px 45px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #fff;
+  margin: 0;
+  background-color: rgba(79, 2, 151, 0.5);
+}
+
+button {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  color: #fff;
+}
+
+input {
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  color: #fff;
+}
+
+input[type="submit"] {
+  cursor: pointer;
+}
+
+input::-webkit-input-placeholder,
+input:-ms-input-placeholder,
+input::-ms-input-placeholder,
+input::placeholder {
+  font-size: 0.85rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  color: #ccc;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+#ain {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.view {
+  width: 90%;
+  max-width: 800px; /* Imposta una larghezza massima per mantenere il contenuto leggibile */
+}
+
+#column-profile {
+  width: 30%;
+}
+
+#column-info {
+  width: 70%;
+}
+
+#notification, #activity, #favorite-wikis {
+  width: 100%;
+  margin-top: 20px;
+}
+
+
+
+.view {
+  display: flex;
+  flex-direction: row;
+}
+
+#column-profile {
+  width: 30%;
+  margin-right: 20px;
+}
+
+#profile-icon {
+  width: 90%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+#nick-utente {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+#button-acc-profile,
+#button-acc-profile2 {
+  display: block;
+  width: 100%;
+  background-color: rgba(79, 2, 151, 0.5);
+  border: 1px solid rgba(79, 2, 151, 0.5);
+  border-radius: 5px;
+  padding: 8px 0;
+  font-size: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  margin-bottom: 10px;
+}
+
+#button-acc-profile2 {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+#column-info {
+  width: 70%;
+}
+
+#notification {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: 20px;
+  background-color: rgba(79, 2, 151, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#hideNotifications {
+  display: block;
+  background-color: #dc354600;
+  border: 1px solid #dc354600;
+  border-radius: 5px;
+  padding: 8px 15px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  margin-top: 10px;
+}
+
+#hideNotifications:hover {
+  background-color: #c8233303;
+  color: #ffffff00;
+}
+
+#activity,
+#favorite-wikis {
+  margin-top: 20px;
+}
+
+.activity-item,
+.wiki-item {
+  background-color: rgba(79, 2, 151, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.activity-text,
+.wiki-title,
+.wiki-description {
+  color: #fff;
+  font-weight: bold;
+}
+
+.activity-time {
+  color: #ccc;
+}
+
+.wiki-cover {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+.wiki-info {
+  padding-left: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .view {
+    flex-direction: column;
+  }
+
+  #column-profile {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  #column-info {
+    width: 100%;
+  }
+
+  #notification {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}

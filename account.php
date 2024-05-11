@@ -6,7 +6,6 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/account_style.css">
-  <link rel="stylesheet" href="style/home_page_style.css">
   <style>
     #main {
       background-image: url(images/background/Sfondo.jpg);
@@ -147,14 +146,63 @@
     </div>
     <main id="main" class="flexbox-col" style="padding: 20px;">
       <div id="account-form" style="display: none; width: 100%; align-items: center;">
-        <div id="ain" style="max-width: 60%; margin-left: 20%;">
-            <h2 style="text-align: center; color: #ffff;">Lorem ipsum!</h2></br></br></br>
-            <div class="typing-text" id="autoType" style="text-align: center; color: #ffff;"></div>
-
-            <script src="scripts/typingtext_index.js"></script><br>
-
-            <img src="images/gif/WallPaper.gif" alt="" class="centered-image"/>
+      <div id="ain" class="container" style="min-height: 100%; margin-top: 2px; width: 60%; item-align: center; margin-left: 20%; overflow: auto;">
+        <div class="view">
+            <div id="column-profile">
+                <img src="images/img/profile-base-icon.png" alt="Profile Picture" id="profile-icon">
+                <p id="nick-utente">John Doe</p>
+                <button id="button-acc-profile">Edit Account</button>
+            </div>
+            <div id="column-info">
+                <div id="notification">
+                    <h3 class="section-title">Notifications</h3>
+                    <button class="notification-item">New message from Jane</button>
+                    <button class="notification-item">New comment on your post</button>
+                    <button class="notification-item">New follower</button>
+                    <button class="notification-item" id="hideNotifications">Hide Notifications</button>
+                </div>
+                <div id="activity">
+                    <h3 class="section-title">Activity</h3>
+                    <div class="activity-item">
+                        <p class="activity-text">Created a new wiki: Introduction to Programming</p>
+                        <time class="activity-time">2 hours ago</time>
+                    </div>
+                    <div class="activity-item">
+                        <p class="activity-text">Edited a wiki: JavaScript Fundamentals</p>
+                        <time class="activity-time">4 hours ago</time>
+                    </div>
+                    <div class="activity-item">
+                        <p class="activity-text">Commented on a wiki: HTML and CSS for Beginners</p>
+                        <time class="activity-time">1 day ago</time>
+                    </div>
+                </div>
+                <div id="favorite-wikis">
+                    <h3 class="section-title">Favorite Wikis</h3>
+                    <div class="wiki-item">
+                        <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
+                        <div class="wiki-info">
+                            <h4 class="wiki-title">Introduction to Programming</h4>
+                            <p class="wiki-description">A beginner's guide to programming concepts and languages</p>
+                        </div>
+                    </div>
+                    <div class="wiki-item">
+                        <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
+                        <div class="wiki-info">
+                            <h4 class="wiki-title">JavaScript Fundamentals</h4>
+                            <p class="wiki-description">A comprehensive guide to JavaScript programming</p>
+                        </div>
+                    </div>
+                    <div class="wiki-item">
+                        <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
+                        <div class="wiki-info">
+                            <h4 class="wiki-title">HTML and CSS for Beginners</h4>
+                            <p class="wiki-description">A beginner's guide to HTML and CSS web development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
       </div>
     </main>
   </main>
@@ -210,6 +258,17 @@
     loginSignupDiv.style.display = 'none';
     account_form.style.display = 'block';
   }
+
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const hideNotificationsButton = document.getElementById('hideNotifications');
+    const notificationSection = document.getElementById('notification');
+
+    hideNotificationsButton.addEventListener('click', function () {
+        notificationSection.style.display = 'none';
+    });
+});
+
 </script>
 
 
