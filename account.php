@@ -19,11 +19,11 @@
 <!-- partial:index.partial.html -->
 <!-- Navbar -->
 <div>
-  <nav id="navbar">
+  <nav id="navbar" style="max-width: 190px;">
     <ul class="navbar-items flexbox-col">
-      <li class="navbar-logo flexbox-left">
+      <li class="navbar-logo flexbox-left" style="align-items: center;">
         <!--LOGO-->
-        <img style="width: 40px; height: 40px;" src="images/img/logo.png" alt="Home Icon" />
+        <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon" />
       </li>
       <li class="navbar-item flexbox-left">
         <a class="navbar-item-inner flexbox-left">
@@ -44,12 +44,12 @@
         </a>
       </li>
       <li class="navbar-item flexbox-left">
-        <a class="navbar-item-inner flexbox-left" href="news.php">
+        <a class="navbar-item-inner flexbox-left" href="fandom.php">
           <div class="navbar-item-inner-icon-wrapper flexbox">
             <!--NEWS-->
             <img style="width: 20px; height: 20px;" src="images/navbar/news.png" alt="Home Icon" />
           </div>
-          <span class="link-text">News</span>
+          <span class="link-text">Fandom</span>
         </a>
       </li>
       <li class="navbar-item flexbox-left">

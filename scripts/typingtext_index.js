@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', function () {
     const textElement = document.getElementById('autoType');
-    const textToType = "Benvenuto nella community di MaKeWiki! \n Allaccia la cintura tramite il login o signup che si parte per un mare di opportunità";
+    const textToType = "Benvenuto nella community di MaKeWiki! \n Allaccia la cintura tramite il login o signup che si parte per un mare di opportunità. ";
 
     let index = 0;
     let currentLine = 1;

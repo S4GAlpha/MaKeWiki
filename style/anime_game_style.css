@@ -1,0 +1,109 @@
+  #main {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  
+  #row {
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.897); /* Colore di sfondo nero con trasparenza */
+    padding: 20px;
+    width: 80%;
+  }
+  
+  .column-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .inner-column {
+    background-color:rgba(79, 2, 151, 0.27);/* Colore di sfondo nero con trasparenza */
+    padding: 20px;
+    border-radius: 10px; 
+  }
+  
+  .centered-image {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  /* Stile degli elementi <a> */
+  a {
+    color: white; /* Testo bianco */
+    text-decoration: none; /* Rimuove la sottolineatura */
+    transition: padding-left 0.2s ease-in-out; /* Effetto di transizione */
+    padding-left: 0; /* Padding di default */
+    font-size: 20px; /* Dimensione del testo */
+    max-width: 100%; /* Imposta la larghezza massima al 100% del contenitore */
+  }
+  
+  /* Padding aggiunto al passaggio del mouse */
+  a:hover {
+    padding-left: 5px; /* Sposta il testo di 5px verso destra */
+  }
+  
+  /* Nasconde la sottolineatura dei link */
+  ul {
+    padding-left: 0;
+    max-width: 100%; /* Imposta la larghezza massima al 100% del contenitore */
+  }
+  
+  li {
+    list-style-type: none;
+    margin-bottom: 5px;
+    max-width: 100%; /* Imposta la larghezza massima al 100% del contenitore */
+  }
+  
+  h2 {
+    color: white; /* Colore del testo bianco */
+    font-size: 36px; /* Dimensione del testo */
+    max-width: fit-content; /* Imposta la larghezza massima in base al contenuto */
+    margin: 0; /* Rimuove il margine predefinito */
+  }
+
+  #nameAuth{
+    margin-left: 40px
+  }
+
+  #date{
+    margin-left: 20px;
+  }
+
+  #textList{
+    margin-left: 20px;
+  }
+
+
+
+  .profile-icon {
+    width: 100px;
+    height: 100px;
+    background-color:rgba(79, 2, 151, 0.27);/* Colore di sfondo nero con trasparenza */
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  
+  .profile-icon:before {
+    content: "👤";
+    font-size: 50px;
+    vertical-align: middle;
+    line-height: 100px;
+  }
+  
+  .welcome-message {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  
+  .view-profile-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color:rgba(79, 2, 151, 0.27);/* Colore di sfondo nero con trasparenza */
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    text-decoration: none;
+  }
