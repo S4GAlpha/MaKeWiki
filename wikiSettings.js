@@ -5,13 +5,6 @@ var newCommentModalClose = document.querySelector("#newCommentModal .close");
 
 document.addEventListener('DOMContentLoaded', function () {
 
-    document.querySelectorAll('.wiki-question').forEach(item => {
-        item.addEventListener('click', event => {
-        let answer = event.target.nextElementSibling;
-        answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-        });
-    });
-
     loadMessages();
     
     document.getElementById("new-comment").onclick = function() {
@@ -27,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Quando l'utente clicca su "Annulla" nella finestra modale di conferma cancellazione, chiudila
     document.getElementById("cancel-commit").onclick = function() {
         newCommentModal.style.display = "none";
-    }; 
+    };
 });
 
 

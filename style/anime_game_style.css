@@ -57,6 +57,10 @@
     max-width: 100%; /* Imposta la larghezza massima al 100% del contenitore */
   }
   
+  p{
+    color:white;
+  }
+
   h2 {
     color: white; /* Colore del testo bianco */
     font-size: 36px; /* Dimensione del testo */

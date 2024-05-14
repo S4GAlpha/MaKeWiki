@@ -1,6 +1,6 @@
 function toggleCollapse() {
     var column = document.getElementById("begginerGuide");
-    var forum = document.getElementById("forum");
+    var forum = document.getElementById("Forum");
     var button = document.getElementById("collapseBegginerGuide");
     var button2 = document.getElementById("decollapseBegginerGuide");
 
@@ -12,7 +12,7 @@ function toggleCollapse() {
 
 function deToggleCollapse() {
     var column = document.getElementById("begginerGuide");
-    var forum = document.getElementById("forum");
+    var forum = document.getElementById("Forum");
     var button = document.getElementById("collapseBegginerGuide");
     var button2 = document.getElementById("decollapseBegginerGuide");
 

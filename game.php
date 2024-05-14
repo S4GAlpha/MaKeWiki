@@ -96,7 +96,7 @@
               <a href="pagina_anime.html">Elden Ring Wiki</a>
             </li>
             <li>
-              <a href="HOI4.php">HOI4 Wiki</a>
+              <a href="Heart of Iron IV.php">HOI4 Wiki</a>
             </li>
             <li>
               <a href="pagina_anime.html">Stardew Valley</a>
