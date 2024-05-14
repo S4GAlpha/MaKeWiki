@@ -21,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="title">Heart of Iron IV</title>
+    <title id="title">Elden Ring</title>
     <script src="adBlock.js"></script>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
     <link rel="stylesheet" href="style/style.css">
@@ -121,7 +121,7 @@
         <div id="row" style="display: flex; text-align: center; margin-top: 0%;">
             <img style="width: 200px; height: 100px; margin-left: 35%;" src="images/img/wikiPage/hoi4/Hoi4-logo.jpg" alt="Account Icon"/>
             <div>
-                <h2 style="margin-left: 30px;">Heart Of Iron IV</h2>
+                <h2 style="margin-left: 30px;">Elden Ring</h2>
                 <a style="font-size: 12px;">Paradox Interactive</a>
             </div>
         </div>  

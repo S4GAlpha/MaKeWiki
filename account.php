@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="style/account_style.css">
   <style>
     #main {
-      background-image: url(images/background/Sfondo.jpg);
+      background-image: url(images/img/wikiPage/home/imageHome.jpg);
       background-size: cover; /* Copre l'intera area disponibile */
       background-position: top center; /* Posiziona l'immagine in alto e al centro */
       background-repeat: no-repeat; /* Non ripetere l'immagine */
@@ -100,87 +100,86 @@
     </ul>
   </nav>
 
-  <?php if ($nick=="") : ?>
-  <!-- Main -->
-  <main id="main" class="flexbox-col" style="padding: 0px;"> 
-  <div id="login-signup" style="width: 100%; height: 100%;">
-    <div id="ain" style="width: 100%; height: 100%;">
-      <section class="user">
-        <div class="user_options-container" id="user_options-container">
-          <div class="user_options-text" id="options-text">
-            <div class="user_options-unregistered">
-              <h2 class="user_unregistered-title">Don't have an account?</h2>
-              <p class="user_unregistered-text">Create now!</p>
-              <button class="user_unregistered-signup" id="signup-button">Sign up</button>
-            </div>
+  <!-- Main --> 
 
-            <div class="user_options-registered">
-              <h2 class="user_registered-title">Already have a account!</h2>
-              <p class="user_registered-text">Get started..</p>
-              <button class="user_registered-login" id="login-button">Login</button>
-            </div>
-          </div>
-          
-          <div class="user_options-forms" id="user_options-forms">
-            <div class="user_forms-login">
-              <h2 class="forms_title">Login</h2>
-              <form class="forms_form" action="back-account/login.php" method="post">
-                <fieldset class="forms_fieldset">
-                  <div class="forms_field">
-                    <input type="email" name="email" placeholder="Email" class="forms_field-input" required autofocus />
-                  </div>
-                  <div class="forms_field">
-                    <input type="password" name="password" placeholder="Password" class="forms_field-input" required />
-                  </div>
-                </fieldset>
-                <div class="forms_buttons">
-                  <button type="button" class="forms_buttons-forgot">Forgot password?</button>
-                  <input type="submit" value="Login" class="forms_buttons-action">
+  <?php if ($nick=="") : ?>
+    <main id="main" class="flexbox-col" style="padding: 0px;"> 
+      <div id="login-signup" style="width: 100%; height: 100%;">
+        <div id="ain" style="width: 100%; height: 100%;">
+          <section class="user">
+            <div class="user_options-container" id="user_options-container">
+              <div class="user_options-text" id="options-text">
+                <div class="user_options-unregistered">
+                  <h2 class="user_unregistered-title">Don't have an account?</h2>
+                  <p class="user_unregistered-text">Create now!</p>
+                  <button class="user_unregistered-signup" id="signup-button">Sign up</button>
                 </div>
-              </form>
-            </div>
-            <div class="user_forms-signup">
-              <h2 class="forms_title">Sign Up</h2>
-              <form class="forms_form" action="back-account/signup.php" method="post">
-                <fieldset class="forms_fieldset">
-                  <div class="forms_field">
-                    <input type="text" name="nome" placeholder="Nome" class="forms_field-input" required />
-                  </div>
-                  <div class="forms_field">
-                    <input type="text" name="cognome" placeholder="Cognome" class="forms_field-input" required />
-                  </div>
-                  <div class="forms_field">
-                    <input type="text" name="nick" placeholder="Nickname" class="forms_field-input" required />
-                  </div>
-                  <div class="forms_field">
-                    <input type="email" name="email" placeholder="Email" class="forms_field-input" required />
-                  </div>
-                  <div class="forms_field">
-                    <input type="password" name="password" placeholder="Password" class="forms_field-input" required />
-                  </div>
-                </fieldset>
-                <div class="forms_buttons">
-                  <input type="submit" value="Sign up" class="forms_buttons-action">
+                <div class="user_options-registered">
+                  <h2 class="user_registered-title">Already have a account!</h2>
+                  <p class="user_registered-text">Get started..</p>
+                  <button class="user_registered-login" id="login-button">Login</button>
                 </div>
-              </form>
+              </div>
+              <div class="user_options-forms" id="user_options-forms">
+                <div class="user_forms-login">
+                  <h2 class="forms_title">Login</h2>
+                  <form class="forms_form" action="back-account/login.php" method="post">
+                    <fieldset class="forms_fieldset">
+                      <div class="forms_field">
+                        <input type="email" name="email" placeholder="Email" class="forms_field-input" required autofocus />
+                      </div>
+                      <div class="forms_field">
+                        <input type="password" name="password" placeholder="Password" class="forms_field-input" required />
+                      </div>
+                    </fieldset>
+                    <div class="forms_buttons">
+                      <button type="button" class="forms_buttons-forgot">Forgot password?</button>
+                      <input type="submit" value="Login" class="forms_buttons-action">
+                    </div>
+                  </form>
+                </div>
+                <div class="user_forms-signup">
+                  <h2 class="forms_title">Sign Up</h2>
+                  <form class="forms_form" action="back-account/signup.php" method="post">
+                    <fieldset class="forms_fieldset">
+                      <div class="forms_field">
+                        <input type="text" name="nome" placeholder="Nome" class="forms_field-input" required />
+                      </div>
+                      <div class="forms_field">
+                        <input type="text" name="cognome" placeholder="Cognome" class="forms_field-input" required />
+                      </div>
+                      <div class="forms_field">
+                        <input type="text" name="nick" placeholder="Nickname" class="forms_field-input" required />
+                      </div>
+                      <div class="forms_field">
+                        <input type="email" name="email" placeholder="Email" class="forms_field-input" required />
+                      </div>
+                      <div class="forms_field">
+                        <input type="password" name="password" placeholder="Password" class="forms_field-input" required />
+                      </div>
+                    </fieldset>
+                    <div class="forms_buttons">
+                      <input type="submit" value="Sign up" class="forms_buttons-action">
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
-          </div>
+          </section>
         </div>
-      </section>
-    </div>
-  </div>
-  </main>
+      </div>
+    </main>
   <?php else : ?>
-  <main id="main" class="flexbox-col" style="padding: 20px;">
-    <div id="account-form" style="display: width: 100%; align-items: center;">
-    <div id="ain" class="container" style="min-height: 100%; margin-top: 2px; width: 60%; item-align: center; margin-left: 20%; overflow: auto;">
-      <div class="view">
-          <div id="column-profile">
-              <img src="images/img/profile-base-icon.png" alt="Profile Picture" id="profile-icon">
-              <?php echo "<p id=\"nick-utente\">".$nick ."</p>"; ?>
-              <button id="button-acc-profile">Edit Account</button>
-          </div>
-          <div id="column-info">
+    <main id="main" class="flexbox-col" style="padding: 20px; width: 100%; margin-left: 0px;">
+      <div id="account-form" style="width: 90%; align-items: center;">
+        <div id="ain" class="container" style="width: 100%; margin-left: 95px; min-height: 100%; margin-top: 0px; item-align: center; border-radius: 10px; overflow: auto;">
+          <div class="view">
+            <div id="column-profile">
+                <img src="images/img/profile-base-icon.png" alt="Profile Picture" id="profile-icon">
+                <?php echo "<p id=\"nick-utente\">".$nick ."</p>"; ?>
+                <button id="button-acc-profile">Edit Account</button>
+            </div>
+            <div id="column-info">
               <div id="notification">
                   <h3 class="section-title">Notifications</h3>
                   <button class="notification-item">New message from Jane</button>
@@ -189,49 +188,49 @@
                   <button class="notification-item" id="hideNotifications">Hide Notifications</button>
               </div>
               <div id="activity">
-                  <h3 class="section-title">Activity</h3>
-                  <div class="activity-item">
-                      <p class="activity-text">Created a new wiki: Introduction to Programming</p>
-                      <time class="activity-time">2 hours ago</time>
-                  </div>
-                  <div class="activity-item">
-                      <p class="activity-text">Edited a wiki: JavaScript Fundamentals</p>
-                      <time class="activity-time">4 hours ago</time>
-                  </div>
-                  <div class="activity-item">
-                      <p class="activity-text">Commented on a wiki: HTML and CSS for Beginners</p>
-                      <time class="activity-time">1 day ago</time>
-                  </div>
+                <h3 class="section-title">Activity</h3>
+                <div class="activity-item">
+                    <p class="activity-text">Created a new wiki: Introduction to Programming</p>
+                    <time class="activity-time">2 hours ago</time>
+                </div>
+                <div class="activity-item">
+                    <p class="activity-text">Edited a wiki: JavaScript Fundamentals</p>
+                    <time class="activity-time">4 hours ago</time>
+                </div>
+                <div class="activity-item">
+                    <p class="activity-text">Commented on a wiki: HTML and CSS for Beginners</p>
+                    <time class="activity-time">1 day ago</time>
+                </div>
               </div>
               <div id="favorite-wikis">
-                  <h3 class="section-title">Favorite Wikis</h3>
-                  <div class="wiki-item">
-                      <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
-                      <div class="wiki-info">
-                          <h4 class="wiki-title">Introduction to Programming</h4>
-                          <p class="wiki-description">A beginner's guide to programming concepts and languages</p>
-                      </div>
+                <h3 class="section-title">Favorite Wikis</h3>
+                <div class="wiki-item">
+                    <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
+                    <div class="wiki-info">
+                        <h4 class="wiki-title">Introduction to Programming</h4>
+                        <p class="wiki-description">A beginner's guide to programming concepts and languages</p>
+                    </div>
+                </div>
+                <div class="wiki-item">
+                    <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
+                    <div class="wiki-info">
+                        <h4 class="wiki-title">JavaScript Fundamentals</h4>
+                        <p class="wiki-description">A comprehensive guide to JavaScript programming</p>
+                    </div>
+                </div>
+                <div class="wiki-item">
+                    <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
+                    <div class="wiki-info">
+                      <h4 class="wiki-title">HTML and CSS for Beginners</h4>
+                      <p class="wiki-description">A beginner's guide to HTML and CSS web development</p>
                   </div>
-                  <div class="wiki-item">
-                      <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
-                      <div class="wiki-info">
-                          <h4 class="wiki-title">JavaScript Fundamentals</h4>
-                          <p class="wiki-description">A comprehensive guide to JavaScript programming</p>
-                      </div>
-                  </div>
-                  <div class="wiki-item">
-                      <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
-                      <div class="wiki-info">
-                          <h4 class="wiki-title">HTML and CSS for Beginners</h4>
-                          <p class="wiki-description">A beginner's guide to HTML and CSS web development</p>
-                      </div>
-                  </div>
+                </div>
               </div>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
-    </div>
-  </main>
+    </main>
   <?php endif; ?>
   
 </div>

@@ -21,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="title">Heart of Iron IV</title>
+    <title id="title">Stardew Valley</title>
     <script src="adBlock.js"></script>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
     <link rel="stylesheet" href="style/style.css">
@@ -121,8 +121,8 @@
         <div id="row" style="display: flex; text-align: center; margin-top: 0%;">
             <img style="width: 200px; height: 100px; margin-left: 35%;" src="images/img/wikiPage/hoi4/Hoi4-logo.jpg" alt="Account Icon"/>
             <div>
-                <h2 style="margin-left: 30px;">Heart Of Iron IV</h2>
-                <a style="font-size: 12px;">Paradox Interactive</a>
+                <h2 style="margin-left: 30px;">Stardew Valley</h2>
+                <a style="font-size: 12px;">Eric Barone</a>
             </div>
         </div>  
         <div id="row" style="display: flex; margin-top: 10%;">
@@ -138,7 +138,7 @@
                     <h2>Info Game</h2>
                     <ul>
                         <li>
-                            <a style="font-size: 12px;">Hearts of Iron IV è un videogioco strategico in tempo reale, ambientato nella seconda guerra mondiale, sviluppato da Paradox Interactive e rappresenta l'ultimo della serie Hearts of Iron. È stato annunciato formalmente nel gennaio 2014 come data di pubblicazione fissata per il primo trimestre del 2015.[1] È stato poi posposto al secondo trimestre del 2015.[2] All'E3 2015 il direttore creativo Johan Andersson ha affermato che la data di pubblicazione sarebbe stata spostata in un tentativo di risolvere alcuni gravi problemi riscontrati con il gioco.[3] Tuttavia Andersson ha confermato che il gioco non sarebbe stato pubblicato durante il primo trimestre del 2016.[4] Il 15 marzo 2016 è stato annunciato che il gioco sarebbe stato pubblicato il 6 giugno 2016, anniversario dello sbarco in Normandia. Durante l'evento "Ask Me Anything" su Reddit, Andresson ha promesso migliore intelligenza artificiale rispetto a Hearts of Iron III.[5] Ha anche affermato che il gioco sarebbe stato disponibile per Linux.</a>
+                            <a style="font-size: 12px;">Stardew Valley è un videogioco indipendente sviluppato da ConcernedApe e pubblicato nel 2016 da Chucklefish per Microsoft Windows. Convertito per macOS e Linux, il gioco è stato successivamente distribuito per PlayStation 4, Xbox One, PlayStation Vita, iOS e Android. Nonostante fosse prevista una versione per Wii U, lo sviluppo del gioco è stato bloccato in favore della conversione per Nintendo Switch.[1] Il videogioco è ispirato alla serie Harvest Moon, in particolare Harvest Moon 64.[2][3] Yasuhiro Wada, creatore della saga originale, ha incontrato lo sviluppatore Eric Barone per esprimere la sua soddisfazione.</a>
                         </li>
                     </ul>
                 </div>

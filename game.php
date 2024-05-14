@@ -94,13 +94,13 @@
           <h2>TOP GAME</h2>
           <ul>
             <li>
-              <a href="eldenRing.php" style="color: #ffff;">Elden Ring Wiki</a>
+              <a href="Elden Ring.php" style="color: #ffff;">Elden Ring Wiki</a>
             </li>
             <li>
               <a href="Heart of Iron IV.php" style="color: #ffff;">HOI4 Wiki</a>
             </li>
             <li>
-              <a href="stardewValley.php" style="color: #ffff;">Stardew Valley</a>
+              <a href="Stardew Valley.php" style="color: #ffff;">Stardew Valley</a>
             </li>
             <li>
               <a href="pagina_anime.html" style="color: #ffff;">Pokepedia</a>
