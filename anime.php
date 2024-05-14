@@ -3,6 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <title>Anime</title>
+  <script>
+var popupBlockerActive = false;
+var adBlockerActive = false;
+var previousAdBlockerState = null; // Variabile per tenere traccia dello stato precedente
+
+window.onload = function() {
+    // Verifica se il browser supporta il blocco dei popup
+    var testPopup = window.open("", "", "width=100,height=100");
+    if (testPopup === null || typeof(testPopup) === 'undefined') {
+        popupBlockerActive = true;
+    } else {
+        testPopup.close();
+    }
+
+    // Verifica periodica del blocco degli annunci
+    var intervalID = setInterval(checkAdBlocker, 100); // Esegui la verifica ogni secondo
+    
+    function checkAdBlocker() {
+        var adImage = document.getElementById('ads');
+        var adBlockTest = document.createElement('div');
+        adBlockTest.innerHTML = '&nbsp;';
+        adBlockTest.className = 'ad';
+        document.body.appendChild(adBlockTest);
+        if (adBlockTest.offsetHeight === 0) {
+            adBlockerActive = true;
+        } else {
+            adBlockerActive = false;
+        }
+        adBlockTest.remove();
+        
+        // Mostra l'immagine corretta
+        if (popupBlockerActive || adBlockerActive) {
+            document.getElementById('adblock-warning').style.display = 'block';
+        } else {
+            document.getElementById('ads').style.display = 'block';
+        }
+
+        // Verifica se lo stato del blocco degli annunci è cambiato e se è diverso da null
+        if (previousAdBlockerState !== null && adBlockerActive !== previousAdBlockerState) {
+          console.log("Stato del blocco degli annunci cambiato.");
+            previousAdBlockerState = adBlockerActive; // Aggiorna lo stato precedente
+            location.reload(); // Ricarica la pagina solo se lo stato è cambiato
+        } else {
+            previousAdBlockerState = adBlockerActive; // Aggiorna lo stato precedente anche se non cambia
+        }
+    }
+};
+</script>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/anime_game_style.css">
@@ -14,6 +62,7 @@
       background-repeat: no-repeat; /* Non ripetere l'immagine */
     }
   </style>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
 <!-- partial:index.partial.html -->
@@ -154,7 +203,8 @@
       </div>
       <div id="column-all" class="column-container" style="width: 25%; margin-top: 4%;">
         <div class="inner-column" style="padding: 0px; margin-top: 0%;">
-          <img src="images/img/adBlocker.png" alt="" class="centered-image" id="adblock-warning" style="border-radius: 10px;"/>
+            <img src="images/img/adBlocker.png" alt="" class="centered-image" id="adblock-warning" style="border-radius: 10px; display: none;"/>
+            <img src="images/img/logo.jpg" alt="" class="centered-image" id="ads" style="border-radius: 10px; display: none;"/>
         </div>
         <div>
           <div class="inner-column" style="margin-top: 5%; padding: 0px;">
