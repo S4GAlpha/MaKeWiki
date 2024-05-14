@@ -241,31 +241,42 @@
                                 <a id="textList">Begginer Guide</a>
                             </div>  
                         </div>
+                        <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
+                            <div style="height: 80%;">
+                                <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                <a id="textList">Begginer Guide</a>
+                            </div>  
+                        </div>
+                        <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
+                            <div style="height: 80%;">
+                                <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                <a id="textList">Begginer Guide</a>
+                            </div>  
+                        </div>
+                        <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
+                            <div style="height: 80%;">
+                                <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                <a id="textList">Begginer Guide</a>
+                            </div>  
+                        </div>
                     </div>
-                    <div id="Forum" style="display: none;">
-                        <button id="new-comment">+</button>
+                    <div id="forum" style="display: none;">
+                        <div class="inner-column" style="margin-top: 5%; text-align: center;">
+                            <h2 style="margin-left: 35%;">FORUM</h2>
+                            <div>
+                                <a>asdasd</a><br>
+                                <a>asdasd</a><br>
+                                <a>asdasd</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <div id="newCommentModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0;	top: 0;	width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);">
-        <div class="modal-content">
-            <form action="back-wiki.php" method="post">            
-                <input type="hidden" name="email" value=<?php echo $email; ?>>
-                <input type="hidden" name="wiki" value="Heart of Iron IV">
-                <span class="close">&times;</span>
-                <h2>Aggiungi nuovo commento</h2>
-                <textarea name="commit" id="text-commento" cols="60" rows="20"></textarea>
-                <!-- Pulsanti per confermare o annullare la cancellazione -->
-                <button type="submit" id="confirm-commit">Conferma</button>
-                <button type="button" id="cancel-commit">Annulla</button>
-            </form>
-        </div>
-    </div>
+
 </div>
 
 <script src="scripts/hoi4.js"></script>
-<script src="wikiSettings.js"></script>
 </body>
 </html>

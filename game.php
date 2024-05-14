@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Game</title>
+  <script src="adBlock.js"></script>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
   <link rel="stylesheet" href="style/style.css">
   <link rel="stylesheet" href="style/anime_game_style.css">
@@ -93,16 +94,16 @@
           <h2>TOP GAME</h2>
           <ul>
             <li>
-              <a href="pagina_anime.html">Elden Ring Wiki</a>
+              <a href="eldenRing.php" style="color: #ffff;">Elden Ring Wiki</a>
             </li>
             <li>
-              <a href="Heart of Iron IV.php">HOI4 Wiki</a>
+              <a href="Heart of Iron IV.php" style="color: #ffff;">HOI4 Wiki</a>
             </li>
             <li>
-              <a href="pagina_anime.html">Stardew Valley</a>
+              <a href="stardewValley.php" style="color: #ffff;">Stardew Valley</a>
             </li>
             <li>
-              <a href="pagina_anime.html">Pokepedia</a>
+              <a href="pagina_anime.html" style="color: #ffff;">Pokepedia</a>
             </li>
           </ul>
         </div>
@@ -154,7 +155,8 @@
       </div>
       <div id="column-all" class="column-container" style="width: 25%; margin-top: 4%;">
         <div class="inner-column" style="padding: 0px; margin-top: 0%;">
-          <img src="images/img/adBlocker.png" alt="" class="centered-image" id="adblock-warning" style="border-radius: 10px;"/>
+          <img src="images/img/adBlocker.png" alt="" class="centered-image" id="adblock-warning" style="border-radius: 10px; display: none;"/>
+          <img src="images/img/logo.jpg" alt="" class="centered-image" id="ads" style="border-radius: 10px; display: none;"/>
         </div>
         <div>
           <div class="inner-column" style="margin-top: 5%; padding: 0px;">
