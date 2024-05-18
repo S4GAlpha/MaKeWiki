@@ -95,16 +95,16 @@
           <h2>TOP ANIME</h2>
           <ul>
             <li>
-              <a href="One Piece.php">One Piece Wiki</a>
+              <a href="One Piece.php" style="color: #ffff;">One Piece Wiki</a>
             </li>
             <li>
-              <a href="Naruto.php">Narutopedia</a>
+              <a href="Naruto.php" style="color: #ffff;">Narutopedia</a>
             </li>
             <li>
-              <a href="Ken Il Guerriero.php">Ken Il Guerriero</a>
+              <a href="Ken Il Guerriero.php" style="color: #ffff;">Ken Il Guerriero</a>
             </li>
             <li>
-              <a href="pagina_anime.html">Konosubarashi</a>
+              <a href="pagina_anime.html" style="color: #ffff;">Konosubarashi</a>
             </li>
           </ul>
         </div>
