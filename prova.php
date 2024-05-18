@@ -1,23 +1,97 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Prova</title>
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
-  <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="style/account_style.css">
-  <style>
-    #main {
-      background-image: url(images/background/Sfondo.jpg);
-      background-size: cover; /* Copre l'intera area disponibile */
-      background-position: top center; /* Posiziona l'immagine in alto e al centro */
-      background-repeat: no-repeat; /* Non ripetere l'immagine */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="title">One Piece</title>
+    <script src="adBlock.js"></script>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/anime_game_style.css">
+    <style>
+        #main {
+            background-image: url(images/img/wikiPage/anime/One-Piece/OPWallpaper.jpg);
+            background-size: cover; /* Copre l'intera area disponibile */
+            background-position: top center; /* Posiziona l'immagine in alto e al centro */
+            background-repeat: no-repeat; /* Non ripetere l'immagine */
+        }
+
+        #row {
+            display: flex;
+            background-color: rgba(0, 0, 0, 0.897); /* Colore di sfondo nero con trasparenza */
+            padding: 20px;
+            margin-top: 20%;
+            width: 100%;
+            position: relative; /* Aggiunto per il posizionamento assoluto del messaggio */
+        }
+
+        #column-all {
+            transition: height 0.5s ease; /* Aggiungi una transizione per un effetto di animazione fluida */
+            overflow: hidden; /* Assicurati che il contenuto eccedente non fuoriesca quando la colonna viene ridotta di dimensioni */
+        }
+
+        .heart-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            outline: none; /* Rimuove il bordo del pulsante quando viene cliccato */
+        }
+
+        .heart-button svg {
+            width: 30px;
+            height: 30px;
+            fill: grey;
+            transition: fill 0.3s ease;
+        }
+
+        .heart-button.clicked svg {
+            fill: red;
+            animation: heart-pulse 0.6s ease forwards;
+        }
+
+        @keyframes heart-pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .favorite-message {
+            position: absolute;
+            right: 50px;
+            top: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+            animation: fadeOut 3s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<!-- partial:index.partial.html -->
-<!-- Navbar -->
+
 <div>
   <nav id="navbar" style="max-width: 190px;">
     <ul class="navbar-items flexbox-col">
@@ -81,182 +155,55 @@
       </li>
     </ul>
   </nav>
+
   <!-- Main -->
-  <main id="main" class="flexbox-col" style="padding: 0px;"> 
-    <div id="login-signup" style="width: 100%; height: 100%;">
-      <div id="ain" style="width: 100%; height: 100%;">
-        <section class="user">
-          <div class="user_options-container" id="user_options-container">
-            <div class="user_options-text" id="options-text">
-              <div class="user_options-unregistered">
-                <h2 class="user_unregistered-title">Don't have an account?</h2>
-                <p class="user_unregistered-text">Create now!</p>
-                <button class="user_unregistered-signup" id="signup-button">Sign up</button>
-              </div>
-              <div class="user_options-registered">
-                <h2 class="user_registered-title">Already have a account!</h2>
-                <p class="user_registered-text">Get started..</p>
-                <button class="user_registered-login" id="login-button">Login</button>
-              </div>
+    <main id="main" class="flexbox-col">
+        <div id="row" style="display: flex; text-align: center; margin-top: 0%;">
+            <img style="width: 200px; height: 100px; margin-left: 35%;" src="images/img/wikiPage/anime/One-Piece/op-logo.jpg" alt="Account Icon"/>
+            <div>
+                <h2 style="margin-left: 30px;">One Piece</h2>
+                <a style="font-size: 12px;">Eichiro Oda</a>
             </div>
-            
-            <div class="user_options-forms" id="user_options-forms">
-              <div class="user_forms-login">
-                <h2 class="forms_title">Login</h2>
-                <form class="forms_form">
-                  <fieldset class="forms_fieldset">
-                    <div class="forms_field">
-                      <input type="email" placeholder="Email" class="forms_field-input" required autofocus />
-                    </div>
-                    <div class="forms_field">
-                      <input type="password" placeholder="Password" class="forms_field-input" required />
-                    </div>
-                  </fieldset>
-                  <div class="forms_buttons">
-                    <button type="button" class="forms_buttons-forgot">Forgot password?</button>
-                    <input type="submit" value="Login" class="forms_buttons-action" onclick="login()">
-                  </div>
-                </form>
-              </div>
-              <div class="user_forms-signup">
-                <h2 class="forms_title">Sign Up</h2>
-                <form class="forms_form">
-                  <fieldset class="forms_fieldset">
-                    <div class="forms_field">
-                      <input type="text" placeholder="Full Name" class="forms_field-input" required />
-                    </div>
-                    <div class="forms_field">
-                      <input type="email" placeholder="Email" class="forms_field-input" required />
-                    </div>
-                    <div class="forms_field">
-                      <input type="password" placeholder="Password" class="forms_field-input" required />
-                    </div>
-                  </fieldset>
-                  <div class="forms_buttons">
-                    <input type="submit" value="Sign up" class="forms_buttons-action" onclick="signup()">
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-    <main id="main" class="flexbox-col" style="padding: 20px;">
-      <div id="account-form" style="display: none; width: 100%; align-items: center;">
-      <div id="ain" class="container" style="min-height: 100%; margin-top: 2px; width: 60%; item-align: center; margin-left: 20%; overflow: auto;">
-        <div class="view">
-            <div id="column-profile">
-                <img src="images/img/profile-base-icon.png" alt="Profile Picture" id="profile-icon">
-                <p id="nick-utente">John Doe</p>
-                <button id="button-acc-profile">Edit Account</button>
-            </div>
-            <div id="column-info">
-                <div id="notification">
-                    <h3 class="section-title">Notifications</h3>
-                    <button class="notification-item">New message from Jane</button>
-                    <button class="notification-item">New comment on your post</button>
-                    <button class="notification-item">New follower</button>
-                    <button class="notification-item" id="hideNotifications">Hide Notifications</button>
+            <button class="heart-button" id="favoriteButton">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+            <div class="favorite-message" id="favoriteMessage"></div>
+        </div>  
+        <div id="row" style="display: flex; margin-top: 10%;">
+            <div id="column-suggested" class="column-container" style="width: 25%; margin-left: 10%; margin-top: 0%;">
+                <div class="inner-column" style="padding: 0px; margin-top: 0%;">
+                    <img src="images/img/adBlocker.png" alt="" class="centered-image" id="adblock-warning" style="border-radius: 10px; display: none;"/>
+                    <img src="images/img/logo.jpg" alt="" class="centered-image" id="ads" style="border-radius: 10px; display: block;"/>
                 </div>
-                <div id="activity">
-                    <h3 class="section-title">Activity</h3>
-                    <div class="activity-item">
-                        <p class="activity-text">Created a new wiki: Introduction to Programming</p>
-                        <time class="activity-time">2 hours ago</time>
-                    </div>
-                    <div class="activity-item">
-                        <p class="activity-text">Edited a wiki: JavaScript Fundamentals</p>
-                        <time class="activity-time">4 hours ago</time>
-                    </div>
-                    <div class="activity-item">
-                        <p class="activity-text">Commented on a wiki: HTML and CSS for Beginners</p>
-                        <time class="activity-time">1 day ago</time>
-                    </div>
-                </div>
-                <div id="favorite-wikis">
-                    <h3 class="section-title">Favorite Wikis</h3>
-                    <div class="wiki-item">
-                        <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
-                        <div class="wiki-info">
-                            <h4 class="wiki-title">Introduction to Programming</h4>
-                            <p class="wiki-description">A beginner's guide to programming concepts and languages</p>
-                        </div>
-                    </div>
-                    <div class="wiki-item">
-                        <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
-                        <div class="wiki-info">
-                            <h4 class="wiki-title">JavaScript Fundamentals</h4>
-                            <p class="wiki-description">A comprehensive guide to JavaScript programming</p>
-                        </div>
-                    </div>
-                    <div class="wiki-item">
-                        <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
-                        <div class="wiki-info">
-                            <h4 class="wiki-title">HTML and CSS for Beginners</h4>
-                            <p class="wiki-description">A beginner's guide to HTML and CSS web development</p>
-                        </div>
-                    </div>
+            </div>
+            <div id="column-all" class="column-container" style="width: 50%; margin-left: 5%; height: auto;">
+                <div id="content" class="inner-column" style="padding: 0px; margin-top: 0%;">
+                    <h2> Capitolo 1083: La verità dietro la rivoluzione</h2>
+                    <p>Intanto, tra i membri del CP0 c'è un ragionevole dibattito sulla vera motivazione dietro la Rivoluzione. Gli eventi sembrano andare nella direzione di una guerra aperta...</p>
                 </div>
             </div>
         </div>
-    </div>
-      </div>
     </main>
-  </main>
 </div>
+
 <script>
-  const signupButton = document.getElementById("signup-button"),
-  loginButton = document.getElementById("login-button"),
-  userForms = document.getElementById("user_options-forms");
-  const account_form = document.getElementById("account-form");
-  const loginSignupDiv = document.getElementById("login-signup");
-  /**
-   * Add event listener to the "Sign Up" button
-   */
-  signupButton.addEventListener(
-    "click",
-    ()=>{
-      userForms.classList.remove("bounceRight");
-      userForms.classList.add("bounceLeft");
-    },
-    false
-  );
-  /**
-   * Add event listener to the "Login" button
-   */
-  loginButton.addEventListener(
-    "click",
-    () => {
-      userForms.classList.remove("bounceLeft");
-      userForms.classList.add("bounceRight");
-    },
-    false
-  );
-  function login () {
-    event.preventDefault();
-    // Qui puoi aggiungere la logica per il login
-    alert("Login successful!");
-    // Nascondi il div login-signup
-    loginSignupDiv.style.display = 'none';
-    account_form.style.display = 'block';
-  }
-  function signup () {
-    event.preventDefault();
-    // Qui puoi aggiungere la logica per la registrazione
-    alert("Signup successful!");
-    // Nascondi il div login-signup
-    loginSignupDiv.style.display = 'none';
-    account_form.style.display = 'block';
-  }
-  document.addEventListener('DOMContentLoaded', function () {
-    const hideNotificationsButton = document.getElementById('hideNotifications');
-    const notificationSection = document.getElementById('notification');
-    hideNotificationsButton.addEventListener('click', function () {
-        notificationSection.style.display = 'none';
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("favoriteButton").addEventListener("click", function() {
+            this.classList.toggle("clicked");
+
+            var message = document.getElementById("favoriteMessage");
+            if (this.classList.contains("clicked")) {
+                message.textContent = "Aggiunto ai preferiti!";
+            } else {
+                message.textContent = "Rimosso dai preferiti!";
+            }
+            message.style.display = "block";
+            setTimeout(function() {
+                message.style.display = "none";
+            }, 3000); // Nasconde il messaggio dopo 3 secondi
+        });
     });
-});
 </script>
+
 </body>
-</html>
 </html>

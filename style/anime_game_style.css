@@ -111,3 +111,12 @@
     border-radius: 5px;
     text-decoration: none;
   }
+
+
+  .dark {
+    background-color: #333;
+    color: #fff;
+    padding: 5px; /* Aggiunta di padding per migliorare l'aspetto */
+    border-radius: 5px; /* Aggiunta di angoli arrotondati per migliorare l'aspetto */
+    text-decoration: none; /* Rimozione della sottolineatura per migliorare l'aspetto */
+}

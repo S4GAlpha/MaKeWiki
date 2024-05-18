@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="style/anime_game_style.css">
     <style>
         #main {
-            background-image: url(images/HOI4/HOI4Wallpaper.jpg);
+            background-image: url(images/img/wikiPage/game/stardew-valley/SWWallpaper.jpg);
             background-size: cover; /* Copre l'intera area disponibile */
             background-position: top center; /* Posiziona l'immagine in alto e al centro */
             background-repeat: no-repeat; /* Non ripetere l'immagine */
@@ -47,6 +47,67 @@
             overflow: hidden; /* Assicurati che il contenuto eccedente non fuoriesca quando la colonna viene ridotta di dimensioni */
         }
 
+        .heart-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            outline: none; /* Rimuove il bordo del pulsante quando viene cliccato */
+        }
+
+        .heart-button:focus {
+            outline: none; /* Rimuove il bordo del pulsante quando viene focalizzato */
+        }
+
+        .heart-button svg {
+            width: 30px;
+            height: 30px;
+            fill: grey;
+            transition: fill 0.3s ease;
+        }
+
+        .heart-button.clicked svg {
+            fill: red;
+            animation: heart-pulse 0.6s ease forwards;
+        }
+
+        @keyframes heart-pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .favorite-message {
+            position: absolute;
+            right: 50px;
+            top: 50px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 0px;
+            display: none;
+            animation: fadeOut 3s forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 
@@ -119,11 +180,15 @@
   <!-- Main -->
     <main id="main" class="flexbox-col">
         <div id="row" style="display: flex; text-align: center; margin-top: 0%;">
-            <img style="width: 200px; height: 100px; margin-left: 35%;" src="images/img/wikiPage/hoi4/Hoi4-logo.jpg" alt="Account Icon"/>
+            <img style="width: 200px; height: 100px; margin-left: 35%;" src="images/img/wikiPage/game/stardew-valley/sw-logo.jpg" alt="Account Icon"/>
             <div>
                 <h2 style="margin-left: 30px;">Stardew Valley</h2>
                 <a style="font-size: 12px;">Eric Barone</a>
             </div>
+            <button class="heart-button" id="favoriteButton">
+                <svg style="outline: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </button>
+            <div class="favorite-message" id="favoriteMessage">Salvata wiki tra i preferiti</div>
         </div>  
         <div id="row" style="display: flex; margin-top: 10%;">
             <div id="column-suggested" class="column-container" style="width: 25%; margin-left: 10%; margin-top: 0%;">
@@ -132,7 +197,7 @@
                     <img src="images/img/logo.jpg" alt="" class="centered-image" id="ads" style="border-radius: 10px; display: none;"/>
                 </div>
                 <div class="inner-column" style="padding: 0px;  margin-top: 5%;">
-                    <img src="images/img/wikiPage/hoi4/imageHOI4.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
+                    <img src="images/img/wikiPage/game/stardew-valley/imageSW.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                 </div>
                 <div class="inner-column" style="margin-top: 0%; border-top-left-radius: 0px; border-top-right-radius: 0px;">
                     <h2>Info Game</h2>
@@ -145,84 +210,121 @@
             </div>
 
             <div id="column-news" class="column-container" style="width: 55%; margin-left: 5%; margin-right: 6%; text-align: center;">
-                <div class="inner-column" style="margin-top: 0%; padding: 10px; text-align: center;">
-                    <a id="collapseDivision" onclick="toggleDivision()">Tactics Suggestion</a>
-                    <a id="collapseTactic" onclick="toggleTactics()" style="display: none;">Division Suggestion</a>
+                <div class="inner-column" style="margin-top: 0%; padding: 10px; text-align: center; display: flex; justify-content: center;">
+                    <div style="margin-left: 0px;">
+                        <a id="collapseFirst" onclick="toggleFirst()">Food</a>
+                    </div>
+                    <div style="margin-left: 5%;">
+                        <a id="collapseSecond" onclick="toggleSecond()">Gameplay</a>
+                    </div>
+                    <div style="margin-left: 5%;">
+                        <a id="collapseThird" onclick="toggleThird()">Villagers</a>
+                    </div>
+                    <div style="margin-left: 5%;">
+                        <a id="collapseFour" onclick="toggleFour()">Items</a>
+                    </div>
                 </div>
-                <div id="division">
-                    <div class="inner-column" style="padding: 0px; text-align: center; margin-top: 5%;">
+                <div id="first" style="display: none;">
+                    <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
                         <img src="images/img/wikiPage/hoi4/hoi4-division.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                         <div>
-                            <a>1 Division</a><br>
+                            <a>Seeds</a><br>
                         </div>
                     </div>
                     <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
                         <img src="images/img/wikiPage/hoi4/hoi4-division.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                         <div>
-                            <a>1 Division</a><br>
+                            <a>Forage</a><br>
                         </div>
                     </div>
                     <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
                         <img src="images/img/wikiPage/hoi4/hoi4-division.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                         <div>
-                            <a>1 Division</a><br>
+                            <a>Vegetales</a><br>
                         </div>
                     </div>
                     <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
                         <img src="images/img/wikiPage/hoi4/hoi4-division.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                         <div>
-                            <a>1 Division</a><br>
-                        </div>
-                    </div>
-                    <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
-                        <img src="images/img/wikiPage/hoi4/hoi4-division.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-                        <div>
-                            <a>1 Division</a><br>
-                        </div>
-                    </div>
-                    <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
-                        <img src="images/img/wikiPage/hoi4/hoi4-division.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-                        <div>
-                            <a>1 Division</a><br>
+                            <a>Fish</a><br>
                         </div>
                     </div>
                 </div>
 
-                <div id="tatics" style="display: none;">
+                <div id="second" style="display: none;">
                     <div class="inner-column" style="padding: 0px; text-align: center; margin-top: 5%;">
                         <img src="images/img/wikiPage/hoi4/hoi4-tatics.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                         <div>
-                            <a>1 Tattics</a><br>
+                            <a>Skills</a><br>
                         </div>
                     </div>
                     <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
                         <img src="images/img/wikiPage/hoi4/hoi4-tatics.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                         <div>
-                            <a>1 Tattics</a><br>
+                            <a>Marriage</a><br>
                         </div>
                     </div>
                     <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
                         <img src="images/img/wikiPage/hoi4/hoi4-tatics.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                         <div>
-                            <a>1 Tattics</a><br>
+                            <a>Time</a><br>
+                        </div>
+                    </div>
+                </div>
+                <div id="third" style="display: none;">
+                    <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
+                        <img src="images/img/wikiPage/hoi4/hoi4-tatics.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
+                        <div>
+                            <a>Penny</a><br>
                         </div>
                     </div>
                     <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
                         <img src="images/img/wikiPage/hoi4/hoi4-tatics.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                         <div>
-                            <a>1 Tattics</a><br>
+                            <a>Mernie</a><br>
                         </div>
                     </div>
                     <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
                         <img src="images/img/wikiPage/hoi4/hoi4-tatics.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                         <div>
-                            <a>1 Tattics</a><br>
+                            <a>Haley</a><br>
                         </div>
                     </div>
                     <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
                         <img src="images/img/wikiPage/hoi4/hoi4-tatics.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
                         <div>
-                            <a>1 Tattics</a><br>
+                            <a>Robin</a><br>
+                        </div>
+                    </div>                    <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
+                        <img src="images/img/wikiPage/hoi4/hoi4-tatics.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
+                        <div>
+                            <a>Barnie</a><br>
+                        </div>
+                    </div>
+                    <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
+                        <img src="images/img/wikiPage/hoi4/hoi4-tatics.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
+                        <div>
+                            <a>Willy</a><br>
+                        </div>
+                    </div>
+                </div>
+                <div id="four" style="display: none;">
+                    <div class="inner-column" style="padding: 0px; text-align: center; margin-top: 5%;">
+                        <img src="images/img/wikiPage/hoi4/hoi4-division.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
+                        <div>
+                            <a>Artifacts</a><br>
+                        </div>
+                    </div>
+                    <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
+                        <img src="images/img/wikiPage/hoi4/hoi4-division.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
+                        <div>
+                            <a>Weapons</a><br>
+                        </div>
+                    </div>
+                    <div class="inner-column" style="margin-top: 5%; padding: 0px; text-align: center;">
+                        <img src="images/img/wikiPage/hoi4/hoi4-division.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
+                        <div>
+                            <a>Ring</a><br>
                         </div>
                     </div>
                 </div>
