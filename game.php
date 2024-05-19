@@ -69,11 +69,11 @@
 <!-- partial:index.partial.html -->
 <!-- Navbar -->
 <div>
-  <nav id="navbar" style="max-width: 190px;">
+<nav id="navbar" style="max-width: 190px; min-width: 80px; z-index: 10;">
     <ul class="navbar-items flexbox-col">
-      <li class="navbar-logo flexbox-left" style="align-items: center;">
+      <li class="navbar-logo flexbox-left" style="align-items: center; height: 80px;">
         <!--LOGO-->
-        <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon" />
+        <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon"/>
       </li>
       <li class="navbar-item flexbox-left">
         <a class="navbar-item-inner flexbox-left">
@@ -81,7 +81,7 @@
             <!--SEARCH-->
             <img style="width: 20px; height: 20px;" src="images/navbar/search.png" alt="Home Icon" />
           </div>
-          <span class="link-text">Search</span>
+          <span class="link-text" style="color: #ffff">Search</span>
         </a>
       </li>
       <li class="navbar-item flexbox-left">
@@ -90,7 +90,7 @@
             <!--HOME-->
             <img style="width: 20px; height: 20px;" src="images/navbar/home.png" alt="Home Icon" />
           </div>
-          <span class="link-text">Home</span>
+          <span class="link-text" style="color: #ffff">Home</span>
         </a>
       </li>
       <li class="navbar-item flexbox-left">
@@ -99,7 +99,7 @@
             <!--NEWS-->
             <img style="width: 20px; height: 20px;" src="images/navbar/news.png" alt="Home Icon" />
           </div>
-          <span class="link-text">Fandom</span>
+          <span class="link-text" style="color: #ffff">Fandom</span>
         </a>
       </li>
       <li class="navbar-item flexbox-left">
@@ -108,7 +108,7 @@
             <!--ANIME-->
             <img style="width: 20px; height: 20px;" src="images/navbar/anime.png" alt="Home Icon" />
           </div>
-          <span class="link-text">Anime</span>
+          <span class="link-text" style="color: #ffff">Anime</span>
         </a>
       </li>
       <li class="navbar-item flexbox-left">
@@ -117,18 +117,47 @@
             <!--GAME-->
             <img style="width: 20px; height: 20px;" src="images/navbar/game.png" alt="Home Icon" />
           </div>
-          <span class="link-text">Game</span>
+          <span class="link-text" style="color: #ffff">Game</span>
         </a>
       </li>
-      <li class="navbar-item flexbox-left account">
-        <a class="navbar-item-inner flexbox-left" href="account.php">
-          <div class="navbar-item-inner-icon-wrapper flexbox">
-            <!--ACCOUNT-->
-            <img style="width: 20px; height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
-          </div>
-          <span class="link-text">Account</span>
-        </a>
-      </li>
+      <!-- Additional navbar items -->
+      <?php if ($nick != "") : ?>
+        <li class="navbar-item flexbox-left">
+          <a class="navbar-item-inner flexbox-left" href="account.php">
+            <div class="navbar-item-inner-icon-wrapper flexbox">
+              <img style="width: 20px; height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
+            </div>
+            <span class="link-text" style="color: #ffff"><?php echo $nick; ?></span>
+          </a>
+        </li>
+        <?php if($wikiCount > 0) : ?>
+          <li class="navbar-item flexbox-left">
+            <a class="navbar-item-inner flexbox-left" href="wiki.php">
+              <div class="navbar-item-inner-icon-wrapper flexbox">
+                <img style="width: 20px; height: 20px;" src="images/navbar/wiki.png" alt="Wiki Icon" />
+              </div>
+              <span class="link-text" style="color: #ffff">WIKI</span>
+            </a>
+          </li>
+        <?php endif; ?>
+        <li class="navbar-item flexbox-left">
+          <a class="navbar-item-inner flexbox-left" href="new-wiki.php">
+            <div class="navbar-item-inner-icon-wrapper flexbox">
+              <img style="width: 20px; height: 20px;" src="images/navbar/new-wiki.png" alt="New Wiki Icon" />
+            </div>
+            <span class="link-text" style="color: #ffff">Crea WIKI</span>
+          </a>
+        </li>
+      <?php else : ?>
+        <li class="navbar-item flexbox-left">
+          <a class="navbar-item-inner flexbox-left" href="account.php">
+            <div class="navbar-item-inner-icon-wrapper flexbox">
+              <img style="width: 20px; height: 20px;" src="images/navbar/users.png"  alt="Login Icon" />
+            </div>
+            <span class="link-text" style="color: #ffff">Ospite</span>
+          </a>
+        </li>
+      <?php endif; ?>
     </ul>
   </nav>
 
