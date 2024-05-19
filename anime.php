@@ -10,11 +10,40 @@
         $wikiCount = isset($_SESSION['user_wikiCount']) ? $_SESSION['user_wikiCount'] : 0;
     } else {
         $nome = "Ospite";  // Imposta un valore di default se l'utente non è loggato
-        $cognome = "";
+        $cognome= "";
         $nick = "";
         $email = "unknown";
         $isAdmin = false;
         $wikiCount = 0; // Default value when not logged in
+    }
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "makewiki";
+
+    // Crea la connessione
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Verifica la connessione
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }
+
+    $sql = "SELECT * FROM wikipages w
+    INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
+    INNER JOIN imm_wiki im ON w.ID_wiki = im.fk_id_wiki
+    INNER JOIN immagini i ON im.fk_id_wiki = i.ID_immagine
+    WHERE w.Tipologia='Anime'
+    ORDER BY Data desc"; 
+    $result = $conn->query($sql);
+
+    // Memorizza i risultati in un array
+    $wikis = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $wikis[] = $row;
+        }
     }
 ?>
 
@@ -41,11 +70,11 @@
 <!-- partial:index.partial.html -->
 <!-- Navbar -->
 <div>
-  <nav id="navbar" style="max-width: 190px; min-width: 80px; z-index: 10;">
+  <nav id="navbar" style="max-width: 190px;">
     <ul class="navbar-items flexbox-col">
-      <li class="navbar-logo flexbox-left" style="align-items: center; height: 80px;">
+      <li class="navbar-logo flexbox-left" style="align-items: center;">
         <!--LOGO-->
-        <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon"/>
+        <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon" />
       </li>
       <li class="navbar-item flexbox-left">
         <a class="navbar-item-inner flexbox-left">
@@ -53,7 +82,7 @@
             <!--SEARCH-->
             <img style="width: 20px; height: 20px;" src="images/navbar/search.png" alt="Home Icon" />
           </div>
-          <span class="link-text" style="color: #ffff">Search</span>
+          <span class="link-text">Search</span>
         </a>
       </li>
       <li class="navbar-item flexbox-left">
@@ -62,7 +91,7 @@
             <!--HOME-->
             <img style="width: 20px; height: 20px;" src="images/navbar/home.png" alt="Home Icon" />
           </div>
-          <span class="link-text" style="color: #ffff">Home</span>
+          <span class="link-text">Home</span>
         </a>
       </li>
       <li class="navbar-item flexbox-left">
@@ -71,7 +100,7 @@
             <!--NEWS-->
             <img style="width: 20px; height: 20px;" src="images/navbar/news.png" alt="Home Icon" />
           </div>
-          <span class="link-text" style="color: #ffff">Fandom</span>
+          <span class="link-text">Fandom</span>
         </a>
       </li>
       <li class="navbar-item flexbox-left">
@@ -80,7 +109,7 @@
             <!--ANIME-->
             <img style="width: 20px; height: 20px;" src="images/navbar/anime.png" alt="Home Icon" />
           </div>
-          <span class="link-text" style="color: #ffff">Anime</span>
+          <span class="link-text">Anime</span>
         </a>
       </li>
       <li class="navbar-item flexbox-left">
@@ -89,47 +118,18 @@
             <!--GAME-->
             <img style="width: 20px; height: 20px;" src="images/navbar/game.png" alt="Home Icon" />
           </div>
-          <span class="link-text" style="color: #ffff">Game</span>
+          <span class="link-text">Game</span>
         </a>
       </li>
-      <!-- Additional navbar items -->
-      <?php if ($nick != "") : ?>
-        <li class="navbar-item flexbox-left">
-          <a class="navbar-item-inner flexbox-left" href="account.php">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
-              <img style="width: 20px; height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
-            </div>
-            <span class="link-text" style="color: #ffff"><?php echo $nick; ?></span>
-          </a>
-        </li>
-        <?php if($wikiCount > 0) : ?>
-          <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left" href="wiki.php">
-              <div class="navbar-item-inner-icon-wrapper flexbox">
-                <img style="width: 20px; height: 20px;" src="images/navbar/wiki.png" alt="Wiki Icon" />
-              </div>
-              <span class="link-text" style="color: #ffff">WIKI</span>
-            </a>
-          </li>
-        <?php endif; ?>
-        <li class="navbar-item flexbox-left">
-          <a class="navbar-item-inner flexbox-left" href="new-wiki.php">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
-              <img style="width: 20px; height: 20px;" src="images/navbar/new-wiki.png" alt="New Wiki Icon" />
-            </div>
-            <span class="link-text" style="color: #ffff">Crea WIKI</span>
-          </a>
-        </li>
-      <?php else : ?>
-        <li class="navbar-item flexbox-left">
-          <a class="navbar-item-inner flexbox-left" href="account.php">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
-              <img style="width: 20px; height: 20px;" src="images/navbar/users.png"  alt="Login Icon" />
-            </div>
-            <span class="link-text" style="color: #ffff">Ospite</span>
-          </a>
-        </li>
-      <?php endif; ?>
+      <li class="navbar-item flexbox-left account">
+        <a class="navbar-item-inner flexbox-left" href="account.php">
+          <div class="navbar-item-inner-icon-wrapper flexbox">
+            <!--ACCOUNT-->
+            <img style="width: 20px; height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
+          </div>
+          <span class="link-text">Account</span>
+        </a>
+      </li>
     </ul>
   </nav>
 
@@ -137,48 +137,31 @@
   <main id="main" class="flexbox-col">
     <div id="row" style="display: flex;">
       <div id="column-suggested" class="column-container" style="width: 25%; margin-left: 0%; margin-top: 10%;">
-        
-        <?php if ($nick != "") : ?>
-          <div class="inner-column" style="margin-top: 0%; text-align: center;">
-            <div class="profile-icon"></div>
-              <a class="welcome-message" style="font-size: 12px;"><?php echo $nick; ?></a><br>
-              <a href="account.php" class="view-profile-button" style="font-size: 12px; color: white;"> Visualizza Account</a>
-            </div>
-            <div class="inner-column" style="padding: 0px; margin-top: 5%;">
-          </div>
-        <?php else : ?>
-          <div class="inner-column" style="margin-top: 0%; text-align: center;">
-            <div class="profile-icon"></div>
-              <a class="welcome-message" style="font-size: 12px;">Effettua il login o signup</a>
-              <a href="account.php" class="view-profile-button" style="font-size: 12px; color: white;">Pagina Accesso</a>
-            </div>
-            <div class="inner-column" style="padding: 0px; margin-top: 5%;">
-          </div>
-        <?php endif; ?>
-        
         <div class="inner-column" style="padding: 0px;">
         <img src="images/img/wikiPage/anime/imageAnime.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
         </div>
         <div class="inner-column" style="margin-top: 0%; border-top-left-radius: 0px; border-top-right-radius: 0px;">
           <h2>TOP ANIME</h2>
           <ul>
-            <li>
-              <a href="One Piece.php" style="color: #ffff;">One Piece Wiki</a>
-            </li>
-            <li>
-              <a href="Naruto.php" style="color: #ffff;">Narutopedia</a>
-            </li>
-            <li>
-              <a href="Ken Il Guerriero.php" style="color: #ffff;">Ken Il Guerriero</a>
-            </li>
-            <li>
-              <a href="pagina_anime.html" style="color: #ffff;">Konosubarashi</a>
-            </li>
+            <!--
+              <li>
+                <a href="pagina_anime.html">One Piece Wiki</a>
+              </li>
+            -->
+            <?php
+              foreach ($wikis as $row) {
+                echo "
+                <li>
+                  <a href=\"". $row['pathWiki']."\" style=\"color: #ffff;\">".$row['Titolo']."</a>
+                </li>";
+              }
+            ?>
           </ul>
         </div>
       </div>
 
       <div id="column-news" class="column-container" style="width: 60%; margin-left: 5%; margin-right: 6%;">
+        <!--
         <div class="inner-column" style="padding: 0px;">
           <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
           <div style="display: flex;">
@@ -186,41 +169,22 @@
             <a id="date">Data caricaento</a>
           </div>
         </div>
-        <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <div style="display: flex;">
-            <a id="nameAuth">Nome Autore</a>
-            <a id="date">Data caricaento</a>
-          </div>
-        </div>
-        <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <div style="display: flex;">
-            <a id="nameAuth">Nome Autore</a>
-            <a id="date">Data caricaento</a>
-          </div>
-        </div>
-        <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <div style="display: flex;">
-            <a id="nameAuth">Nome Autore</a>
-            <a id="date">Data caricaento</a>
-          </div>
-        </div>
-        <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <div style="display: flex;">
-            <a id="nameAuth">Nome Autore</a>
-            <a id="date">Data caricaento</a>
-          </div>
-        </div>
-        <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <div style="display: flex;">
-            <a id="nameAuth">Nome Autore</a>
-            <a id="date">Data caricaento</a>
-          </div>
-        </div>
+        -->
+        <?php
+          foreach ($wikis as $row) {
+            if($row['tipo'] == "Logo"){
+                $pathLogo = $row['path'];
+            }
+            echo "
+            <div class=\"inner-column\" style=\"padding: 0px;\">
+              <img src=\"".$pathLogo."\" alt=\"\" class=\"centered-image\" style=\"border-top-left-radius: 10px; border-top-right-radius: 10px;\"/>
+              <div style=\"display: flex;\">
+                <a id=\"nameAuth\">".$row['Nick']."</a>
+                <a id=\"date\">Data caricamento</a>
+              </div>
+            </div>";
+          }
+        ?>
       </div>
       <div id="column-all" class="column-container" style="width: 25%; margin-top: 4%;">
         <div class="inner-column" style="padding: 0px; margin-top: 0%;">
@@ -228,30 +192,29 @@
             <img src="images/img/logo.jpg" alt="" class="centered-image" id="ads" style="border-radius: 10px; display: none;"/>
         </div>
         <div>
-          <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <a id="textList">Lista 1</a>
-          </div>
-          <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <a id="textList">Lista 1</a>
-          </div>
-          <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <a id="textList">Lista 1</a>
-          </div>
-          <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <a id="textList">Lista 1</a>
-          </div>
-          <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <a id="textList">Lista 1</a>
-          </div>
-          <div class="inner-column" style="margin-top: 5%; padding: 0px;">
-          <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
-          <a id="textList">Lista 1</a>
-          </div>
+          <!--
+            <div class="inner-column" style="margin-top: 5%; padding: 0px;">
+            <img src="images/gif/WallPaper.gif" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
+            <a id="textList">Lista 1</a>
+            </div>
+          -->
+          <?php
+            shuffle($wikis);
+            $numWikis = count($wikis); // Ottieni il numero di elementi nell'array
+            $limit = min(10, $numWikis); // Limita il ciclo alla lunghezza dell'array o a 10 elementi
+
+            for ($i = 0; $i < $limit; $i++) {
+              $row = $wikis[$i]; // Usa il simbolo $ per la variabile $i
+              if ($row['tipo'] == "Logo") {
+                $pathLogo = $row['path'];
+              }
+              echo "
+              <div class=\"inner-column\" style=\"margin-top: 5%; padding: 0px;\">
+                <img src=\"".$pathLogo."\" alt='' class=\"centered-image\" style=\"border-top-left-radius: 10px; border-top-right-radius: 10px;\"/>
+                <a id=\"textList\" href=\"".$row['pathWiki']."\">".$row['Titolo']."</a>
+              </div>";
+            }
+          ?>
         </div>
       </div>
     </div>
