@@ -136,6 +136,24 @@
    <main id="main" class="flexbox-col">
     <div id="row" style="display: flex;">
       <div id="column-suggested" class="column-container" style="width: 25%; margin-left: 0%; margin-top: 10%;">
+        <?php if ($nick != "") : ?>
+          <div class="inner-column" style="margin-top: 0%; text-align: center;">
+            <div class="profile-icon"></div>
+              <a class="welcome-message" style="font-size: 12px;"><?php echo $nick; ?></a><br>
+              <a href="account.php" class="view-profile-button" style="font-size: 12px; color: white;"> Visualizza Account</a>
+            </div>
+            <div class="inner-column" style="padding: 0px; margin-top: 5%;">
+          </div>
+        <?php else : ?>
+          <div class="inner-column" style="margin-top: 0%; text-align: center;">
+            <div class="profile-icon"></div>
+              <a class="welcome-message" style="font-size: 12px;">Effettua il login o signup</a>
+              <a href="account.php" class="view-profile-button" style="font-size: 12px; color: white;">Pagina Accesso</a>
+            </div>
+            <div class="inner-column" style="padding: 0px; margin-top: 5%;">
+          </div>
+        <?php endif; ?>  
+
         <div class="inner-column" style="padding: 0px;">
         <img src="images/img/wikiPage/game/imageGame.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
         </div>
