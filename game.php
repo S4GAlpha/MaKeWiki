@@ -179,7 +179,7 @@
               <img src=\"".$pathLogo."\" alt=\"\" class=\"centered-image\" style=\"border-top-left-radius: 10px; border-top-right-radius: 10px;\"/>
               <div style=\"display: flex;\">
                 <a id=\"nameAuth\">".$row['Nick']."</a>
-                <a id=\"date\">Data caricamento</a>
+                <a id=\"date\">".$row['Data']."</a>
               </div>
             </div>";
           }
