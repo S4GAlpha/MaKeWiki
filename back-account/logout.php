@@ -20,5 +20,7 @@ if (ini_get("session.use_cookies")) {
 
 // Distruggi la sessione
 session_destroy();
+echo "Accesso riuscito";
+header("Location: ../home.php");
 exit;
 ?>

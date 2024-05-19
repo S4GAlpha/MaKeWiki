@@ -178,6 +178,11 @@
                 <img src="images/img/profile-base-icon.png" alt="Profile Picture" id="profile-icon">
                 <?php echo "<p id=\"nick-utente\">".$nick ."</p>"; ?>
                 <button id="button-acc-profile">Edit Account</button>
+                <form class="forms_form" action="back-account/logout.php" method="post">
+                  <div class="forms_buttons">
+                    <input id="button-acc-profile" type="submit" value="Logout" class="forms_buttons-action">
+                  </div>
+                </form>
             </div>
             <div id="column-info">
               <div id="notification">

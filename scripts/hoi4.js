@@ -31,6 +31,7 @@ function toggleFirst() {
     var button = document.getElementById("collapseFirst");
     var button2 = document.getElementById("collapseSecond");
     var button3 = document.getElementById("collapseThird");
+    var button4 = document.getElementById("collapseFour");
 
     first.style.display = 'block';
     second.style.display = 'none';
@@ -51,6 +52,7 @@ function toggleSecond() {
     var button = document.getElementById("collapseFirst");
     var button2 = document.getElementById("collapseSecond");
     var button3 = document.getElementById("collapseThird");
+    var button4 = document.getElementById("collapseFour");
 
     first.style.display = 'none';
     second.style.display = 'block';
@@ -71,6 +73,7 @@ function toggleThird() {
     var button = document.getElementById("collapseFirst");
     var button2 = document.getElementById("collapseSecond");
     var button3 = document.getElementById("collapseThird");
+    var button4 = document.getElementById("collapseFour");
 
     first.style.display = 'none';
     second.style.display = 'none';

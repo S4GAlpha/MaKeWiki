@@ -98,19 +98,19 @@
         <img src="images/img/wikiPage/fandom/imageFandom.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
         </div>
         <div class="inner-column" style="margin-top: 0%; border-top-left-radius: 0px; border-top-right-radius: 0px;">
-          <h2>My Wiki</h2>
+          <h2>My Fandom</h2>
           <ul>
             <li>
-              <a href="pagina_anime.html">1 Wiki</a>
+              <a href="pagina_anime.html">1 Fandom</a>
             </li>
             <li>
-              <a href="pagina_anime.html">2 Wiki</a>
+              <a href="pagina_anime.html">2 Fandom</a>
             </li>
             <li>
-              <a href="pagina_anime.html">3 Wiki</a>
+              <a href="pagina_anime.html">3 Fandom</a>
             </li>
             <li>
-              <a href="pagina_anime.html">4 Wiki</a>
+              <a href="pagina_anime.html">4 Fandom</a>
             </li>
           </ul>
         </div>
