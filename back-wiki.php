@@ -16,39 +16,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Connessione fallita: " . $conn->connect_error);
     }
 
-    // Estrai i dati dal form
-    $email= $_POST['email'];
-    $wiki = $_POST['wiki'];
-    $commit = $_POST['commit'];
+    $user_email = $_SESSION['user_email'];
+    $title = $_POST['title'];
 
-    // Prepara e esegui la query per inserire il nuovo messaggio nel database
-    $stmt = $conn->prepare("INSERT INTO messaggi (FK_ID_utenti, FK_ID_wiki, Contenuto) VALUES (?, ?, ?)");
-    $stmt->bind_param("iss", $fk_ID_utente, $fk_ID_wiki, $contenuto);
+    // Ottieni l'ID dell'utente dal database usando l'email
+    $userQuery = "SELECT ID_utente FROM utenti WHERE email = ?";
+    $stmt = $conn->prepare($userQuery);
+    $stmt->bind_param("s", $user_email);
+    $stmt->execute();
+    $userResult = $stmt->get_result();
 
-    // Ottieni l'ID dell'utente dal nickname
-    $result = $conn->query("SELECT ID_utente FROM utenti WHERE email = '$email'");
-    $row = $result->fetch_assoc();
-    $fk_ID_utente = $row['ID_utente'];
+    if ($userResult->num_rows > 0) {
+        $userRow = $userResult->fetch_assoc();
+        $user_id = $userRow['ID_utente'];
 
-    // Ottieni l'ID della wiki dal titolo
-    $result = $conn->query("SELECT ID_wiki FROM wikipages WHERE Titolo = '$wiki'");
-    $row = $result->fetch_assoc();
-    $fk_ID_wiki = $row['ID_wiki'];
+        // Ottieni l'ID della wiki usando il titolo
+        $wikiQuery = "SELECT ID_wiki FROM wikipages WHERE titolo = ?";
+        $stmt = $conn->prepare($wikiQuery);
+        $stmt->bind_param("s", $title);
+        $stmt->execute();
+        $wikiResult = $stmt->get_result();
 
-    $contenuto = $commit;
+        if ($wikiResult->num_rows > 0) {
+            $wikiRow = $wikiResult->fetch_assoc();
+            $wiki_id = $wikiRow['ID_wiki'];
 
-    // Esegui la query preparata
-    if ($stmt->execute() === TRUE) {
-        echo "Nuovo messaggio inserito con successo.";
-        header("Location: ".$wiki.".php");
+            // Verifica se la wiki è già tra i favoriti dell'utente
+            $checkQuery = "SELECT * FROM preferenze WHERE fk_ID_wiki = ? AND fk_ID_utente = ?";
+            $stmt = $conn->prepare($checkQuery);
+            $stmt->bind_param("ii", $wiki_id, $user_id);
+            $stmt->execute();
+            $checkResult = $stmt->get_result();
+
+            if ($checkResult->num_rows > 0) {
+                // La wiki è già tra le preferenze, quindi rimuovila
+                $deleteQuery = "DELETE FROM preferenze WHERE fk_ID_wiki = ? AND fk_ID_utente = ?";
+                $stmt = $conn->prepare($deleteQuery);
+                $stmt->bind_param("ii", $wiki_id, $user_id);
+                if ($stmt->execute() === TRUE) {
+                    echo "Wiki rimossa dai preferiti con successo.";
+                } else {
+                    echo "Errore durante la rimozione della wiki: " . $conn->error;
+                }
+            } else {
+                // La wiki non è tra le preferenze, quindi aggiungila
+                $insertQuery = "INSERT INTO preferenze (fk_ID_wiki, fk_ID_utente) VALUES (?, ?)";
+                $stmt = $conn->prepare($insertQuery);
+                $stmt->bind_param("ii", $wiki_id, $user_id);
+                if ($stmt->execute() === TRUE) {
+                    echo "Wiki aggiunta ai preferiti con successo.";
+                } else {
+                    echo "Errore durante l'aggiunta della wiki: " . $conn->error;
+                }
+            }
+        } else {
+            echo "Wiki non trovata.";
+        }
     } else {
-        echo "Errore nell'inserimento del messaggio: " . $stmt->error;
+        echo "Utente non trovato.";
     }
 
     // Chiudi la connessione
-    $stmt->close();
     $conn->close();
-} else {
-    echo "Metodo di richiesta non valido.";
 }
 ?>

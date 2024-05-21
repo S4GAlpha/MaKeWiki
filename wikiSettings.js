@@ -3,6 +3,7 @@ var newCommentModal = document.getElementById("newCommentModal");
 // Ottieni l'elemento <span> che chiude la finestra modale di conferma cancellazione
 var newCommentModalClose = document.querySelector("#newCommentModal .close");
 
+
 document.addEventListener('DOMContentLoaded', function () {
 
     loadMessages();
@@ -21,13 +22,17 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("cancel-commit").onclick = function() {
         newCommentModal.style.display = "none";
     };
+
+    document.getElementById("favoriteButton").onclick = function() {
+        setFavourite();
+    };
 });
 
 
 function loadMessages() {
     const title = document.querySelector('title').textContent;
     const queryString = 'title=' + encodeURIComponent(title);
-    const url = 'backMessages.php?' + queryString;
+    const url = 'getMessages.php?' + queryString;
 
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
@@ -65,4 +70,20 @@ function getMessages(data) {
         div.appendChild(nodeContent);
     });
     forum.appendChild(div);
+}
+
+function setFavourite() {
+    const title = document.querySelector('title').textContent;
+    // Invia i dati del modulo al server utilizzando AJAX
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'back-wiki.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText); 
+        }
+    };
+    
+    // Invia i dati del modulo al server
+    xhr.send('title=' + encodeURIComponent(title));
 }

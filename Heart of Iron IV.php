@@ -377,7 +377,7 @@
     </main>
     <div id="newCommentModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0;	top: 0;	width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);">
         <div class="modal-content">
-            <form action="back-wiki.php" method="post">            
+            <form action="postMessages.php" method="post">            
                 <input type="hidden" name="email" value=<?php echo $email; ?>>
                 <input type="hidden" name="wiki" value="Heart of Iron IV">
                 <span class="close">&times;</span>
@@ -390,8 +390,7 @@
         </div>
     </div>
 </div>
-
+</body>
 <script src="scripts/hoi4.js"></script>
 <script src="wikiSettings.js"></script>
-</body>
 </html>
