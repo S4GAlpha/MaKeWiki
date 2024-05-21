@@ -30,21 +30,38 @@
         die("Connessione fallita: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM wikipages w
+    $sqlPages = "SELECT * FROM wikipages w
     INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
     INNER JOIN imm_wiki im ON w.ID_wiki = im.fk_id_wiki
     INNER JOIN immagini i ON im.fk_id_wiki = i.ID_immagine
     WHERE w.Tipologia='Anime'
     ORDER BY Data desc"; 
-    $result = $conn->query($sql);
+    $resultWikis = $conn->query($sqlPages);
 
-    // Memorizza i risultati in un array
     $wikis = [];
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
+    if ($resultWikis->num_rows > 0) {
+        while ($row = $resultWikis->fetch_assoc()) {
             $wikis[] = $row;
         }
     }
+
+    $sqlFavoritePages = "SELECT w.*, COUNT(p.fk_ID_wiki) AS num_preferences
+                     FROM preferenze p
+                     JOIN wikipages w ON p.fk_ID_wiki = w.ID_wiki                     
+                     WHERE w.Tipologia='Anime'
+                     GROUP BY p.fk_ID_wiki
+                     ORDER BY num_preferences DESC";
+
+    $resultFavoriteWikis = $conn->query($sqlFavoritePages);
+
+    // Memorizza i risultati in un array
+    $favoriteWikis = [];
+    if($resultFavoriteWikis->num_rows>0){
+      while ($row = $resultFavoriteWikis->fetch_assoc()) {
+        $favoriteWikis[] = $row;
+      }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -194,7 +211,10 @@
               </li>
             -->
             <?php
-              foreach ($wikis as $row) {
+              $numFavouriteWikis = count($favoriteWikis); // Ottieni il numero di elementi nell'array
+              $limitF = min(6, $numFavouriteWikis); // Limita il ciclo alla lunghezza dell'array o a 6 elementi
+              for ($i = 0; $i < $limitF; $i++) {
+                $row = $favoriteWikis[$i];
                 echo "
                 <li>
                   <a href=\"". $row['pathWiki']."\" style=\"color: #ffff;\">".$row['Titolo']."</a>
