@@ -176,6 +176,37 @@
       display: block;
       text-decoration: none;
     }
+
+    .video-container {
+      height: 80%;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+    }
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      display: none;
+    }
+    .video-input {
+      font-size: 14px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 80%;
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
     </style>
 </head>
 
@@ -349,35 +380,66 @@
                   <a id="collapseBegginerGuide">VIDEOS</a>
               </div>
               <div>
-                <div id="begginerGuide" style="height: 80%;">
-                  <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
-                        <div style="height: 80%;">
-                            <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <a id="textList">Begginer Guide</a>
-                        </div>  
-                    </div>
-                    <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
-                        <div style="height: 80%;">
-                            <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <a id="textList">Begginer Guide</a>
-                        </div>  
-                    </div>
-                    <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
-                        <div style="height: 80%;">
-                            <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <a id="textList">Begginer Guide</a>
-                        </div>  
-                    </div>
-                    <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
-                        <div style="height: 80%;">
-                            <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            <a id="textList">Begginer Guide</a>
-                        </div>  
-                    </div>
+              <div id="begginerGuide" style="height: 100%; overflow-y: auto;">
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer1">
+                    <iframe id="video1" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <input type="text" class="video-input" id="urlInput1" placeholder="Inserisci URL del video" />
                   </div>
+                  <ul>
+                    <li>
+                      <a id="textList1" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                        Inserisci qui titolo video
+                      </a><br>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer2">
+                    <iframe id="video2" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <input type="text" class="video-input" id="urlInput2" placeholder="Inserisci URL del video" />
+                  </div>
+                  <ul>
+                    <li>
+                      <a id="textList2" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                        Inserisci qui titolo video
+                      </a><br>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer3">
+                    <iframe id="video3" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <input type="text" class="video-input" id="urlInput3" placeholder="Inserisci URL del video" />
+                  </div>
+                  <ul>
+                    <li>
+                      <a id="textList3" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                        Inserisci qui titolo video
+                      </a><br>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer4">
+                    <iframe id="video4" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <input type="text" class="video-input" id="urlInput4" placeholder="Inserisci URL del video" />
+                  </div>
+                  <ul>
+                    <li>
+                      <a id="textList4" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                        Inserisci qui titolo video
+                      </a><br>
+                    </li>
+                  </ul>
+                </div>
                 </div>
               </div>
             </div>
+        </div>
         </div>
           
         <div id="game" style="display: none; width: 100%; margin-right: 6%; text-align: center;">
@@ -498,39 +560,70 @@
                 <a id="decollapseBegginerGuide" onclick="deToggleCollapse()" style="display: none;">GUIDES</a>
               </div>
               <div>
-                <div id="begginerGuide" style="height: 80%;">
-                  <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
-                    <div style="height: 80%;">
-                      <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                      <ul>
-                        <li>
-                          <a id="textList" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
-                            Inserisci qui titolo video
-                          </a><br>
-                        </li>
-                      </ul>
-                    </div>  
+              <div id="begginerGuide" style="height: 100%; overflow-y: auto;">
+
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer5">
+                    <iframe id="video5" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <input type="text" class="video-input" id="urlInput5" placeholder="Inserisci URL del video" />
                   </div>
-                  <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
-                    <div style="height: 80%;">
-                      <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                      <ul>
-                        <li>
-                          <a id="textList" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
-                            Inserisci qui titolo video
-                          </a><br>
-                        </li>
-                      </ul>
-                    </div>  
-                  </div>    
+                  <ul>
+                    <li>
+                      <a id="textList5" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                        Inserisci qui titolo video
+                      </a><br>
+                    </li>
+                  </ul>
                 </div>
-                <div id="Forum" style="display: none;">
-                  <button id="new-comment">+</button>
+
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer6">
+                    <iframe id="video6" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <input type="text" class="video-input" id="urlInput6" placeholder="Inserisci URL del video" />
+                  </div>
+                  <ul>
+                    <li>
+                      <a id="textList6" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                        Inserisci qui titolo video
+                      </a><br>
+                    </li>
+                  </ul>
                 </div>
+
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer7">
+                    <iframe id="video7" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <input type="text" class="video-input" id="urlInput7" placeholder="Inserisci URL del video" />
+                  </div>
+                  <ul>
+                    <li>
+                      <a id="textList7" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                        Inserisci qui titolo video
+                      </a><br>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer8">
+                    <iframe id="video8" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <input type="text" class="video-input" id="urlInput8" placeholder="Inserisci URL del video" />
+                  </div>
+                  <ul>
+                    <li>
+                      <a id="textList8" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                        Inserisci qui titolo video
+                      </a><br>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div id="Forum" style="display: none;">
+                <button id="new-comment">+</button>
               </div>
             </div>
           </div>
-
+        </div>
       </div>
     </main>
 
@@ -578,21 +671,43 @@
   <script src="addImm.js"></script>
   <script src="menuWiki.js"></script>
   <script>
-    document.getElementById('chooseImageLink').addEventListener('click', function(event) {
-      event.preventDefault();
-      document.getElementById('backgroundImageInput').click();
-    });
+    // Funzione per mostrare l'input e aggiornare il video
+    function showInputAndSetVideo(containerId, inputId, iframeId) {
+      const container = document.getElementById(containerId);
+      const input = document.getElementById(inputId);
+      const iframe = document.getElementById(iframeId);
 
-    document.getElementById('backgroundImageInput').addEventListener('change', function() {
-      var input = this;
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          document.querySelector('main').style.backgroundImage = 'url(' + e.target.result + ')';
+      // Mostra l'input per inserire l'URL
+      input.style.display = 'block';
+      input.focus();
+
+      // Quando l'utente preme "Enter" nell'input, aggiorna l'iframe con l'URL del video
+      input.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+          const url = input.value;
+          const videoId = url.split('v=')[1]?.split('&')[0] || url.split('youtu.be/')[1];
+          if (videoId) {
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+            iframe.style.display = 'block';
+            input.style.display = 'none';
+          } else {
+            alert('Inserisci un URL di YouTube valido.');
+          }
         }
-        reader.readAsDataURL(input.files[0]);
-      }
-    });
+      });
+    }
+
+    // Event listeners per mostrare l'input quando si clicca sul container
+    document.getElementById('videoContainer1').addEventListener('click', () => showInputAndSetVideo('videoContainer1', 'urlInput1', 'video1'));
+    document.getElementById('videoContainer2').addEventListener('click', () => showInputAndSetVideo('videoContainer2', 'urlInput2', 'video2'));
+    document.getElementById('videoContainer3').addEventListener('click', () => showInputAndSetVideo('videoContainer3', 'urlInput3', 'video3'));
+    document.getElementById('videoContainer4').addEventListener('click', () => showInputAndSetVideo('videoContainer4', 'urlInput4', 'video4'));
+    document.getElementById('videoContainer5').addEventListener('click', () => showInputAndSetVideo('videoContainer5', 'urlInput5', 'video5'));
+    document.getElementById('videoContainer6').addEventListener('click', () => showInputAndSetVideo('videoContainer6', 'urlInput6', 'video6'));
+    document.getElementById('videoContainer7').addEventListener('click', () => showInputAndSetVideo('videoContainer7', 'urlInput7', 'video7'));
+    document.getElementById('videoContainer8').addEventListener('click', () => showInputAndSetVideo('videoContainer8', 'urlInput8', 'video8'));
   </script>
+
+
 </body>
 </html>
