@@ -556,11 +556,11 @@
 
             <div id="column-all" class="column-container" style="width: 35%; margin-top: 0%;">
               <div class="inner-column" style="margin-top: 0%; padding: 10px; text-align: center;">
-                <a id="collapseBegginerGuide" onclick="toggleCollapse()">FORUM</a>
-                <a id="decollapseBegginerGuide" onclick="deToggleCollapse()" style="display: none;">GUIDES</a>
+                <a id="collapseVideo" onclick="toggleVideo()">VIDEOS</a>
+                <a id="decollapseForum" onclick="toggleForum()" style="margin-left: 20px;">FORUM</a>
               </div>
               <div>
-              <div id="begginerGuide" style="height: 100%; overflow-y: auto;">
+              <div id="video" style="height: 100%; overflow-y: auto;">
 
                 <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
                   <div class="video-container" id="videoContainer5">
@@ -618,9 +618,11 @@
                   </ul>
                 </div>
               </div>
-              <div id="Forum" style="display: none;">
+              <div id="forum" style="display: none;">
                 <button id="new-comment">+</button>
               </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -707,6 +709,18 @@
     document.getElementById('videoContainer7').addEventListener('click', () => showInputAndSetVideo('videoContainer7', 'urlInput7', 'video7'));
     document.getElementById('videoContainer8').addEventListener('click', () => showInputAndSetVideo('videoContainer8', 'urlInput8', 'video8'));
   </script>
+
+<script>
+    function toggleVideo() {
+        document.getElementById('video').style.display = 'block';
+        document.getElementById('forum').style.display = 'none';
+    }
+
+    function toggleForum() {
+        document.getElementById('video').style.display = 'none';
+        document.getElementById('forum').style.display = 'block';
+    }
+</script>
 
 
 </body>
