@@ -49,6 +49,7 @@
   text-transform: uppercase;
   letter-spacing: 0.05rem;
   margin-bottom: 10px;
+  color: #ffff;
 }
   </style>
 </head>
