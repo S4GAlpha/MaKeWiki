@@ -11,7 +11,7 @@ function toggleOptions() {
       if (typeSlider.value === '0') {
         cardSlider.style.display = 'none';
         contentSlidersContainer.style.display = 'none';
-        saveButton.style.pointerEvents = 'auto';
+        saveButton.style.display = 'block';
         game.style.display = 'none';
         anime.style.display = 'block';
         gameI.style.display = 'none';
@@ -19,7 +19,7 @@ function toggleOptions() {
       } else if (typeSlider.value === '-1') {
         cardSlider.style.display = 'none';
         contentSlidersContainer.style.display = 'none';
-        saveButton.style.pointerEvents = 'none';
+        saveButton.style.display = 'none';
         game.style.display = 'none';
         anime.style.display = 'none';
         gameI.style.display = 'none';
@@ -27,7 +27,7 @@ function toggleOptions() {
       } else {
         cardSlider.style.display = 'block';
         contentSlidersContainer.style.display = 'block';
-        saveButton.style.pointerEvents = 'auto';
+        saveButton.style.display = 'block';
         game.style.display = 'block';
         anime.style.display = 'none';
         gameI.style.display = 'block';
@@ -94,9 +94,9 @@ function toggleOptions() {
         var cardValue = document.getElementById('cardRange').value;
     
         if (typeSlider === '0') {
-            type = 'anime';
-        } else if (typeSlider === '-1') {
             type = 'nessuno';
+        } else if (typeSlider === '-1') {
+            type = 'anime';
         } else {
             type = 'giochi';
         }
