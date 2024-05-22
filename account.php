@@ -34,6 +34,27 @@
       background-position: top center; /* Posiziona l'immagine in alto e al centro */
       background-repeat: no-repeat; /* Non ripetere l'immagine */
     }
+
+    #customButton {
+          cursor: pointer;
+          border: none; /* Rimuovi il bordo */
+        }
+
+        #fileInput {
+          display: none; /* Nascondi l'input file per impostazione predefinita */
+        }
+
+        #imageContainer {
+          width: 100%; /* Imposta la larghezza al 100% del contenitore */
+          height: 100%; /* Imposta l'altezza al 100% del contenitore */
+        }
+
+        #imageContainer img {
+          cursor: pointer;
+          width: 100%; /* Imposta la larghezza al 100% del contenitore */
+          height: 100%; /* Imposta l'altezza al 100% del contenitore */
+          object-fit: cover; /* Imposta l'immagine per coprire l'intero contenitore mantenendo le proporzioni */
+        }
   </style>
 </head>
 <body>
@@ -119,7 +140,6 @@
             <span class="link-text" style="color: #ffff">Crea WIKI</span>
           </a>
         </li>
-
       <?php else : ?>
         <li class="navbar-item flexbox-left">
           <a class="navbar-item-inner flexbox-left" href="account.php">
@@ -203,76 +223,146 @@
       </div>
     </main>
   <?php else : ?>
-    <main id="main" class="flexbox-col" style="padding: 20px; width: 100%; margin-left: 0px;">
-      <div id="account-form" style="width: 90%; align-items: center;">
-        <div id="ain" class="container" style="width: 100%; margin-left: 95px; min-height: 100%; margin-top: 0px; item-align: center; border-radius: 10px; overflow: auto;">
-          <div class="view">
-            <div id="column-profile">
-                <img src="images/img/profile-base-icon.png" alt="Profile Picture" id="profile-icon">
-                <?php echo "<p id=\"nick-utente\">".$nick ."</p>"; ?>
-                <button id="button-acc-profile">Edit Account</button>
-                <form class="forms_form" action="back-account/logout.php" method="post">
-                  <div class="forms_buttons">
-                    <input id="button-acc-profile" type="submit" value="Logout" class="forms_buttons-action">
+    <div id="visualizzaAccount">
+      <main id="main" class="flexbox-col" style="display: flex; padding: 20px; margin-left: 0px; height: 100vh; position: fixed; align-items: center; justify-content: center;">
+        <div id="account-form" style="max-width: 90%; margin-left: 190px; align-items: center;">
+          <div id="ain" class="container" style="width: 100%; min-height: 100%; margin-top: 0px; item-align: center; border-radius: 10px; overflow: auto;">
+            <div class="view" style="max-width: 100%;">
+              <div id="column-profile" style="max-width: 20%;">
+                  <img src="images/img/profile-base-icon.png" alt="Profile Picture" id="profile-icon">
+                  <?php echo "<p id=\"nick-utente\">".$nick ."</p>"; ?>
+
+                  <button id="button-acc-profile" type="submit"  onclick="visualizzaAccount.style.display = 'none'; modificaAccount.style.display = 'block';" class="forms_buttons-action">Modifica Account</button>
+
+                  <form class="forms_form" method="post">
+                    <div class="forms_buttons">
+                      <input id="button-acc-profile" type="submit" value="Logout" class="forms_buttons-action">
+                    </div>
+                  </form>
+              </div>
+              <div id="column-info" style="width: 100%; margin-left: 10px;">
+                <div id="notification" style="text-align: center;">
+                  <?php if($wikiCount == 0) : ?> 
+                  <button class="notification-item" onclick="window.location.href='new-wiki.php';" style="text-align: center;">
+                    Hai sbloccato la possibilità di creare le tue WIKI 
+                    <br><span style="color: rgb(172, 38, 255);">Clicca per provare la creazione WIKI</span>
+                  </button>
+                  <?php else : ?>
+                  <button class="notification-item" onclick="window.location.href='wiki.php';" style="text-align: center;">
+                    Hai sbloccato la possibilità di visualizzare le tue WIKI 
+                    <br><span style="color: rgb(172, 38, 255);">Clicca per visualizzare le tue WIKI</span>
+                  </button>
+                  <?php endif; ?>
+                  <div style="display: flex; justify-content: center;">
+                    <button class="notification-item" id="hideNotifications" onclick="notification.style.display='none';">Hide Notifications</button>
                   </div>
-                </form>
-            </div>
-            <div id="column-info">
-              <div id="notification">
-                  <h3 class="section-title">Notifications</h3>
-                  <button class="notification-item">New message from Jane</button>
-                  <button class="notification-item">New comment on your post</button>
-                  <button class="notification-item">New follower</button>
-                  <button class="notification-item" id="hideNotifications">Hide Notifications</button>
-              </div>
-              <div id="activity">
-                <h3 class="section-title">Activity</h3>
-                <div class="activity-item">
-                    <p class="activity-text">Created a new wiki: Introduction to Programming</p>
-                    <time class="activity-time">2 hours ago</time>
                 </div>
-                <div class="activity-item">
-                    <p class="activity-text">Edited a wiki: JavaScript Fundamentals</p>
-                    <time class="activity-time">4 hours ago</time>
+                <div id="description" style="text-align: center;">
+                  <h3 class="section-title">Descrizione</h3>
+                  <div class="activity-item">
+                    <p class="activity-text" style="max-height: 200px; overflow-y: auto; margin: 0 auto; width: 100%;">
+                      Descrizione Utente
+                    </p>
+                  </div>
                 </div>
-                <div class="activity-item">
-                    <p class="activity-text">Commented on a wiki: HTML and CSS for Beginners</p>
-                    <time class="activity-time">1 day ago</time>
-                </div>
-              </div>
-              <div id="favorite-wikis">
-                <h3 class="section-title">Favorite Wikis</h3>
-                <div class="wiki-item">
-                    <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
-                    <div class="wiki-info">
-                        <h4 class="wiki-title">Introduction to Programming</h4>
-                        <p class="wiki-description">A beginner's guide to programming concepts and languages</p>
+
+                <div id="popular-wiki" style="text-align: center;">
+                  <h3 class="section-title">Le Tue Wiki Popolari</h3>
+                  <div class="activity-item" style="width: 40%; margin: 0 auto;">
+                    <div style="display: flex; align-items: center; justify-content: center;">
+                      <div style="width: 35%; padding: 10px; display: flex; align-items: center; justify-content: center;">
+                        <p>1°</p>
+                        <img style="width: 100%; height: auto; margin-left: 20px;" src="images/gif/sus.gif" alt="Wiki Image" class="centered-image" />
+                      </div>
+                      <div style="margin-left: 20px;">
+                        <p class="activity-text" style="margin: 0;">Nome Wiki</p>
+                        <p class="activity-text">Tipologia</p>
+                      </div>
                     </div>
-                </div>
-                <div class="wiki-item">
-                    <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
-                    <div class="wiki-info">
-                        <h4 class="wiki-title">JavaScript Fundamentals</h4>
-                        <p class="wiki-description">A comprehensive guide to JavaScript programming</p>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: center;">
+                    <div class="activity-item" style="width: 40%; margin: 0 auto; margin-top: 10px;">
+                      <div style="display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 35%; padding: 10px; display: flex; align-items: center; justify-content: center;">
+                          <p>2°</p>
+                          <img style="width: 100%; height: auto; margin-left: 20px;" src="images/gif/sus.gif" alt="Wiki Image" class="centered-image" />
+                        </div>
+                        <div style="margin-left: 20px;">
+                          <p class="activity-text" style="margin: 0;">Nome Wiki</p>
+                          <p class="activity-text">Tipologia</p>
+                        </div>
+                      </div>
                     </div>
-                </div>
-                <div class="wiki-item">
-                    <img src="images/wiki-cover.jpg" alt="Wiki Cover" class="wiki-cover">
-                    <div class="wiki-info">
-                      <h4 class="wiki-title">HTML and CSS for Beginners</h4>
-                      <p class="wiki-description">A beginner's guide to HTML and CSS web development</p>
+                    <div class="activity-item" style="width: 40%; margin: 0 auto; margin-top: 10px;">
+                      <div style="display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 35%; padding: 10px; display: flex; align-items: center; justify-content: center;">
+                          <p>3°</p> 
+                          <img style="width: 100%; height: auto; margin-left: 20px;" src="images/gif/sus.gif" alt="Wiki Image" class="centered-image" />
+                        </div>
+                        <div style="margin-left: 20px;">
+                          <p class="activity-text" style="margin: 0;">Nome Wiki</p>
+                          <p class="activity-text">Tipologia</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
+
+
+    <div id="modificaAccount" style="display: none; width: 100%;">
+      <main id="main" class="flexbox-col" style="display: flex; padding: 20px; margin-left: 0px; height: 100vh; position: fixed; align-items: center; justify-content: center;">
+        <div id="account-form" style="max-width: 100%; margin-left: 190px; align-items: center;">
+          <div id="ain" class="container" style="width: 100%; min-height: 100%; margin-top: 0px; item-align: center; border-radius: 10px; overflow: auto;">
+            <div class="view" style="max-width: 100%;">
+              <div id="column-profile" style="max-width: 20%;">
+                  <div class="inner-column" style="background-color: rgba(79, 2, 151, 0); padding: 0px; margin-top: 5%; border-bot-left-radius: 0px; border-bot-right-radius: 0px;">
+                    <img src="images/img/profile-base-icon.png" class="customButton centered-image" data-index="1" alt="" style="width: 100%; height: 100%;"/>
+                    <form class="uploadForm" enctype="multipart/form-data" style="display: none;">
+                        <input type="file" class="fileInput" data-index="1" accept="image/*">
+                    </form>
+                    <div class="imageContainer" data-index="1" style="border-top-left-radius: 10px; border-top-right-radius: 10px; border-bot-left-radius: 0px; border-bot-right-radius: 0px;"></div>
+                  </div>
+                  <ul>
+                    <li>
+                      <a style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                        <?php echo "<p id=\"nick-utente\">".$nick ."</p>"; ?>
+                      </a>
+                    </li>
+                  </ul>
+                  <button id="button-acc-profile" type="submit"  onclick="visualizzaAccount.style.display = 'block'; modificaAccount.style.display = 'none';" class="forms_buttons-action">Salva Modifica</button>
+              </div>
+              <div id="column-info" style="width: 100%; margin-left: 10px;">
+                <div id="description" style="text-align: center;">
+                  <h3 class="section-title">Descrizione</h3>
+                  <div class="activity-item">
+                    <p class="activity-text" style="max-height: 200px; overflow-y: auto; margin: 0 auto; width: 100%;">
+                      <ul>
+                        <li>
+                          <a style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                            Inserisci qui la descrizione
+                          </a>
+                        </li>
+                      </ul>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   <?php endif; ?>
   
 </div>
 
+<script src="addImm.js"></script>
 <script>
   const signupButton = document.getElementById("signup-button"),
   loginButton = document.getElementById("login-button"),
@@ -281,6 +371,19 @@
   const account_form = document.getElementById("account-form");
 
   const loginSignupDiv = document.getElementById("login-signup");
+
+  const visualizzaAccount = document.getElementById("visualizzaAccount");
+  const modificaAccount = document.getElementById("modificaAccount");
+
+  function modificaAccount () {
+    visualizzaAccount.style.display = 'none';
+    modificaAccount.style.display = 'block';
+  }
+
+  function salvaModifica () {
+    modificaAccount.style.display = 'none';
+    visualizzaAccount.style.display = 'block';
+  }
 
   /**
    * Add event listener to the "Sign Up" button
@@ -335,7 +438,6 @@
 });
 
 </script>
-
 
 </body>
 </html>

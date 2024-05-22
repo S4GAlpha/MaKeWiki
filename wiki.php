@@ -37,20 +37,20 @@
     }
 
     #button-acc-profile,
-#button-acc-profile2 {
-  display: block;
-  width: 100%;
-  background-color: rgba(79, 2, 151, 0.5);
-  border: 1px solid rgba(79, 2, 151, 0.5);
-  border-radius: 5px;
-  padding: 8px 0;
-  font-size: 1rem;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 0.05rem;
-  margin-bottom: 10px;
-  color: #ffff;
-}
+    #button-acc-profile2 {
+      display: block;
+      width: 100%;
+      background-color: rgba(79, 2, 151, 0.5);
+      border: 1px solid rgba(79, 2, 151, 0.5);
+      border-radius: 5px;
+      padding: 8px 0;
+      font-size: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05rem;
+      margin-bottom: 10px;
+      color: #ffff;
+    }
   </style>
 </head>
 <body>
