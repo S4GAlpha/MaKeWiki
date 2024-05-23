@@ -234,7 +234,7 @@
 
                   <button id="button-acc-profile" type="submit"  onclick="visualizzaAccount.style.display = 'none'; modificaAccount.style.display = 'block';" class="forms_buttons-action">Modifica Account</button>
 
-                  <form class="forms_form" method="post">
+                  <form class="forms_form" action="back-account/logout.php" method="post">
                     <div class="forms_buttons">
                       <input id="button-acc-profile" type="submit" value="Logout" class="forms_buttons-action">
                     </div>
