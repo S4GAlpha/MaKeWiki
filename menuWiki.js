@@ -96,15 +96,15 @@ function toggleOptions() {
         if (typeSlider === '0') {
             type = 'nessuno';
         } else if (typeSlider === '-1') {
-            type = 'anime';
+            type = 'Anime';
         } else {
-            type = 'giochi';
+            type = 'VideoGame';
         }
     
         var message = 'Modifiche salvate!\n' +
                       'Tipologia: ' + type;
     
-        if (type === 'giochi') {
+        if (type === 'VideoGame') {
             message += '\nNumero di schede: ' + cardValue;
     
             for (var i = 0; i < cardValue; i++) {

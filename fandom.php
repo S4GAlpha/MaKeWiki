@@ -16,6 +16,56 @@
         $isAdmin = false;
         $wikiCount = 0; // Default value when not logged in
     }
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "makewiki";
+
+    // Crea la connessione
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Verifica la connessione
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }
+
+    $sqlPages = "SELECT w.*, u.Nick, im.tipo, i.path
+                  FROM wikipages w
+                  INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
+                  INNER JOIN imm_wiki im ON w.ID_wiki = im.fk_id_wiki
+                  INNER JOIN immagini i ON im.fk_id_immagine = i.ID_immagine
+                  WHERE w.Tipologia='Post'
+                  ORDER BY w.Data DESC";
+
+    $resultWikis = $conn->query($sqlPages);
+
+    $wikis = [];
+    if ($resultWikis->num_rows > 0) {
+        while ($row = $resultWikis->fetch_assoc()) {
+            $wikis[] = $row;
+        }
+    }
+
+    $sqlFavoritePages = "SELECT w.*, u.Nick, im.tipo, i.path, COUNT(p.fk_ID_wiki) AS num_preferences
+                          FROM preferenze p
+                          INNER JOIN wikipages w ON p.fk_ID_wiki = w.ID_wiki
+                          INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
+                          INNER JOIN imm_wiki im ON w.ID_wiki = im.fk_id_wiki
+                          INNER JOIN immagini i ON im.fk_id_immagine = i.ID_immagine
+                          WHERE w.Tipologia='Post'
+                          GROUP BY p.fk_ID_wiki
+                          ORDER BY num_preferences DESC";
+
+    $resultFavoriteWikis = $conn->query($sqlFavoritePages);
+
+    // Memorizza i risultati in un array
+    $favoriteWikis = [];
+    if($resultFavoriteWikis->num_rows>0){
+      while ($row = $resultFavoriteWikis->fetch_assoc()) {
+        $favoriteWikis[] = $row;
+      }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +76,6 @@
   <script src="adBlock.js"></script>
   <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
   <link rel="stylesheet" href="style/style.css">
-  <link rel="stylesheet" href="style/user_style.css">
   <link rel="stylesheet" href="style/anime_game_style.css">
   <style>
     #main {
@@ -162,23 +211,27 @@
         <div class="inner-column" style="margin-top: 0%; border-top-left-radius: 0px; border-top-right-radius: 0px;">
           <h2>My Fandom</h2>
           <ul>
-            <li>
-              <a href="pagina_anime.html">1 Fandom</a>
-            </li>
-            <li>
-              <a href="pagina_anime.html">2 Fandom</a>
-            </li>
-            <li>
-              <a href="pagina_anime.html">3 Fandom</a>
-            </li>
-            <li>
-              <a href="pagina_anime.html">4 Fandom</a>
-            </li>
+            <!--
+              <li>
+                <a href="pagina_anime.html">1 Fandom</a>
+              </li>
+            -->
+            <?php
+              foreach($favoriteWikis as $row) {
+                if($row['Nick']==$nick){
+                  echo "
+                  <li>
+                    <a href=\"". $row['pathWiki']."\" style=\"color: #ffff;\">".$row['Titolo']."</a>
+                  </li>";
+                }
+              }
+            ?>
           </ul>
         </div>
       </div>
 
       <div id="column-news" class="column-container" style="width: 60%; margin-left: 5%; margin-right: 6%;">
+        <!--
         <div class="inner-column" style="padding: 0px;">
           <div style="display: flex;">
             <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt="Account Icon" />
@@ -203,37 +256,48 @@
             </div>
           </div>
         </div>
-        <div class="inner-column" style="padding: 0px; margin-top: 5%; ">
-          <div style="display: flex;">
-            <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt="Account Icon" />
-            <div>
-              <a style="font-size: 12px; margin-left: 10px;">typology</a>
-              <div style="margin-left: 10px;">
-                <a style="font-size: 8px;">author</a>
-                <a style="font-size: 8px;">time ago</a>
+        -->
+
+        <?php
+          foreach ($wikis as $row) {
+            if($row['tipo'] == "Logo"){
+                $pathLogo = $row['path'];
+            }
+            echo "
+            <div class=\"inner-column\" style=\"padding: 0px;\">
+              <div style=\"display: flex;\">
+                <img style=\"width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
+                <div>
+                  <a style=\"font-size: 12px; margin-left: 10px;\">typology</a>
+                  <div style=\"margin-left: 10px;\">
+                    <a style=\"font-size: 8px;\">".$row['Nick']."</a>
+                    <a style=\"font-size: 8px;\">".$row['Data']."</a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <a style="font-size: 16px; margin-left: 10px;">descrizione post</a>
-          <img src="images/gif/sus.gif" alt="" class="centered-image" />
-          <div style="display: flex; height: 30px;">
-            <div style="display: flex;">
-              <img style="height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
-              <a style="font-size: 14px;">counter like</a>
-            </div>
-            <div style="display: flex; margin-left: 20px;">
-              <img style="height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
-              <a style="font-size: 14px;">counter messaggi</a>
-            </div>
-          </div>
-        </div>
-      </div>
+              <a style=\"font-size: 16px; margin-left: 10px;\">".$row['Descrizione']."</a>
+              <img src=\"".$pathLogo."\" alt=\"\" class=\"centered-image\" />
+              <div style=\"display: flex; height: 30px;\">
+                <div style=\"display: flex;\">
+                  <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
+                  <a style=\"font-size: 14px;\">counter like</a>
+                </div>
+                <div style=\"display: flex; margin-left: 20px;\">
+                  <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
+                  <a style=\"font-size: 14px;\">counter messaggi</a>
+                </div>
+              </div>
+            </div>";
+          }
+        ?>
+
       <div id="column-all" class="column-container" style="width: 25%; margin-top: 0%;">
         <div>
           <div class="inner-column" style="margin-top: 0%; padding: 0px; height: 430px;">
             <div style="height: 350px; overflow-y: auto;">
               <a id="textList" style="margin-left: 5px;">Fandom Consigliati</a>
               <div>
+                <!--
                 <div style="display: flex;">
                   <img style="height: 50px;" src="images/navbar/users.png" alt="Account Icon" />
                   <div style="margin-left: 20px;">
@@ -244,16 +308,27 @@
                   </div>
                   <img style="height: 50px; margin-left: 40px;" src="images/navbar/users.png" alt="Account Icon" />
                 </div>
-                <div style="display: flex; margin-top: 2%;">
-                  <img style="height: 50px;" src="images/navbar/users.png" alt="Account Icon" />
-                  <div style="margin-left: 20px;">
-                    <a style="font-size: 12px;">nomeFandom</a>
-                    <div style="padding: 0px;">
-                      <a style="font-size: 8px;">counter like</a>
-                    </div>
-                  </div>
-                  <img style="height: 50px; margin-left: 40px;" src="images/navbar/users.png" alt="Account Icon" />
-                </div>
+                -->
+                <?php
+                  $numFavouriteWikis = count($favoriteWikis); // Ottieni il numero di elementi nell'array
+                  $limitF = min(6, $numFavouriteWikis); // Limita il ciclo alla lunghezza dell'array o a 6 elementi
+                  for ($i = 0; $i < $limitF; $i++) {
+                    $row = $favoriteWikis[$i];
+                    if($row['tipo'] == "Logo"){
+                      $pathLogo = $row['path'];
+                    }
+                    echo "
+                    <div style=\"display: flex;\">
+                      <img style=\"height: 50px;\" src=\"".$pathLogo."\" alt=\"Account Icon\"/>
+                      <div style=\"margin-left: 20px;\">
+                        <a style=\"font-size: 12px;\">".$row['Titolo']."</a>
+                        <div style=\"padding: 0px;\">
+                          <a style=\"font-size: 8px;\">counter like</a>
+                        </div>
+                      </div>
+                    </div>";
+                  }
+                ?>
               </div>
             </div>
             <div style="text-align: center;">
@@ -272,6 +347,7 @@
             <div style="height: 350px; overflow-y: auto;">
               <a id="textList" style="margin-left: 5px;">Fandom Nuovi</a>
               <div>
+                <!--
                 <div style="display: flex;">
                   <img style="height: 50px;" src="images/navbar/users.png" alt="Account Icon" />
                   <div style="margin-left: 20px;">
@@ -282,16 +358,27 @@
                   </div>
                   <img style="height: 50px; margin-left: 40px;" src="images/navbar/users.png" alt="Account Icon" />
                 </div>
-                <div style="display: flex; margin-top: 2%;">
-                  <img style="height: 50px;" src="images/navbar/users.png" alt="Account Icon" />
-                  <div style="margin-left: 20px;">
-                    <a style="font-size: 12px;">nomeFandom</a>
-                    <div style="padding: 0px;">
-                      <a style="font-size: 8px;">counter like</a>
-                    </div>
-                  </div>
-                  <img style="height: 50px; margin-left: 40px;" src="images/navbar/users.png" alt="Account Icon" />
-                </div>
+                -->
+                <?php
+                  $numWikis = count($wikis); // Ottieni il numero di elementi nell'array
+                  $limit = min(10, $numWikis); // Limita il ciclo alla lunghezza dell'array o a 10 elementi
+
+                  for ($i = 0; $i < $limit; $i++) {
+                    if($row['tipo'] == "Logo"){
+                        $pathLogo = $row['path'];
+                    }
+                    echo "
+                    <div style=\"display: flex;\">
+                      <img style=\"height: 50px;\" src=\"".$pathLogo."\" alt=\"Account Icon\" />
+                      <div style=\"margin-left: 20px;\">
+                        <a style=\"font-size: 12px;\">".$row['Titolo']."</a>
+                        <div style=\"padding: 0px;\">
+                          <a style=\"font-size: 8px;\">counter like</a>
+                        </div>
+                      </div>
+                    </div>";
+                  }
+                ?>
               </div>
             </div>
             <div style="text-align: center;">

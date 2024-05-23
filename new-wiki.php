@@ -1,23 +1,3 @@
-<?php
-    session_start();
-    // Assumiamo che l'utente sia autenticato e il nome utente sia disponibile nella sessione.
-    if (isset($_SESSION['user_nome']) && isset($_SESSION['user_nick'])) {
-        $nome = $_SESSION['user_nome'];
-        $cognome = $_SESSION['user_cognome'];
-        $nick = $_SESSION['user_nick'];
-        $email = $_SESSION['user_email'];
-        $isAdmin = $_SESSION['user_isadmin'];
-        $wikiCount = isset($_SESSION['user_wikiCount']) ? $_SESSION['user_wikiCount'] : 0;
-    } else {
-        $nome = "Ospite";  // Imposta un valore di default se l'utente non è loggato
-        $cognome = "";
-        $nick = "";
-        $email = "unknown";
-        $isAdmin = false;
-        $wikiCount = 0; // Default value when not logged in
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -264,43 +244,7 @@
           </a>
         </li>
         <!-- Additional navbar items -->
-        <?php if ($nick != "") : ?>
-          <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left" href="account.php">
-              <div class="navbar-item-inner-icon-wrapper flexbox">
-                <img style="width: 20px; height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
-              </div>
-              <span class="link-text" style="color: #ffff"><?php echo $nick; ?></span>
-            </a>
-          </li>
-        <?php if($wikiCount > 0) : ?>
-          <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left" href="wiki.php">
-              <div class="navbar-item-inner-icon-wrapper flexbox">
-                  <img style="width: 20px; height: 20px;" src="images/navbar/wiki.png" alt="Wiki Icon" />
-              </div>
-              <span class="link-text" style="color: #ffff">WIKI</span>
-            </a>
-          </li>
-        <?php endif; ?>
-          <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left" href="new-wiki.php">
-              <div class="navbar-item-inner-icon-wrapper flexbox">
-                <img style="width: 20px; height: 20px;" src="images/navbar/new-wiki.png" alt="New Wiki Icon" />
-              </div>
-              <span class="link-text" style="color: #ffff">Crea WIKI</span>
-            </a>
-          </li>
-        <?php else : ?>
-          <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left" href="account.php">
-              <div class="navbar-item-inner-icon-wrapper flexbox">
-                <img style="width: 20px; height: 20px;" src="images/navbar/users.png"  alt="Login Icon" />
-              </div>
-              <span class="link-text" style="color: #ffff">Ospite</span>
-            </a>
-          </li>
-        <?php endif; ?>
+        
       </ul>
     </nav>
 
@@ -317,15 +261,14 @@
         <div>
           <ul style="display: flex; align-items: center; justify-content: center; height: 70%;">
             <li>
-              <h2 id="textList" style="margin-top: 10%; font-size: 30px; display: block; width: 100%; margin-left: 30px; border: none;" contenteditable="true">
+              <h2 id="textTitle" style="margin-top: 10%; font-size: 30px; display: block; width: 100%; margin-left: 30px; border: none;" contenteditable="true">
                 Inserisci qui titolo
               </h2>
             </li>
           </ul>
           <ul>
             <li>
-              <a id="textList" style="font-size: 12px; display: block; width: 92%; margin-left: 30px; border: none;" contenteditable="true">
-                Inserisci qui sviluppatore
+              <a id="textList" style="font-size: 12px; display: block; width: 92%; margin-left: 30px; border: none;">
               </a>
             </li>
           </ul>
@@ -645,7 +588,7 @@
           <a  style="max-height: 76px; font-size: 12px; margin-top: 10px;" href="#" id="chooseImageLink">Choose Background Image</a>
           <input type="file" id="backgroundImageInput" style="display: none;" accept="image/*">
         </div>
-      <a href="javascript:void(0);" id="saveButton" onclick="salvaWiki()" style="display: none; pointer-events: auto; max-height: 76px; font-size: 12px; margin-top: 10px;">Salva Wiki</a>
+      <a href="javascript:void(0);" id="saveButton" style="display: none; pointer-events: auto; max-height: 76px; font-size: 12px; margin-top: 10px;">Salva Wiki</a>
       <!-- Aggiungi il nuovo pulsante per caricare l'immagine di sfondo -->
       <div>
   </div>
@@ -655,8 +598,8 @@
     <div id="newCommentModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0;	top: 0;	width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);">
       <div class="modal-content">
         <form action="back-wiki.php" method="post">            
-          <input type="hidden" name="email" value=<?php echo $email; ?>>
-          <input type="hidden" name="wiki" value="Heart of Iron IV">
+          <input id="input-email" type="hidden" name="email" value="">
+          <input id="input-wiki" type="hidden" name="wiki" value="">
           <span class="close">&times;</span>
           <h2>Aggiungi nuovo commento</h2>
           <textarea name="commit" id="text-commento" cols="60" rows="20"></textarea>
@@ -669,6 +612,7 @@
   </div>
 
   <script src="scripts/hoi4.js"></script>
+  <script src="scripts/new-wikiSettings.js"></script>
   <script src="wikiSettings.js"></script>
   <script src="addImm.js"></script>
   <script src="menuWiki.js"></script>
