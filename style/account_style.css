@@ -57,9 +57,7 @@ input::placeholder {
   color: #ccc;
 }
 
-/**
- * Bounce to the left side
- */
+/* Bounce to the left side */
 @-webkit-keyframes bounceLeft {
   0% {
     -webkit-transform: translate3d(100%, -50%, 0);
@@ -88,9 +86,8 @@ input::placeholder {
             transform: translate3d(0, -50%, 0);
   }
 }
-/**
- * Bounce to the left side
- */
+
+/* Bounce to the right side */
 @-webkit-keyframes bounceRight {
   0% {
     -webkit-transform: translate3d(0, -50%, 0);
@@ -119,6 +116,30 @@ input::placeholder {
             transform: translate3d(100%, -50%, 0);
   }
 }
+
+.user_options-forms.bounceRight {
+  -webkit-animation: bounceRight 1s forwards;
+          animation: bounceRight 1s forwards;
+}
+
+.user_options-forms.bounceLeft {
+  -webkit-animation: bounceLeft 1s forwards;
+          animation: bounceLeft 1s forwards;
+}
+
+.user_options-forms.bounceLeft .user_forms-signup {
+  -webkit-animation: showSignUp 1s forwards;
+          animation: showSignUp 1s forwards;
+}
+
+.user_options-forms.bounceLeft .user_forms-login {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate3d(-120px, 0, 0);
+          transform: translate3d(-120px, 0, 0);
+}
+
+
 /**
  * Show Sign Up form
  */
@@ -333,28 +354,6 @@ input::placeholder {
           transform: translate3d(0, 0, 0);
   opacity: 1;
   visibility: visible;
-}
-
-/**
- * Triggers
- */
-.user_options-forms.bounceLeft {
-  -webkit-animation: bounceLeft 1s forwards;
-          animation: bounceLeft 1s forwards;
-}
-.user_options-forms.bounceLeft .user_forms-signup {
-  -webkit-animation: showSignUp 1s forwards;
-          animation: showSignUp 1s forwards;
-}
-.user_options-forms.bounceLeft .user_forms-login {
-  opacity: 0;
-  visibility: hidden;
-  -webkit-transform: translate3d(-120px, 0, 0);
-          transform: translate3d(-120px, 0, 0);
-}
-.user_options-forms.bounceRight {
-  -webkit-animation: bounceRight 1s forwards;
-          animation: bounceRight 1s forwards;
 }
 
 /**

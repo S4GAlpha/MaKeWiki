@@ -252,39 +252,39 @@
             </div>
 
             <div id="column-all" class="column-container" style="width: 35%; margin-top: 0%;">
-                <div class="inner-column" style="margin-top: 0%; padding: 10px; text-align: center;">
-                    <a id="collapseBegginerGuide">VIDEOS</a>
-                </div>
-                <div>
-                    <div id="begginerGuide" style="height: 80%;">
-                    <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
-                            <div style="height: 80%;">
-                                <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                <a id="textList">Begginer Guide</a>
-                            </div>  
-                        </div>
-                        <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
-                            <div style="height: 80%;">
-                                <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                <a id="textList">Begginer Guide</a>
-                            </div>  
-                        </div>
-                        <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
-                            <div style="height: 80%;">
-                                <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                <a id="textList">Begginer Guide</a>
-                            </div>  
-                        </div>
-                        <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
-                            <div style="height: 80%;">
-                                <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                                <a id="textList">Begginer Guide</a>
-                            </div>  
-                        </div>
+              <div class="inner-column" style="margin-top: 0%; padding: 10px; text-align: center;">
+                  <a id="collapseBegginerGuide">VIDEOS</a>
+              </div>
+              <div>
+                <div id="begginerGuide" style="height: 80%;">
+                  <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
+                        <div style="height: 80%;">
+                            <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <a id="textList">Begginer Guide</a>
+                        </div>  
                     </div>
+                    <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
+                        <div style="height: 80%;">
+                            <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <a id="textList">Begginer Guide</a>
+                        </div>  
+                    </div>
+                    <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
+                        <div style="height: 80%;">
+                            <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <a id="textList">Begginer Guide</a>
+                        </div>  
+                    </div>
+                    <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%;">
+                        <div style="height: 80%;">
+                            <iframe width="100%" height="100%" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" src="https://www.youtube.com/embed/QvHT121_lWQ?si=U8lOVD23SOws7MUR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            <a id="textList">Begginer Guide</a>
+                        </div>  
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
     </main>
     <div id="newCommentModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0;	top: 0;	width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);">
         <div class="modal-content">

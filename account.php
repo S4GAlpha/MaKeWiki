@@ -156,73 +156,73 @@
   <!-- Main --> 
 
   <?php if ($nick=="") : ?>
-    <main id="main" class="flexbox-col" style="padding: 0px;"> 
-      <div id="login-signup" style="width: 100%; height: 100%;">
-        <div id="ain" style="width: 100%; height: 100%;">
-          <section class="user">
-            <div class="user_options-container" id="user_options-container">
-              <div class="user_options-text" id="options-text">
-                <div class="user_options-unregistered">
-                  <h2 class="user_unregistered-title">Don't have an account?</h2>
-                  <p class="user_unregistered-text">Create now!</p>
-                  <button class="user_unregistered-signup" id="signup-button">Sign up</button>
-                </div>
-                <div class="user_options-registered">
-                  <h2 class="user_registered-title">Already have a account!</h2>
-                  <p class="user_registered-text">Get started..</p>
-                  <button class="user_registered-login" id="login-button">Login</button>
-                </div>
-              </div>
-              <div class="user_options-forms" id="user_options-forms">
-                <div class="user_forms-login">
-                  <h2 class="forms_title">Login</h2>
-                  <form class="forms_form" action="back-account/login.php" method="post">
-                    <fieldset class="forms_fieldset">
-                      <div class="forms_field">
-                        <input type="email" name="email" placeholder="Email" class="forms_field-input" required autofocus />
-                      </div>
-                      <div class="forms_field">
-                        <input type="password" name="password" placeholder="Password" class="forms_field-input" required />
-                      </div>
-                    </fieldset>
-                    <div class="forms_buttons">
-                      <button type="button" class="forms_buttons-forgot">Forgot password?</button>
-                      <input type="submit" value="Login" class="forms_buttons-action">
-                    </div>
-                  </form>
-                </div>
-                <div class="user_forms-signup">
-                  <h2 class="forms_title">Sign Up</h2>
-                  <form class="forms_form" action="back-account/signup.php" method="post">
-                    <fieldset class="forms_fieldset">
-                      <div class="forms_field">
-                        <input type="text" name="nome" placeholder="Nome" class="forms_field-input" required />
-                      </div>
-                      <div class="forms_field">
-                        <input type="text" name="cognome" placeholder="Cognome" class="forms_field-input" required />
-                      </div>
-                      <div class="forms_field">
-                        <input type="text" name="nick" placeholder="Nickname" class="forms_field-input" required />
-                      </div>
-                      <div class="forms_field">
-                        <input type="email" name="email" placeholder="Email" class="forms_field-input" required />
-                      </div>
-                      <div class="forms_field">
-                        <input type="password" name="password" placeholder="Password" class="forms_field-input" required />
-                      </div>
-                    </fieldset>
-                    <div class="forms_buttons">
-                      <input type="submit" value="Sign up" class="forms_buttons-action">
-                    </div>
-                  </form>
-                </div>
-              </div>
+<main id="main" class="flexbox-col" style="padding: 0px;">
+  <div id="login-signup" style="width: 100%; height: 100%;">
+    <div id="ain" style="width: 100%; height: 100%;">
+      <section class="user">
+        <div class="user_options-container" id="user_options-container">
+          <div class="user_options-text" id="options-text">
+            <div class="user_options-unregistered">
+              <h2 class="user_unregistered-title">Don't have an account?</h2>
+              <p class="user_unregistered-text">Create now!</p>
+              <button class="user_unregistered-signup" id="signup-button">Sign up</button>
             </div>
-          </section>
+            <div class="user_options-registered">
+              <h2 class="user_registered-title">Already have an account!</h2>
+              <p class="user_registered-text">Get started..</p>
+              <button class="user_registered-login" id="login-button">Login</button>
+            </div>
+          </div>
+          <div class="user_options-forms" id="user_options-forms" style="max-height: 800px;">
+            <div class="user_forms-login">
+              <h2 class="forms_title">Login</h2>
+              <form class="forms_form" action="back-account/login.php" method="post">
+                <fieldset class="forms_fieldset">
+                  <div class="forms_field">
+                    <input type="email" name="email" placeholder="Email" class="forms_field-input" required autofocus />
+                  </div>
+                  <div class="forms_field">
+                    <input type="password" name="password" placeholder="Password" class="forms_field-input" required />
+                  </div>
+                </fieldset>
+                <div class="forms_buttons">
+                  <button type="button" class="forms_buttons-forgot">Forgot password?</button>
+                  <input type="submit" value="Login" class="forms_buttons-action">
+                </div>
+              </form>
+            </div>
+            <div class="user_forms-signup" style="height: 800px; top: 25px;">
+              <h2 class="forms_title">Sign Up</h2>
+              <form class="forms_form" action="back-account/signup.php" method="post">
+                <fieldset class="forms_fieldset">
+                  <div class="forms_field">
+                    <input type="text" name="nome" placeholder="Nome" class="forms_field-input" required />
+                  </div>
+                  <div class="forms_field">
+                    <input type="text" name="cognome" placeholder="Cognome" class="forms_field-input" required />
+                  </div>
+                  <div class="forms_field">
+                    <input type="text" name="nick" placeholder="Nickname" class="forms_field-input" required />
+                  </div>
+                  <div class="forms_field">
+                    <input type="email" name="email" placeholder="Email" class="forms_field-input" required />
+                  </div>
+                  <div class="forms_field">
+                    <input type="password" name="password" placeholder="Password" class="forms_field-input" required />
+                  </div>
+                </fieldset>
+                <div class="forms_buttons">
+                  <input type="submit" value="Sign up" class="forms_buttons-action">
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
-    </main>
-  <?php else : ?>
+      </section>
+    </div>
+  </div>
+</main>
+<?php else : ?>
     <div id="visualizzaAccount">
       <main id="main" class="flexbox-col" style="display: flex; padding: 20px; margin-left: 0px; height: 100vh; position: fixed; align-items: center; justify-content: center;">
         <div id="account-form" style="max-width: 90%; margin-left: 190px; align-items: center;">
@@ -313,8 +313,6 @@
         </div>
       </main>
     </div>
-
-
     <div id="modificaAccount" style="display: none; width: 100%;">
       <main id="main" class="flexbox-col" style="display: flex; padding: 20px; margin-left: 0px; height: 100vh; position: fixed; align-items: center; justify-content: center;">
         <div id="account-form" style="max-width: 100%; margin-left: 190px; align-items: center;">
@@ -358,7 +356,8 @@
         </div>
       </main>
     </div>
-  <?php endif; ?>
+    </main>
+    <?php endif; ?>
   
 </div>
 
@@ -384,30 +383,6 @@
     modificaAccount.style.display = 'none';
     visualizzaAccount.style.display = 'block';
   }
-
-  /**
-   * Add event listener to the "Sign Up" button
-   */
-  signupButton.addEventListener(
-    "click",
-    ()=>{
-      userForms.classList.remove("bounceRight");
-      userForms.classList.add("bounceLeft");
-    },
-    false
-  );
-
-  /**
-   * Add event listener to the "Login" button
-   */
-  loginButton.addEventListener(
-    "click",
-    () => {
-      userForms.classList.remove("bounceLeft");
-      userForms.classList.add("bounceRight");
-    },
-    false
-  );
 
   function login () {
     event.preventDefault();
@@ -437,6 +412,24 @@
     });
 });
 
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+  const signupButton = document.getElementById("signup-button");
+  const loginButton = document.getElementById("login-button");
+  const userForms = document.getElementById("user_options-forms");
+
+  signupButton.addEventListener("click", () => {
+    userForms.classList.remove("bounceRight");
+    userForms.classList.add("bounceLeft");
+  }, false);
+
+  loginButton.addEventListener("click", () => {
+    userForms.classList.remove("bounceLeft");
+    userForms.classList.add("bounceRight");
+  }, false);
+});
 </script>
 
 </body>
