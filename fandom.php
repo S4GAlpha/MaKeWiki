@@ -84,6 +84,19 @@
       background-position: top center; /* Posiziona l'immagine in alto e al centro */
       background-repeat: no-repeat; /* Non ripetere l'immagine */
     }
+
+    .button-post {
+      display: block;
+      width: 100%;
+      background-color: rgba(79, 2, 151, 0.5);
+      border: 1px solid rgba(79, 2, 151, 0.5);
+      border-radius: 5px;
+      padding: 8px 0;
+      font-size: 1rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05rem;
+    }
   </style>
 </head>
 <body>
@@ -190,6 +203,10 @@
 
         <?php if ($nick != "") : ?>
           <div class="inner-column" style="margin-top: 0%; text-align: center;">
+            <button id="creaPost" style="display: ;" class="button-post" type="submit" onclick="salvaPost.style.display = 'block'; creaPost.style.display = 'none';  visualizzaMessaggi.style.display = 'block'; visualizzaPost.style.display = 'none';" class="forms_buttons-action"><img style="width: 20px; height: 20px;" src="images/navbar/new-wiki.png" alt="New Wiki Icon" /></button>
+            <button id="salvaPost" style="display: none;"  class="button-post" type="submit" onclick="creaPost.style.display = 'block'; salvaPost.style.display = 'none'; visualizzaMessaggi.style.display = 'none'; visualizzaPost.style.display = 'block';" class="forms_buttons-action">Salva Post</button>
+          </div>
+          <div class="inner-column" style="margin-top: 5%; text-align: center;">
             <div class="profile-icon"></div>
               <a class="welcome-message" style="font-size: 12px;"><?php echo $nick; ?></a><br>
               <a href="account.php" class="view-profile-button" style="font-size: 12px; color: white;"> Visualizza Account</a>
@@ -231,6 +248,53 @@
       </div>
 
       <div id="column-news" class="column-container" style="width: 60%; margin-left: 5%; margin-right: 6%;">
+
+        <div id="visualizzaMessaggi" style="padding: 0px; display: none;"> 
+          <div class="inner-column" style="padding: 0px;">
+            <div style="display: flex;">
+              <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt="Account Icon" />
+              <div>
+                <ul>
+                  <li>
+                    <a style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                      Inserisci qui la tipologia
+                    </a>
+                  </li>
+                </ul>
+                <div style="margin-left: 10px;">
+                  <a style="font-size: 8px;"><?php echo $nick; ?></a>
+                  <a style="font-size: 8px;">ora</a>
+                </div>
+              </div>
+            </div>
+            <ul>
+              <li>
+                <a style="font-size: 16px; margin-left: 10px; display: block; width: 100%; border: none;" contenteditable="true">
+                  Inserisci qui la descrizione del post
+                </a>
+              </li>
+            </ul>
+
+            <div class="inner-column" style="padding: 0px; margin-top: 5%; border-bot-left-radius: 0px; border-bot-right-radius: 0px;">
+              <img src="images/navbar/new-wiki.png" class="customButton centered-image" data-index="1" alt="" style="width: 20%; height: 100%;"/>
+              <form class="uploadForm" enctype="multipart/form-data" style="display: none;">
+                  <input type="file" class="fileInput" data-index="1" accept="image/*">
+              </form>
+              <div class="imageContainer" data-index="1" style="border-top-left-radius: 10px; border-top-right-radius: 10px; border-bot-left-radius: 0px; border-bot-right-radius: 0px;"></div>
+            </div>
+
+            <div style="display: none; height: 30px;">
+              <div style="display: flex;">
+                <img style="height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
+                <a style="font-size: 14px;">counter like</a>
+              </div>
+              <div style="display: flex; margin-left: 20px;">
+                <img style="height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
+                <a style="font-size: 14px;">counter messaggi</a>
+              </div>
+            </div>
+          </div>
+        </div>
         <!--
         <div class="inner-column" style="padding: 0px;">
           <div style="display: flex;">
@@ -257,39 +321,41 @@
           </div>
         </div>
         -->
-
-        <?php
-          foreach ($wikis as $row) {
-            if($row['tipo'] == "Logo"){
-                $pathLogo = $row['path'];
-            }
-            echo "
-            <div class=\"inner-column\" style=\"padding: 0px;\">
-              <div style=\"display: flex;\">
-                <img style=\"width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
-                <div>
-                  <a style=\"font-size: 12px; margin-left: 10px;\">typology</a>
-                  <div style=\"margin-left: 10px;\">
-                    <a style=\"font-size: 8px;\">".$row['Nick']."</a>
-                    <a style=\"font-size: 8px;\">".$row['Data']."</a>
+        <div id="visualizzaPost">
+          <?php
+            foreach ($wikis as $row) {
+              if($row['tipo'] == "Logo"){
+                  $pathLogo = $row['path'];
+              }
+              echo "
+              <div class=\"inner-column\" style=\"padding: 0px;\">
+                <div style=\"display: flex;\">
+                  <img style=\"width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
+                  <div>
+                    <a style=\"font-size: 12px; margin-left: 10px;\">typology</a>
+                    <div style=\"margin-left: 10px;\">
+                      <a style=\"font-size: 8px;\">".$row['Nick']."</a>
+                      <a style=\"font-size: 8px;\">".$row['Data']."</a>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <a style=\"font-size: 16px; margin-left: 10px;\">".$row['Descrizione']."</a>
-              <img src=\"".$pathLogo."\" alt=\"\" class=\"centered-image\" />
-              <div style=\"display: flex; height: 30px;\">
-                <div style=\"display: flex;\">
-                  <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
-                  <a style=\"font-size: 14px;\">counter like</a>
+                <a style=\"font-size: 16px; margin-left: 10px;\">".$row['Descrizione']."</a>
+                <img src=\"".$pathLogo."\" alt=\"\" class=\"centered-image\" />
+                <div style=\"display: flex; height: 30px;\">
+                  <div style=\"display: flex;\">
+                    <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
+                    <a style=\"font-size: 14px;\">counter like</a>
+                  </div>
+                  <div style=\"display: flex; margin-left: 20px;\">
+                    <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
+                    <a style=\"font-size: 14px;\">counter messaggi</a>
+                  </div>
                 </div>
-                <div style=\"display: flex; margin-left: 20px;\">
-                  <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
-                  <a style=\"font-size: 14px;\">counter messaggi</a>
-                </div>
-              </div>
-            </div>";
-          }
-        ?>
+              </div>";
+            }
+          ?>
+        </div>
+      </div>
 
       <div id="column-all" class="column-container" style="width: 25%; margin-top: 0%;">
         <div>
@@ -401,5 +467,7 @@
       </div>
     </div>
   </main>
+
+  <script src="addImm.js"></script>
 </body>
 </html>

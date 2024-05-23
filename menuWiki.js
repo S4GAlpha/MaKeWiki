@@ -58,8 +58,8 @@ function toggleOptions() {
         for (var i = 0; i < value; i++) {
             var contentSlider = document.createElement('div');
             contentSlider.innerHTML = `
-                <label style="font-size: 12px;" for="contentRange${i}">Numero dei contenuti per scheda ${i + 1}: <span id="contentValue${i}">1</span></label>
-                <input type="range" id="contentRange${i}" min="1" max="100" value="1" oninput="updateContent(${i}, this.value); updateContentLabel(${i}, this.value);">
+                <label style="font-size: 12px;" for="contentRange${i}">Numero dei contenuti per scheda ${i + 1}: <span id="contentValue${i}">0</span></label>
+                <input type="range" id="contentRange${i}" min="0" max="100" value="0" oninput="updateContent(${i}, this.value); updateContentLabel(${i}, this.value);">
             `;
             contentSlidersContainer.appendChild(contentSlider);
         }
@@ -71,6 +71,7 @@ function toggleOptions() {
 
     function updateContentLabel(cardIndex, numContents) {
         var contentValueLabel = document.getElementById(`contentValue${cardIndex}`);
+        if(numContents-1 > 0 || numContents >= 98) contentValueLabel.textContent = numContents-1;
         contentValueLabel.textContent = numContents;
     }
     
