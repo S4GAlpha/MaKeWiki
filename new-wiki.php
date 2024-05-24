@@ -645,7 +645,7 @@
     document.getElementById('videoContainer8').addEventListener('click', () => showInputAndSetVideo('videoContainer8', 'urlInput8', 'video8'));
   </script>
 
-<script>
+  <script>
     function toggleVideo() {
         document.getElementById('video').style.display = 'block';
         document.getElementById('forum').style.display = 'none';
@@ -655,9 +655,9 @@
         document.getElementById('video').style.display = 'none';
         document.getElementById('forum').style.display = 'block';
     }
-</script>
+  </script>
 
-<script>
+  <script>
     document.getElementById('chooseImageLink').addEventListener('click', function(event) {
       event.preventDefault();
       document.getElementById('backgroundImageInput').click();
@@ -674,7 +674,6 @@
       }
     });
   </script>
-
 
 </body>
 </html>

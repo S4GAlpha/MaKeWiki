@@ -139,12 +139,12 @@
           <div class="void" id="void">
             <div class="crop">
               <ul class="void-ul" id="card-list" style="--count: 6;">
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">Anime News</span><span>Novità anime arrivate direttamente dal Sol Levante</span></a></div></li>
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">Game News</span><span>Novità giochi da parte di Oasis</span></a></div></li>
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">Preferiti</span><span>Visuallizza di nuovo forum che ti hanno fatto dire "TI LOVVO"</span></a></div></li>
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">Random Wiki</span><span>Per gi amanti del rischio, oppure per chi vuole perdere tempo</span></a></div></li>
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">WIKI</span><span>La WIKI delle WIIIIIIIKKKKKIII è qui che ti aspetta che fai non clicchi?!</span></a></div></li>
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">Casual</span><span>Le Wiki che non sapevi ti potessero interessare ti aspettano</span></a></div></li>
+                <li class="void-li"><div class="card"><a href=""><span class="model-name">Anime News</span><span>Novità anime arrivate direttamente dal Sol Levante</span></a></div></li> <!-- Apre la pagina dell'ultima wiki di anime creata -->
+                <li class="void-li"><div class="card"><a href=""><span class="model-name">Game News</span><span>Novità giochi da parte di Oasis</span></a></div></li> <!-- Apre la pagina dell'ultima wiki di giochi creata -->
+                <li class="void-li"><div class="card"><a href=""><span class="model-name">Preferiti</span><span>Visuallizza di nuovo forum che ti hanno fatto dire "TI LOVVO"</span></a></div></li> <!-- Apre una delle pagine in cui hai messo il like -->
+                <li class="void-li"><div class="card"><a href=""><span class="model-name">Random Wiki</span><span>Per gi amanti del rischio, oppure per chi vuole perdere tempo</span></a></div></li> <!-- Apre una wiki a caso puo essere sia anime o game -->
+                <li class="void-li"><div class="card"><a href=""><span class="model-name">WIKI</span><span>La WIKI delle WIIIIIIIKKKKKIII è qui che ti aspetta che fai non clicchi?!</span></a></div></li> <!-- Apre la wiki con più like di tutte -->
+                <li class="void-li"><div class="card"><a href="pelati.php"><span class="model-name">Pelato</span><span>La Wiki che non sapevi ti interessasse</span></a></div></li> <!-- Apre la pagina più fresh della wiki -->
               </ul>
               <div class="last-circle"></div>
               <div class="second-circle"></div>
