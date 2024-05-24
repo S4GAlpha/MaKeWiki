@@ -35,11 +35,10 @@ function toggleOptions() {
       }
     }
 
-
     function updateSlider() {
         var value = document.getElementById('cardRange').value;
         document.getElementById('cardValue').textContent = value;
-        
+
         // Genera gli slider dei contenuti dinamicamente
         var contentSlidersContainer = document.getElementById('contentSlidersContainer');
         contentSlidersContainer.innerHTML = ''; // Rimuovi tutti i precedenti slider
@@ -54,16 +53,16 @@ function toggleOptions() {
         for (var i = 0; i < value; i++) {
         collapses[i].style.display = 'block';
         }
-    
+
         for (var i = 0; i < value; i++) {
             var contentSlider = document.createElement('div');
-            contentSlider.innerHTML = `
-                <label style="font-size: 12px;" for="contentRange${i}">Numero dei contenuti per scheda ${i + 1}: <span id="contentValue${i}">1</span></label>
-                <input type="range" id="contentRange${i}" min="1" max="100" value="1" oninput="updateContent(${i}, this.value); updateContentLabel(${i}, this.value);">
+            contentSlider.innerHTML =` 
+                <label style="font-size: 12px;" for="contentRange${i}">Numero dei contenuti per scheda ${i + 1}: <span id="contentValue${i}">0</span></label>
+                <input type="range" id="contentRange${i}" min="0" max="100" value="0" oninput="updateContent(${i}, this.value); updateContentLabel(${i}, this.value);">
             `;
             contentSlidersContainer.appendChild(contentSlider);
         }
-        
+
         // Mostra la prima scheda di default
         showCard(0);
     }
@@ -71,6 +70,7 @@ function toggleOptions() {
 
     function updateContentLabel(cardIndex, numContents) {
         var contentValueLabel = document.getElementById(`contentValue${cardIndex}`);
+        if(numContents-1 > 0 || numContents >= 98) contentValueLabel.textContent = numContents-1;
         contentValueLabel.textContent = numContents;
     }
     

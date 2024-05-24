@@ -3,8 +3,32 @@ var newCommentModal = document.getElementById("newCommentModal");
 // Ottieni l'elemento <span> che chiude la finestra modale di conferma cancellazione
 var newCommentModalClose = document.querySelector("#newCommentModal .close");
 
+let isFavorite=false;
 
 document.addEventListener('DOMContentLoaded', function () {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'getFavorite.php', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var data = JSON.parse(xhr.responseText);
+            console.log(data); // Controlla la struttura dei dati
+            for (var i = 0; i < data.length; i++) {
+                var titolo = data[i].Titolo;
+                console.log(titolo);
+                if (titolo == document.title) {
+                    isFavorite=true;
+                    var favoriteButton = document.getElementById('favoriteButton');
+                    var svgPath = favoriteButton.querySelector('path'); // Seleziona il path dell'SVG
+                    svgPath.setAttribute('fill', 'red'); // Imposta il colore del path
+                    break; // Esci dal ciclo se il titolo è stato trovato
+                }
+            }
+        } else {
+            // Gestione degli errori
+            console.error(xhr.statusText);
+        }
+    }
+    xhr.send();
 
     loadMessages();
     
@@ -80,7 +104,24 @@ function setFavourite() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            console.log(xhr.responseText); 
+            var message = document.getElementById("favoriteMessage");
+            if (xhr.responseText.trim() === 'Wiki aggiunta ai preferiti con successo.') {
+                // Se la risposta contiene 'Wiki aggiunta ai preferiti', il cuore diventa rosso
+                var favoriteButton = document.getElementById("favoriteButton");
+                var svgPath = favoriteButton.querySelector("svg path");
+                svgPath.style.fill = "red";
+                message.textContent = "Aggiunto ai preferiti!";
+            } else {
+                // Altrimenti, il cuore diventa grigio
+                var favoriteButton = document.getElementById("favoriteButton");
+                var svgPath = favoriteButton.querySelector("svg path");
+                svgPath.style.fill = "grey";
+                message.textContent = "Rimosso dai preferiti!";
+            }
+            message.style.display = "block";
+            setTimeout(function() {
+                message.style.display = "none";
+            }, 3000); // Nasconde il messaggio dopo 3 secondi
         }
     };
     

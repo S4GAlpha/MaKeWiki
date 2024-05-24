@@ -297,7 +297,7 @@
             <h2 id="gameI" style="display: none;">Info Game</h2>
             <ul>
               <li>
-                <a style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                <a id="description" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
                   Inserisci qui la descrizione
                 </a>
               </li>
@@ -390,7 +390,7 @@
             <div id="column-news" class="column-container" style="width: 55%; margin-left: 5%; margin-right: 6%; text-align: center;">
               <div class="inner-column" style="margin-top: 0%; padding: 10px; text-align: center; justify-content: center; width: 100%; overflow-x: auto;">
                 <div style="display: flex;">
-                  <div class="collapse" id="collapseFirst" style="margin-left: 0px;">
+                <div class="collapse" id="collapseFirst" style="margin-left: 0px; display: none;">
                     <ul>
                       <li>
                         <a id="collapseFirst" onclick="toggleDiv('first', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
@@ -578,8 +578,8 @@
       <p style="font-size: 12px; text-align: center;"> Niente ---- ----- Anime ----- ---- Game</p>
       <input type="range" id="typeSlider" min="-1" max="1" value="-1" onchange="toggleOptions()">
       <div id="cardSlider" style="display: none;">
-        <label  style="font-size: 12px;" for="cardRange">Numero di schede desiderato: <span id="cardValue">1</span></label>
-        <input type="range" id="cardRange" min="1" max="10" value="1" oninput="updateSlider()">
+        <label  style="font-size: 12px;" for="cardRange">Numero di schede desiderato: <span id="cardValue">0</span></label>
+        <input type="range" id="cardRange" min="0" max="10" value="0" oninput="updateSlider()">
       </div>
       <div id="contentSlidersContainer" style="display: none; max-height: 230px; overflow-y: auto;">
         <!-- Slider dei contenuti verranno generati qui -->

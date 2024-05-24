@@ -44,23 +44,6 @@ function toggleDiv(id) {
     });
   }
 
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("favoriteButton").addEventListener("click", function() {
-        this.classList.toggle("clicked");
-
-        var message = document.getElementById("favoriteMessage");
-        if (this.classList.contains("clicked")) {
-            message.textContent = "Aggiunto ai preferiti!";
-        } else {
-            message.textContent = "Rimosso dai preferiti!";
-        }
-        message.style.display = "block";
-        setTimeout(function() {
-            message.style.display = "none";
-        }, 3000); // Nasconde il messaggio dopo 3 secondi
-    });
-});
-
 function toggleFirst() {
   var first = document.getElementById("first");
   var second = document.getElementById("second");

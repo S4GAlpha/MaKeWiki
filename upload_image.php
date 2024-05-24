@@ -18,7 +18,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             // Sposta il file dalla directory temporanea alla destinazione
             if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                echo json_encode(['path' => $dest_path]);
+                $servername = "localhost"; 
+                $username = "root";
+                $password = "";
+                $dbname = "makewiki";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                $fileNameEscaped = $conn->real_escape_string($fileName);
+                $destPathEscaped = $conn->real_escape_string($dest_path);
+
+                $sql = "INSERT INTO immagini (NomeFile, path) VALUES ('$fileNameEscaped', '$destPathEscaped')";
+
+                if ($conn->query($sql) === TRUE) {
+                    echo json_encode(['path' => $dest_path, 'message' => 'File caricato e dettagli inseriti nel database.']);
+                } else {
+                    echo json_encode(['error' => 'Errore nell\'inserimento dei dettagli del file nel database.']);
+                }
+
+                $conn->close();
             } else {
                 echo json_encode(['error' => 'Errore nel caricamento del file.']);
             }
