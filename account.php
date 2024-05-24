@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="style/anime_game_style.css">
   <style>
     #main {
-      background-image: url(images/img/wikiPage/home/imageHome.jpg);
+      background-image: url(images/background/accountWallpaper.jpg);
       background-size: cover; /* Copre l'intera area disponibile */
       background-position: top center; /* Posiziona l'immagine in alto e al centro */
       background-repeat: no-repeat; /* Non ripetere l'immagine */
@@ -66,15 +66,6 @@
       <li class="navbar-logo flexbox-left" style="align-items: center; height: 80px;">
         <!--LOGO-->
         <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon"/>
-      </li>
-      <li class="navbar-item flexbox-left">
-        <a class="navbar-item-inner flexbox-left">
-          <div class="navbar-item-inner-icon-wrapper flexbox">
-            <!--SEARCH-->
-            <img style="width: 20px; height: 20px;" src="images/navbar/search.png" alt="Home Icon" />
-          </div>
-          <span class="link-text" style="color: #ffff">Search</span>
-        </a>
       </li>
       <li class="navbar-item flexbox-left">
         <a class="navbar-item-inner flexbox-left" href="home.php">

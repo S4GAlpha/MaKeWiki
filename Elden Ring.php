@@ -123,15 +123,6 @@
             <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon"/>
         </li>
         <li class="navbar-item flexbox-left">
-            <a class="navbar-item-inner flexbox-left">
-            <div class="navbar-item-inner-icon-wrapper flexbox">
-                <!--SEARCH-->
-                <img style="width: 20px; height: 20px;" src="images/navbar/search.png" alt="Home Icon" />
-            </div>
-            <span class="link-text" style="color: #ffff">Search</span>
-            </a>
-        </li>
-        <li class="navbar-item flexbox-left">
             <a class="navbar-item-inner flexbox-left" href="home.php">
             <div class="navbar-item-inner-icon-wrapper flexbox">
                 <!--HOME-->

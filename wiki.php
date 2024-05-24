@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="style/anime_game_style.css">
   <style>
     #main {
-      background-image: url(images/background/fandomWallpaper.jpg);
+      background-image: url(images/background/wikiWallpaper.jpg);
       background-size: cover; /* Copre l'intera area disponibile */
       background-position: top center; /* Posiziona l'immagine in alto e al centro */
       background-repeat: no-repeat; /* Non ripetere l'immagine */
@@ -62,15 +62,6 @@
       <li class="navbar-logo flexbox-left" style="align-items: center; height: 80px;">
         <!--LOGO-->
         <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon"/>
-      </li>
-      <li class="navbar-item flexbox-left">
-        <a class="navbar-item-inner flexbox-left">
-          <div class="navbar-item-inner-icon-wrapper flexbox">
-            <!--SEARCH-->
-            <img style="width: 20px; height: 20px;" src="images/navbar/search.png" alt="Home Icon" />
-          </div>
-          <span class="link-text" style="color: #ffff">Search</span>
-        </a>
       </li>
       <li class="navbar-item flexbox-left">
         <a class="navbar-item-inner flexbox-left" href="home.php">
@@ -174,24 +165,24 @@
               <a href="account.php" class="view-profile-button" style="font-size: 12px; color: white;">Pagina Accesso</a>
             </div>
             <div class="inner-column" style="padding: 0px; margin-top: 5%;">
-            <img src="images/img/wikiPage/fandom/imageFandom.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
+            <img src="images/img/wikiPage/wiki/imageWiki.jpg" alt="" class="centered-image" style="border-top-left-radius: 10px; border-top-right-radius: 10px;"/>
           </div>
         <?php endif; ?>
         
         <div class="inner-column" style="margin-top: 0%; border-top-left-radius: 0px; border-top-right-radius: 0px;">
-          <h2>Top WIKI</h2>
+          <h2>Top WIKI</h2> <!-- Le wiki che sono con più like create dall'utente -->
           <ul>
             <li>
-              <a href="pagina_anime.html">1 Wiki</a>
+              <a href="pagina_wiki.php" style="color: #ffff;">1 Wiki</a>
             </li>
             <li>
-              <a href="pagina_anime.html">2 Wiki</a>
+              <a href="pagina_wiki.php" style="color: #ffff;">2 Wiki</a>
             </li>
             <li>
-              <a href="pagina_anime.html">3 Wiki</a>
+              <a href="pagina_wiki.php" style="color: #ffff;">3 Wiki</a>
             </li>
             <li>
-              <a href="pagina_anime.html">4 Wiki</a>
+              <a href="pagina_wiki.php" style="color: #ffff;">4 Wiki</a>
             </li>
           </ul>
         </div>

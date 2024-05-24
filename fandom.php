@@ -110,15 +110,6 @@
         <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon"/>
       </li>
       <li class="navbar-item flexbox-left">
-        <a class="navbar-item-inner flexbox-left">
-          <div class="navbar-item-inner-icon-wrapper flexbox">
-            <!--SEARCH-->
-            <img style="width: 20px; height: 20px;" src="images/navbar/search.png" alt="Home Icon" />
-          </div>
-          <span class="link-text" style="color: #ffff">Search</span>
-        </a>
-      </li>
-      <li class="navbar-item flexbox-left">
         <a class="navbar-item-inner flexbox-left" href="home.php">
           <div class="navbar-item-inner-icon-wrapper flexbox">
             <!--HOME-->
@@ -203,8 +194,10 @@
 
         <?php if ($nick != "") : ?>
           <div class="inner-column" style="margin-top: 0%; text-align: center;">
-            <button id="creaPost" style="display: ;" class="button-post" type="submit" onclick="salvaPost.style.display = 'block'; creaPost.style.display = 'none';  visualizzaCreaPost.style.display = 'block'; visualizzaPost.style.display = 'none';" class="forms_buttons-action"><img style="width: 20px; height: 20px;" src="images/navbar/new-wiki.png" alt="New Wiki Icon" /></button>
-            <button id="salvaPost" style="display: none;"  class="button-post" type="submit" onclick="creaPost.style.display = 'block'; salvaPost.style.display = 'none'; visualizzaCreaPost.style.display = 'none'; visualizzaPost.style.display = 'block';" class="forms_buttons-action">Salva Post</button>
+            <button id="creaPost" style="display: ; color: #ffff;" class="button-post" type="submit" onclick="salvaPost.style.display = 'block'; creaPost.style.display = 'none';  visualizzaCreaPost.style.display = 'block'; visualizzaPost.style.display = 'none';" class="forms_buttons-action">
+              Crea Post
+            </button>
+            <button id="salvaPost" style="display: none; color: #ffff;"  class="button-post" type="submit" onclick="creaPost.style.display = 'block'; salvaPost.style.display = 'none'; visualizzaCreaPost.style.display = 'none'; visualizzaPost.style.display = 'block';" class="forms_buttons-action">Salva Post</button>
           </div>
           <div class="inner-column" style="margin-top: 5%; text-align: center;">
             <div class="profile-icon"></div>
@@ -487,26 +480,15 @@
                     <div style=\"display: flex;\">
                       <img style=\"height: 50px;\" src=\"".$pathLogo."\" alt=\"Account Icon\"/>
                       <div style=\"margin-left: 20px;\">
-                        <a style=\"font-size: 12px;\">".$row['Titolo']."</a>
+                        <a style=\"font-size: 12px; color: #ffff;\">".$row['Titolo']."</a>
                         <div style=\"padding: 0px;\">
-                          <a style=\"font-size: 8px;\">counter like</a>
+                          <a style=\"font-size: 8px; color: #ffff;\">counter like</a>
                         </div>
                       </div>
                     </div>";
                   }
                 ?>
               </div>
-            </div>
-            <div style="text-align: center;">
-              <li class="navbar-item flexbox-left">
-                <a class="navbar-item-inner flexbox-left">
-                  <div class="navbar-item-inner-icon-wrapper flexbox">
-                    <!--SEARCH-->
-                    <img style="width: 20px; height: 20px;" src="images/navbar/search.png" alt="Home Icon" />
-                  </div>
-                  <span class="link-text">Search</span>
-                </a>
-              </li>
             </div>
           </div>
           <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 430px;">
@@ -537,9 +519,9 @@
                     <div style=\"display: flex;\">
                       <img style=\"height: 50px;\" src=\"".$pathLogo."\" alt=\"Account Icon\" />
                       <div style=\"margin-left: 20px;\">
-                        <a style=\"font-size: 12px;\">".$row['Titolo']."</a>
+                        <a style=\"font-size: 12px; color: #ffff;\">".$row['Titolo']."</a>
                         <div style=\"padding: 0px;\">
-                          <a style=\"font-size: 8px;\">counter like</a>
+                          <a style=\"font-size: 8px; color: #ffff;\">counter like</a>
                         </div>
                       </div>
                     </div>";
@@ -547,19 +529,8 @@
                 ?>
               </div>
             </div>
-            <div style="text-align: center;">
-              <li class="navbar-item flexbox-left">
-                <a class="navbar-item-inner flexbox-left">
-                  <div class="navbar-item-inner-icon-wrapper flexbox">
-                    <!--SEARCH-->
-                    <img style="width: 20px; height: 20px;" src="images/navbar/search.png" alt="Home Icon" />
-                  </div>
-                  <span class="link-text">Search</span>
-                </a>
-              </li>
-            </div>
           </div>
-          <div class="inner-column" style="padding: 0px; margin-top: 0%;">
+          <div class="inner-column" style="padding: 0px; margin-top: 5%;">
             <img src="images/img/adBlocker.png" alt="" class="centered-image" id="adblock-warning" style="border-radius: 10px; display: none;"/>
             <img src="images/img/logo.jpg" alt="" class="centered-image" id="ads" style="border-radius: 10px; display: none;"/>
           </div>

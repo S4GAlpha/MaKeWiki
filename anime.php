@@ -94,15 +94,6 @@
         <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon"/>
       </li>
       <li class="navbar-item flexbox-left">
-        <a class="navbar-item-inner flexbox-left">
-          <div class="navbar-item-inner-icon-wrapper flexbox">
-            <!--SEARCH-->
-            <img style="width: 20px; height: 20px;" src="images/navbar/search.png" alt="Home Icon" />
-          </div>
-          <span class="link-text" style="color: #ffff">Search</span>
-        </a>
-      </li>
-      <li class="navbar-item flexbox-left">
         <a class="navbar-item-inner flexbox-left" href="home.php">
           <div class="navbar-item-inner-icon-wrapper flexbox">
             <!--HOME-->
@@ -277,7 +268,7 @@
               echo "
               <div class=\"inner-column\" style=\"margin-top: 5%; padding: 0px;\">
                 <img src=\"".$pathLogo."\" alt='' class=\"centered-image\" style=\"border-top-left-radius: 10px; border-top-right-radius: 10px;\"/>
-                <a id=\"textList\" href=\"".$row['pathWiki']."\">".$row['Titolo']."</a>
+                <a id=\"textList\" style=\"color: #ffff;\" href=\"".$row['pathWiki']."\">".$row['Titolo']."</a>
               </div>";
             }
           ?>
