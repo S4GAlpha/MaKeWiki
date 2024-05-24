@@ -657,6 +657,24 @@
     }
 </script>
 
+<script>
+    document.getElementById('chooseImageLink').addEventListener('click', function(event) {
+      event.preventDefault();
+      document.getElementById('backgroundImageInput').click();
+    });
+
+    document.getElementById('backgroundImageInput').addEventListener('change', function() {
+      var input = this;
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          document.querySelector('main').style.backgroundImage = 'url(' + e.target.result + ')';
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    });
+  </script>
+
 
 </body>
 </html>
