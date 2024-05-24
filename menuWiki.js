@@ -35,11 +35,10 @@ function toggleOptions() {
       }
     }
 
-
     function updateSlider() {
         var value = document.getElementById('cardRange').value;
         document.getElementById('cardValue').textContent = value;
-        
+
         // Genera gli slider dei contenuti dinamicamente
         var contentSlidersContainer = document.getElementById('contentSlidersContainer');
         contentSlidersContainer.innerHTML = ''; // Rimuovi tutti i precedenti slider
@@ -54,7 +53,7 @@ function toggleOptions() {
         for (var i = 0; i < value; i++) {
         collapses[i].style.display = 'block';
         }
-    
+
         for (var i = 0; i < value; i++) {
             var contentSlider = document.createElement('div');
             contentSlider.innerHTML = `
@@ -63,7 +62,7 @@ function toggleOptions() {
             `;
             contentSlidersContainer.appendChild(contentSlider);
         }
-        
+
         // Mostra la prima scheda di default
         showCard(0);
     }

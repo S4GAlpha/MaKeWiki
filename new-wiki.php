@@ -297,7 +297,7 @@
             <h2 id="gameI" style="display: none;">Info Game</h2>
             <ul>
               <li>
-                <a style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                <a id="description" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
                   Inserisci qui la descrizione
                 </a>
               </li>

@@ -33,7 +33,7 @@
     $sqlPages = "SELECT * FROM wikipages w
     INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
     INNER JOIN imm_wiki im ON w.ID_wiki = im.fk_id_wiki
-    INNER JOIN immagini i ON im.fk_id_wiki = i.ID_immagine
+    INNER JOIN immagini i ON im.fk_id_immagine= i.ID_immagine
     WHERE w.Tipologia='Anime'
     ORDER BY Data desc"; 
     $resultWikis = $conn->query($sqlPages);
@@ -236,6 +236,7 @@
         </div>
         -->
         <?php
+        echo"OK";
           foreach ($wikis as $row) {
             if($row['tipo'] == "Logo"){
                 $pathLogo = $row['path'];
