@@ -71,6 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             echo "Wiki non trovata.";
+            echo $title;
         }
     } else {
         echo "Utente non trovato.";

@@ -3,8 +3,6 @@ var newCommentModal = document.getElementById("newCommentModal");
 // Ottieni l'elemento <span> che chiude la finestra modale di conferma cancellazione
 var newCommentModalClose = document.querySelector("#newCommentModal .close");
 
-let isFavorite=false;
-
 document.addEventListener('DOMContentLoaded', function () {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'getFavorite.php', true);
@@ -16,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 var titolo = data[i].Titolo;
                 console.log(titolo);
                 if (titolo == document.title) {
-                    isFavorite=true;
                     var favoriteButton = document.getElementById('favoriteButton');
                     var svgPath = favoriteButton.querySelector('path'); // Seleziona il path dell'SVG
                     svgPath.setAttribute('fill', 'red'); // Imposta il colore del path
@@ -48,13 +45,14 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     document.getElementById("favoriteButton").onclick = function() {
+        console.log("OK");
         setFavourite();
     };
 });
 
 
 function loadMessages() {
-    const title = document.querySelector('title').textContent;
+    const title = document.title;
     const queryString = 'title=' + encodeURIComponent(title);
     const url = 'getMessages.php?' + queryString;
 
@@ -97,13 +95,14 @@ function getMessages(data) {
 }
 
 function setFavourite() {
-    const title = document.querySelector('title').textContent;
+    var title = document.title;
     // Invia i dati del modulo al server utilizzando AJAX
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'back-wiki.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText.trim());
             var message = document.getElementById("favoriteMessage");
             if (xhr.responseText.trim() === 'Wiki aggiunta ai preferiti con successo.') {
                 // Se la risposta contiene 'Wiki aggiunta ai preferiti', il cuore diventa rosso

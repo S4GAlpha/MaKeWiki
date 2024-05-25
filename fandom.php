@@ -30,13 +30,16 @@
         die("Connessione fallita: " . $conn->connect_error);
     }
 
-    $sqlPages = "SELECT w.*, u.Nick, im.tipo, i.path
-                  FROM wikipages w
-                  INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
-                  INNER JOIN imm_wiki im ON w.ID_wiki = im.fk_id_wiki
-                  INNER JOIN immagini i ON im.fk_id_immagine = i.ID_immagine
-                  WHERE w.Tipologia='Post'
-                  ORDER BY w.Data DESC";
+    $sqlPages = "SELECT w.*, u.Nick, im.tipo, i.path, 
+                (SELECT COUNT(*) FROM messaggi m WHERE m.FK_ID_wiki = w.ID_wiki) AS CounterMessaggi,
+                (SELECT COUNT(*) FROM preferenze p WHERE p.fk_ID_wiki = w.ID_wiki) AS CounterLike
+                FROM wikipages w
+                INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
+                INNER JOIN imm_wiki im ON w.ID_wiki = im.fk_id_wiki
+                INNER JOIN immagini i ON im.fk_id_immagine = i.ID_immagine
+                WHERE w.Tipologia = 'Post'
+                ORDER BY w.Data DESC
+                ";
 
     $resultWikis = $conn->query($sqlPages);
 
@@ -245,7 +248,7 @@
         <div id="visualizzaCreaPost" style="padding: 0px; display: none;"> 
           <div class="inner-column" style="padding: 0px;">
             <div style="display: flex;">
-              <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt="Account Icon" />
+              <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
               <div>
                 <ul>
                   <li>
@@ -279,13 +282,13 @@
             <div style="display: none; margin-top: 10px; height: 40px;">
                   <button class="button-post" style="width: 40%; margin-left: 10px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);">
                     <div style="display: flex;">
-                      <img style="height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
+                      <img style="height: 20px;" src="images/navbar/users.png" alt=" " />
                       <a style="font-size: 14px;">counter like</a>
                     </div>
                   </button>
                   <button class="button-post" style="width: 40%; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="visualizzaMessaggi.style.display = 'block';">
                     <div style="display: flex; margin-left: 20px;">
-                      <img style="height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
+                      <img style="height: 20px;" src="images/navbar/users.png" alt=" " />
                       <a style="font-size: 14px;">counter messaggi</a>
                     </div>
                   </button>
@@ -298,7 +301,7 @@
                     </div>
                     <div id="aggiungiMessaggioo" style="display: none;">
                       <div style="display: flex;">
-                        <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt="Account Icon" />
+                        <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
                         <div>
                           <div style="margin-left: 10px;">
                             <a style="font-size: 8px;"><?php echo $nick; ?></a>
@@ -313,7 +316,7 @@
                       </div>
                     </div>
                     <div id="messaggii" style="display: flex; margin-top: 10px; height: 300px; overflow-y: auto;">
-                      <img style="width: 10%; height: 25%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt="Account Icon" />
+                      <img style="width: 10%; height: 25%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
                       <div>
                         <div style="margin-left: 10px;">
                           <a style="font-size: 8px;">author</a>
@@ -325,126 +328,101 @@
                   </div>
           </div>
         </div>
-        <!--
-        <div class="inner-column" style="padding: 0px;">
-          <div style="display: flex;">
-            <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt="Account Icon" />
-            <div>
-              <a style="font-size: 12px; margin-left: 10px;">typology</a>
-              <div style="margin-left: 10px;">
-                <a style="font-size: 8px;">author</a>
-                <a style="font-size: 8px;">time ago</a>
+        <div id="visualizzaPost">
+        <div class="inner-column" style="padding: 0px; max-height: 2000px;">
+            <div style="display: flex;">
+              <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
+              <div>
+                <a style="font-size: 12px; margin-left: 10px;">typology</a>
+                <div style="margin-left: 10px;">
+                  <a style="font-size: 8px;">author</a>
+                  <a style="font-size: 8px;">time ago</a>
+                </div>
               </div>
             </div>
-          </div>
-          <a style="font-size: 16px; margin-left: 10px;">descrizione post</a>
-          <img src="images/gif/sus.gif" alt="" class="centered-image" />
-          <div style="display: flex; height: 30px;">
-            <div style="display: flex;">
-              <img style="height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
-              <a style="font-size: 14px;">counter like</a>
-            </div>
-            <div style="display: flex; margin-left: 20px;">
-              <img style="height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
-              <a style="font-size: 14px;">counter messaggi</a>
-            </div>
-          </div>
-        </div>
-        -->
-            <div id="visualizzaPost">
-            <div class="inner-column" style="padding: 0px; max-height: 2000px;">
+            <a style="font-size: 16px; margin-left: 10px;">descrizione post</a>
+            <img src="images/gif/sus.gif" alt="" class="centered-image" />
+            <div style="display: flex; margin-top: 10px; height: 40px;">
+              <button class="button-post" style="width: 40%; margin-left: 10px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);">
                 <div style="display: flex;">
-                  <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt="Account Icon" />
+                  <img style="height: 20px;" src="images/navbar/users.png" alt=" " />
+                  <a style="font-size: 14px;">counter like</a>
+                </div>
+              </button>
+              <button class="button-post" style="width: 40%; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="visualizzaMessaggi.style.display = 'block';">
+                <div style="display: flex; margin-left: 20px;">
+                  <img style="height: 20px;" src="images/navbar/users.png" alt=" " />
+                  <a style="font-size: 14px;">counter messaggi</a>
+                </div>
+              </button>
+            </div>
+              <div id="visualizzaMessaggi" style="height: 425px; display: none;">
+                <div style="display:flex; text-align: center; justify-content: center;">
+                  <button id="creaMessaggio" class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0); display: none;" onclick="aggiungiMessaggio.style.display = 'none'; salvaMessaggio.style.display = 'block'; salvaMessaggio.style.display = 'block'; creaMessaggio.style.display = 'none';">Salva Messaggio</button>
+                  <button id="salvaMessaggio" class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="aggiungiMessaggio.style.display = 'block'; salvaMessaggio.style.display = 'none'; salvaMessaggio.style.display = 'none'; creaMessaggio.style.display = 'block';">Aggiungi Messaggio</button>
+                  <button class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="visualizzaMessaggi.style.display = 'none';">Chiudi Messaggi</button>
+                </div>
+                <div id="aggiungiMessaggio" style="display: none;">
+                  <div style="display: flex;">
+                    <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
+                    <div>
+                      <div style="margin-left: 10px;">
+                        <a style="font-size: 8px;"><?php echo $nick; ?></a>
+                        <a style="font-size: 8px;">ora</a>
+                      </div>
+                      <div style="width: 60%;">
+                        <a style="font-size: 12px; display: block; width: 100%; border: none; margin-left: 10px; box-sizing: border-box;" contenteditable="true">
+                          Inserisci il messaggio
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="messaggi" style="display: flex; margin-top: 10px; height: 300px; overflow-y: auto;">
+                  <img style="width: 10%; height: 25%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
                   <div>
-                    <a style="font-size: 12px; margin-left: 10px;">typology</a>
                     <div style="margin-left: 10px;">
                       <a style="font-size: 8px;">author</a>
                       <a style="font-size: 8px;">time ago</a>
                     </div>
+                    <a style="font-size: 16px; margin-left: 10px;">messaggio</a>
                   </div>
                 </div>
-                <a style="font-size: 16px; margin-left: 10px;">descrizione post</a>
-                <img src="images/gif/sus.gif" alt="" class="centered-image" />
-                <div style="display: flex; margin-top: 10px; height: 40px;">
-                  <button class="button-post" style="width: 40%; margin-left: 10px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);">
-                    <div style="display: flex;">
-                      <img style="height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
-                      <a style="font-size: 14px;">counter like</a>
-                    </div>
-                  </button>
-                  <button class="button-post" style="width: 40%; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="visualizzaMessaggi.style.display = 'block';">
-                    <div style="display: flex; margin-left: 20px;">
-                      <img style="height: 20px;" src="images/navbar/users.png" alt="Account Icon" />
-                      <a style="font-size: 14px;">counter messaggi</a>
-                    </div>
-                  </button>
-                </div>
-                  <div id="visualizzaMessaggi" style="height: 425px; display: none;">
-                    <div style="display:flex; text-align: center; justify-content: center;">
-                      <button id="creaMessaggio" class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0); display: none;" onclick="aggiungiMessaggio.style.display = 'none'; salvaMessaggio.style.display = 'block'; salvaMessaggio.style.display = 'block'; creaMessaggio.style.display = 'none';">Salva Messaggio</button>
-                      <button id="salvaMessaggio" class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="aggiungiMessaggio.style.display = 'block'; salvaMessaggio.style.display = 'none'; salvaMessaggio.style.display = 'none'; creaMessaggio.style.display = 'block';">Aggiungi Messaggio</button>
-                      <button class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="visualizzaMessaggi.style.display = 'none';">Chiudi Messaggi</button>
-                    </div>
-                    <div id="aggiungiMessaggio" style="display: none;">
-                      <div style="display: flex;">
-                        <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt="Account Icon" />
-                        <div>
-                          <div style="margin-left: 10px;">
-                            <a style="font-size: 8px;"><?php echo $nick; ?></a>
-                            <a style="font-size: 8px;">ora</a>
-                          </div>
-                          <div style="width: 60%;">
-                            <a style="font-size: 12px; display: block; width: 100%; border: none; margin-left: 10px; box-sizing: border-box;" contenteditable="true">
-                              Inserisci il messaggio
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="messaggi" style="display: flex; margin-top: 10px; height: 300px; overflow-y: auto;">
-                      <img style="width: 10%; height: 25%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt="Account Icon" />
-                      <div>
-                        <div style="margin-left: 10px;">
-                          <a style="font-size: 8px;">author</a>
-                          <a style="font-size: 8px;">time ago</a>
-                        </div>
-                        <a style="font-size: 16px; margin-left: 10px;">messaggio</a>
-                      </div>
-                    </div>
-                  </div>
               </div>
-              <div id="row" style="display: flex; text-align: center; margin-top: 0%; widht: 100%; background-color: rgba(79, 2, 151, 0);">
+          </div>
+          <div id="row" style="display: flex; text-align: center; margin-top: 0%; widht: 100%; background-color: rgba(79, 2, 151, 0);">
           </div>
           <?php
             foreach ($wikis as $row) {
-              if($row['tipo'] == "Logo"){
+                if($row['tipo'] == "Logo"){
                   $pathLogo = $row['path'];
-              }
-              echo "
-              <div class=\"inner-column\" style=\"padding: 0px;\">
+                }
+                echo "
                 <div style=\"display: flex;\">
-                  <img style=\"width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
-                  <div>
-                    <a style=\"font-size: 12px; margin-left: 10px;\">typology</a>
-                    <div style=\"margin-left: 10px;\">
-                      <a style=\"font-size: 8px;\">".$row['Nick']."</a>
-                      <a style=\"font-size: 8px;\">".$row['Data']."</a>
+                    <img style=\"width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;\" src=\"images/navbar/users.png\" alt=\" \" />
+                    <div>
+                        <div style=\"margin-left: 10px;\">
+                            <a style=\"font-size: 8px;\">".$row['Nick']."</a>
+                            <a style=\"font-size: 8px;\">".$row['Data']."</a>
+                        </div>
                     </div>
-                  </div>
                 </div>
                 <a style=\"font-size: 16px; margin-left: 10px;\">".$row['Descrizione']."</a>
                 <img src=\"".$pathLogo."\" alt=\"\" class=\"centered-image\" />
-                <div style=\"display: flex; height: 30px;\">
-                  <div style=\"display: flex;\">
-                    <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
-                    <a style=\"font-size: 14px;\">counter like</a>
-                  </div>
-                  <div style=\"display: flex; margin-left: 20px;\">
-                    <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\"Account Icon\" />
-                    <a style=\"font-size: 14px;\">counter messaggi</a>
-                  </div>
-                </div>
-              </div>";
+                <div style=\"display: flex; margin-top: 10px; height: 40px;\">
+                    <button class=\"button-post\" style=\"width: 40%; margin-left: 10px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);\">
+                        <div style=\"display: flex;\">
+                            <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\" \" />
+                            <a style=\"font-size: 14px;\">".$row["CounterLike"]."</a>
+                        </div>
+                    </button>
+                    <button class=\"button-post\" style=\"width: 40%; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);\" onclick=\"visualizzaMessaggi.style.display = 'block';\">
+                        <div style=\"display: flex; margin-left: 20px;\">
+                            <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\" \" />
+                            <a style=\"font-size: 14px;\">".$row["CounterMessaggi"]."</a>
+                        </div>
+                    </button>
+                </div>";
             }
           ?>
         </div>
@@ -458,14 +436,14 @@
               <div>
                 <!--
                 <div style="display: flex;">
-                  <img style="height: 50px;" src="images/navbar/users.png" alt="Account Icon" />
+                  <img style="height: 50px;" src="images/navbar/users.png" alt=" " />
                   <div style="margin-left: 20px;">
                     <a style="font-size: 12px;">nomeFandom</a>
                     <div style="padding: 0px;">
                       <a style="font-size: 8px;">counter like</a>
                     </div>
                   </div>
-                  <img style="height: 50px; margin-left: 40px;" src="images/navbar/users.png" alt="Account Icon" />
+                  <img style="height: 50px; margin-left: 40px;" src="images/navbar/users.png" alt=" " />
                 </div>
                 -->
                 <?php
@@ -478,7 +456,7 @@
                     }
                     echo "
                     <div style=\"display: flex;\">
-                      <img style=\"height: 50px;\" src=\"".$pathLogo."\" alt=\"Account Icon\"/>
+                      <img style=\"height: 50px;\" src=\"".$pathLogo."\" alt=\" \"/>
                       <div style=\"margin-left: 20px;\">
                         <a style=\"font-size: 12px; color: #ffff;\">".$row['Titolo']."</a>
                         <div style=\"padding: 0px;\">
@@ -497,14 +475,14 @@
               <div>
                 <!--
                 <div style="display: flex;">
-                  <img style="height: 50px;" src="images/navbar/users.png" alt="Account Icon" />
+                  <img style="height: 50px;" src="images/navbar/users.png" alt=" " />
                   <div style="margin-left: 20px;">
                     <a style="font-size: 12px;">nomeFandom</a>
                     <div style="padding: 0px;">
                       <a style="font-size: 8px;">counter like</a>
                     </div>
                   </div>
-                  <img style="height: 50px; margin-left: 40px;" src="images/navbar/users.png" alt="Account Icon" />
+                  <img style="height: 50px; margin-left: 40px;" src="images/navbar/users.png" alt=" " />
                 </div>
                 -->
                 <?php
@@ -517,7 +495,7 @@
                     }
                     echo "
                     <div style=\"display: flex;\">
-                      <img style=\"height: 50px;\" src=\"".$pathLogo."\" alt=\"Account Icon\" />
+                      <img style=\"height: 50px;\" src=\"".$pathLogo."\" alt=\" \" />
                       <div style=\"margin-left: 20px;\">
                         <a style=\"font-size: 12px; color: #ffff;\">".$row['Titolo']."</a>
                         <div style=\"padding: 0px;\">
@@ -540,5 +518,6 @@
   </main>
 
   <script src="addImm.js"></script>
+  <script src="scripts/getAccountImage.js"></script>
 </body>
 </html>

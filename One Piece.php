@@ -295,5 +295,6 @@
 
 <script src="scripts/hoi4.js"></script>
 <script src="wikiSettings.js"></script>
+<script src="scripts/getAccountImage.js"></script>
 </body>
 </html>
