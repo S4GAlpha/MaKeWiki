@@ -265,7 +265,7 @@
           </ul>
         </div>
         <button class="heart-button" id="favoriteButton" style="display: none;">
-          <svg style="outline: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         </button>
         <div class="favorite-message" id="favoriteMessage">Salvata wiki tra i preferiti</div>
       </div>
@@ -588,7 +588,7 @@
 
     <div id="newCommentModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0;	top: 0;	width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);">
       <div class="modal-content">
-        <form action="back-wiki.php" method="post">            
+        <form action="postMessages.php" method="post">            
           <input id="input-email" type="hidden" name="email" value="">
           <input id="input-wiki" type="hidden" name="wiki" value="">
           <span class="close">&times;</span>
@@ -664,16 +664,32 @@
     });
 
     document.getElementById('backgroundImageInput').addEventListener('change', function() {
-      var input = this;
-      if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-          document.querySelector('main').style.backgroundImage = 'url(' + e.target.result + ')';
-        }
-        reader.readAsDataURL(input.files[0]);
-      }
-    });
-  </script>
+        const formData = new FormData();
+        formData.append('file', this.files[0]);
 
+        fetch('upload_image.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.path) {
+                // Imposta l'immagine di sfondo dell'elemento 'main'
+                document.querySelector('main').style.backgroundImage = `url(${data.path})`;
+                
+                // Mostra un messaggio se il file esiste già
+                if (data.message) {
+                    alert(data.message);
+                }
+            } else if (data.error) {
+                alert(data.error);
+            }
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+        });
+    });
+</script>
+<script src="scripts/getAccountImage.js"></script>
 </body>
 </html>

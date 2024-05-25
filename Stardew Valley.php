@@ -400,7 +400,7 @@
     </main>
 
 </div>
-
+<script src="scripts/getAccountImage.js"></script>
 <script src="scripts/hoi4.js"></script>
 </body>
 </html>

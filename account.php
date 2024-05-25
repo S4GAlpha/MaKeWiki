@@ -16,6 +16,50 @@
         $isAdmin = false;
         $wikiCount = 0; // Default value when not logged in
     }
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "makewiki";
+
+    // Crea la connessione
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Verifica la connessione
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }
+
+    // Query per ottenere le wiki popolari dell'utente in base al numero di preferenze
+    $sql = "SELECT w.ID_wiki, w.Titolo, w.Tipologia, w.pathWiki, COUNT(p.ID_preferenza) as popolarita, i.path as logoPath
+            FROM wikipages w
+            LEFT JOIN preferenze p ON w.ID_wiki = p.fk_ID_wiki
+            LEFT JOIN imm_wiki iw ON w.ID_wiki = iw.fk_id_wiki AND iw.tipo = 'Logo'
+            LEFT JOIN immagini i ON iw.fk_id_immagine = i.ID_immagine
+            INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente  
+            WHERE u.email='$email' 
+            GROUP BY w.ID_wiki
+            ORDER BY popolarita DESC
+            LIMIT 3";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $wiki_data = [];
+      while ($row = $result->fetch_assoc()) {
+      $wiki_data[] = $row;
+    }
+
+    $sql = "SELECT * FROM utenti WHERE email='$email'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $row = $result->fetch_assoc();
+
+    $stmt->close();
+    $conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -220,7 +264,7 @@
           <div id="ain" class="container" style="width: 100%; min-height: 100%; margin-top: 0px; item-align: center; border-radius: 10px; overflow: auto;">
             <div class="view" style="max-width: 100%;">
               <div id="column-profile" style="max-width: 20%;">
-                  <img src="images/img/profile-base-icon.png" alt="Profile Picture" id="profile-icon">
+                  <img src="images/img/profile-base-icon.png" alt="Account Icon" id="profile-icon">
                   <?php echo "<p id=\"nick-utente\">".$nick ."</p>"; ?>
 
                   <button id="button-acc-profile" type="submit"  onclick="visualizzaAccount.style.display = 'none'; modificaAccount.style.display = 'block';" class="forms_buttons-action">Modifica Account</button>
@@ -252,11 +296,11 @@
                   <h3 class="section-title">Descrizione</h3>
                   <div class="activity-item">
                     <p class="activity-text" style="max-height: 200px; overflow-y: auto; margin: 0 auto; width: 100%;">
-                      Descrizione Utente
+                      <?php echo $row['descrizione'];?>
                     </p>
                   </div>
                 </div>
-
+                <!--
                 <div id="popular-wiki" style="text-align: center;">
                   <h3 class="section-title">Le Tue Wiki Popolari</h3>
                   <div class="activity-item" style="width: 40%; margin: 0 auto;">
@@ -298,6 +342,48 @@
                     </div>
                   </div>
                 </div>
+                -->
+                <div id="popular-wiki" style="text-align: center;">
+                  <h3 class="section-title">Le Tue Wiki Popolari</h3>
+
+                  <?php
+                  $positions = ["1°", "2°", "3°"];
+                  foreach ($wiki_data as $index => $wiki) {
+                      ?>
+                      <div class="activity-item" style="width: 40%; margin: 0 auto; margin-top: 10px;">
+                          <div style="display: flex; align-items: center; justify-content: center;">
+                              <div style="width: 35%; padding: 10px; display: flex; align-items: center; justify-content: center;">
+                                  <p><?php echo $positions[$index]; ?></p>
+                                  <img style="width: 100%; height: auto; margin-left: 20px;" src="<?php echo htmlspecialchars($wiki['logoPath'] ? $wiki['logoPath'] : 'images/gif/sus.gif'); ?>" alt="Wiki Image" class="centered-image" />
+                              </div>
+                              <div style="margin-left: 20px;">
+                                  <p class="activity-text" style="margin: 0;"><?php echo htmlspecialchars($wiki['Titolo']); ?></p>
+                                  <p class="activity-text"><?php echo htmlspecialchars($wiki['Tipologia']); ?></p>
+                              </div>
+                          </div>
+                      </div>
+                      <?php
+                  }
+
+                  // Se ci sono meno di 3 wiki, mostra placeholder per le posizioni mancanti
+                  for ($i = count($wiki_data); $i < 3; $i++) {
+                      ?>
+                      <div class="activity-item" style="width: 40%; margin: 0 auto; margin-top: 10px;">
+                          <div style="display: flex; align-items: center; justify-content: center;">
+                              <div style="width: 35%; padding: 10px; display: flex; align-items: center; justify-content: center;">
+                                  <p><?php echo $positions[$i]; ?></p>
+                                  <img style="width: 100%; height: auto; margin-left: 20px;" src="images/gif/sus.gif" alt="Wiki Image" class="centered-image" />
+                              </div>
+                              <div style="margin-left: 20px;">
+                                  <p class="activity-text" style="margin: 0;">Nome Wiki</p>
+                                  <p class="activity-text">Tipologia</p>
+                              </div>
+                          </div>
+                      </div>
+                      <?php
+                  }
+                  ?>
+              </div>
               </div>
             </div>
           </div>
@@ -311,7 +397,7 @@
             <div class="view" style="max-width: 100%;">
               <div id="column-profile" style="max-width: 20%;">
                   <div class="inner-column" style="background-color: rgba(79, 2, 151, 0); padding: 0px; margin-top: 5%; border-bot-left-radius: 0px; border-bot-right-radius: 0px;">
-                    <img src="images/img/profile-base-icon.png" class="customButton centered-image" data-index="1" alt="" style="width: 100%; height: 100%;"/>
+                    <img src="images/img/profile-base-icon.png" class="customButton centered-image" data-index="1" alt="Account Icon" style="width: 100%; height: 100%;"/>
                     <form class="uploadForm" enctype="multipart/form-data" style="display: none;">
                         <input type="file" class="fileInput" data-index="1" accept="image/*">
                     </form>
@@ -324,7 +410,7 @@
                       </a>
                     </li>
                   </ul>
-                  <button id="button-acc-profile" type="submit"  onclick="visualizzaAccount.style.display = 'block'; modificaAccount.style.display = 'none';" class="forms_buttons-action">Salva Modifica</button>
+                  <button id="button-acc-profile" type="submit"  onclick="visualizzaAccount.style.display = 'block'; modificaAccount.style.display = 'none'; saveAccountOption();" class="forms_buttons-action">Salva Modifica</button>
               </div>
               <div id="column-info" style="width: 100%; margin-left: 10px;">
                 <div id="description" style="text-align: center;">
@@ -333,7 +419,7 @@
                     <p class="activity-text" style="max-height: 200px; overflow-y: auto; margin: 0 auto; width: 100%;">
                       <ul>
                         <li>
-                          <a style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                          <a id="W" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
                             Inserisci qui la descrizione
                           </a>
                         </li>
@@ -352,6 +438,7 @@
   
 </div>
 
+<script src="scripts/getAccountImage.js"></script>
 <script src="addImm.js"></script>
 <script>
   const signupButton = document.getElementById("signup-button"),
@@ -421,6 +508,52 @@
     userForms.classList.add("bounceRight");
   }, false);
 });
+</script>
+
+<script>
+  function saveAccountOption() {
+    console.log("va bene cosi");
+    const formData = new FormData();
+    const fileInput = document.querySelector('.fileInput[data-index="1"]');
+    formData.append('file', fileInput.files[0]);
+    formData.append('descrizione', document.getElementById("W").innerText);
+
+    fetch('upload_accountOption.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.path) {
+            // Trova l'indice dell'input per aggiornare l'immagine corretta
+            const index = fileInput.getAttribute('data-index');
+            const imageContainer = document.querySelector(`.imageContainer[data-index="${index}"]`);
+
+            // Crea un nuovo elemento immagine e imposta il percorso dell'immagine caricata
+            const img = document.createElement('img');
+            img.src = data.path;
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.borderTopLeftRadius = '10px';
+            img.style.borderTopRightRadius = '10px';
+
+            // Svuota il contenitore dell'immagine e aggiungi la nuova immagine
+            imageContainer.innerHTML = '';
+            imageContainer.appendChild(img);
+
+            // Mostra un messaggio se il file esiste già
+            if (data.message) {
+                alert(data.message);
+            }
+        } else if (data.error) {
+            alert(data.error);
+        }
+    }).catch(error => {
+        console.error('Errore:', error);
+    });
+}
+
 </script>
 
 </body>

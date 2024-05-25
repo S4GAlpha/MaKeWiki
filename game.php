@@ -278,6 +278,6 @@
     </div>
   </main>
 </div>
-
+<script src="scripts/getAccountImage.js"></script>
 </body>
 </html>

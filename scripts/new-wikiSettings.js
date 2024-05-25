@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     videoContainerHide();
                 }
                 // Aggiunge il testo dell'email all'elemento con id 'input-email'
-                document.getElementById('input-email').innerText = data.email;
+                document.getElementById('input-email').value = data.email;
                 // Aggiunge il testo del titolo alla textarea con id 'input-wiki'
-                document.getElementById('input-wiki').innerText = document.getElementById('textTitle').textContent;
+                document.getElementById('input-wiki').value = document.title;
+                console.log(document.getElementById('input-wiki').value);
             } else {
                 buildGuestAccount(); // Costruisci gli elementi HTML per l'utente ospite
                 videoContainerHide();
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     xhr.send();
 
+    /*
     document.querySelectorAll('.fileInput').forEach(input => {
         input.addEventListener('change', function() {
             const formData = new FormData();
@@ -77,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });    
-
+    */
     console.log(document.querySelector('.video-input').value);
     document.getElementById('saveButton').addEventListener('click', function() {
         document.title = document.getElementById('textTitle').textContent;
@@ -184,7 +186,7 @@ function blockAdminContent() {
     document.querySelectorAll('.uploadForm').forEach(form => {
         form.closest('.inner-column').style.pointerEvents = 'block';
     });
-    document.querySelectorAll('[contenteditable="true"]').forEach(element => {
+    document.querySelectorAll('[contenteditable="false"]').forEach(element => {
         element.contentEditable = "true";
     });
     document.querySelectorAll('.video-container').forEach(element => {
@@ -228,7 +230,7 @@ function buildUserAccount(data) {
     // Se l'utente ha wikiCount maggiore di 0, aggiungiamo il link alla wiki
     if (data.wikiCount > 0) {
         var wikiItem = document.createElement('li');
-        wikiItem.classList.add('navbar-item', 'flexbox-left');
+        wikiItem.classList.add('navbar-item', 'flexbox-left', 'user-account');
 
         var wikiLink = document.createElement('a');
         wikiLink.classList.add('navbar-item-inner', 'flexbox-left');

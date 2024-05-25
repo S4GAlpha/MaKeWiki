@@ -56,7 +56,7 @@ function toggleOptions() {
 
         for (var i = 0; i < value; i++) {
             var contentSlider = document.createElement('div');
-            contentSlider.innerHTML = `
+            contentSlider.innerHTML =` 
                 <label style="font-size: 12px;" for="contentRange${i}">Numero dei contenuti per scheda ${i + 1}: <span id="contentValue${i}">0</span></label>
                 <input type="range" id="contentRange${i}" min="0" max="100" value="0" oninput="updateContent(${i}, this.value); updateContentLabel(${i}, this.value);">
             `;
@@ -170,12 +170,48 @@ function toggleOptions() {
             });
         });
     
-        document.querySelectorAll('.fileInput').forEach(function(input) {
+        document.querySelectorAll('.fileInput').forEach(input => {
             input.addEventListener('change', function() {
-                var index = this.getAttribute('data-index');
-                uploadImage(index);
+                const formData = new FormData();
+                formData.append('file', this.files[0]);
+    
+                fetch('upload_image.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.path) {
+                        // Trova l'indice dell'input per aggiornare l'immagine corretta
+                        const index = this.getAttribute('data-index');
+                        const imageContainer = document.querySelector(`.imageContainer[data-index="${index}"]`);
+                        document.querySelector('.customButton[data-index="' + index + '"]').style.display = 'none';
+        
+                        // Crea un nuovo elemento immagine e imposta il percorso dell'immagine caricata
+                        const img = document.createElement('img');
+                        img.src = data.path;
+                        img.style.width = '100%';
+                        img.style.height = '100%';
+                        img.style.borderTopLeftRadius = '10px';
+                        img.style.borderTopRightRadius = '10px';
+        
+                        // Svuota il contenitore dell'immagine e aggiungi la nuova immagine
+                        imageContainer.innerHTML = '';
+                        imageContainer.appendChild(img);
+        
+                        // Mostra un messaggio se il file esiste già
+                        if (data.message) {
+                            alert(data.message);
+                        }
+                    } else if (data.error) {
+                        alert(data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Errore:', error);
+                });
             });
-        });
+        }); 
     
         document.querySelectorAll('.imageContainer').forEach(function(container) {
             container.addEventListener('click', function() {
@@ -183,34 +219,6 @@ function toggleOptions() {
                 deleteImage(index);
             });
         });
-    }
-    
-    function uploadImage(index) {
-        var input = document.querySelector('.fileInput[data-index="' + index + '"]');
-        var file = input.files[0];
-    
-        if (file) {
-            var reader = new FileReader();
-    
-            reader.onload = function(e) {
-                var img = new Image();
-                img.src = e.target.result;
-                img.style.width = '100%'; // Adatta l'immagine alla larghezza del contenitore
-                img.style.height = 'auto'; // Mantiene il rapporto d'aspetto
-    
-                img.onload = function() {
-                    var container = document.querySelector('.imageContainer[data-index="' + index + '"]');
-                    container.innerHTML = '';
-                    container.appendChild(img);
-                    input.style.display = 'none';
-                    document.querySelector('.customButton[data-index="' + index + '"]').style.display = 'none';
-                };
-            };
-    
-            reader.readAsDataURL(file);
-        } else {
-            alert('Seleziona un\'immagine prima di caricare!');
-        }
     }
     
     function deleteImage(index) {
