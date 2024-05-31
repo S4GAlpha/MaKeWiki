@@ -12,6 +12,19 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('visualizzaPost').style.display = 'block';
         salvaPost();
     }
+    document.getElementById('favoriteButton').addEventListener('click', function() {// Questa funzione non viene richiamata sui post generati dal PHP, perché non li vede
+        // Trova il titolo con la classe "titles"
+        const titleElement = document.querySelector('.inner-column .titles');
+        console.log(titleElement);
+    
+        // Verifica se l'elemento è stato trovato
+        if (titleElement) {
+            setFavourite(titleElement);
+        } else {
+            console.error('Elemento con classe "titles" non trovato.');
+        }
+    });
+    
 });
 
 function salvaPost() {
@@ -43,4 +56,20 @@ function salvaPost() {
         console.error('Error:', error);
         // Gestisci l'errore, ad esempio mostra un messaggio di errore all'utente
     });
+}
+
+function setFavourite(titleElement) {
+    title=titleElement.innerText;
+    // Invia i dati del modulo al server utilizzando AJAX
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'back-wiki.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            console.log(xhr.responseText.trim());
+        }
+    };
+    
+    // Invia i dati del modulo al server
+    xhr.send('title=' + encodeURIComponent(title));
 }

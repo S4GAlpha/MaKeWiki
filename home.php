@@ -16,6 +16,75 @@
         $isAdmin = false;
         $wikiCount = 0; // Default value when not logged in
     }
+
+    
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "makewiki";
+
+    // Crea la connessione
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Verifica la connessione
+    if ($conn->connect_error) {
+        die("Connessione fallita: " . $conn->connect_error);
+    }
+
+    $sqlPages = "SELECT * FROM wikipages w
+    INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
+    INNER JOIN imm_wiki im ON w.ID_wiki = im.fk_id_wiki
+    INNER JOIN immagini i ON im.fk_id_immagine= i.ID_immagine
+    WHERE w.Tipologia='Anime'
+    ORDER BY Data desc"; 
+    $resultWikis = $conn->query($sqlPages);
+
+    $wikisAnime = [];
+    if ($resultWikis->num_rows > 0) {
+        while ($row = $resultWikis->fetch_assoc()) {
+            $wikisAnime[] = $row;
+        }
+    }
+    $newAnime=$wikisAnime[0];
+
+    $sqlPages = "SELECT * FROM wikipages w
+    INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
+    INNER JOIN imm_wiki im ON w.ID_wiki = im.fk_id_wiki
+    INNER JOIN immagini i ON im.fk_id_immagine= i.ID_immagine
+    WHERE w.Tipologia='VideoGame'
+    ORDER BY Data desc"; 
+    $resultWikis = $conn->query($sqlPages);
+
+    $wikisGame = [];
+    if ($resultWikis->num_rows > 0) {
+        while ($row = $resultWikis->fetch_assoc()) {
+            $wikisGame[] = $row;
+        }
+    }
+    $newGame=$wikisGame[0];
+
+    $allWikis=$wikisAnime+$wikisGame;
+    shuffle($allWikis);
+    $firstRowAll=$allWikis[0];
+
+    $sqlFavoritePages = "SELECT wikipages.ID_wiki, wikipages.Titolo, wikipages.Descrizione, wikipages.Tipologia, wikipages.pathWiki, wikipages.Data
+                          FROM preferenze
+                          JOIN wikipages ON preferenze.fk_ID_wiki = wikipages.ID_wiki
+                          JOIN utenti u ON preferenze.fk_id_utente = u.ID_utente
+                          WHERE u.email = '$email'";
+
+    $resultFavoriteWikis = $conn->query($sqlFavoritePages);
+
+    // Memorizza i risultati in un array
+    $favoriteWikis = [];
+    if($resultFavoriteWikis->num_rows>0){
+      while ($row = $resultFavoriteWikis->fetch_assoc()) {
+        echo $row['pathWiki'];
+        $favoriteWikis[] = $row;
+      }
+    }    
+    shuffle($favoriteWikis);
+    $firstRowFavorite=$favoriteWikis[0];
 ?>
 
 <!DOCTYPE html>
@@ -139,12 +208,54 @@
           <div class="void" id="void">
             <div class="crop">
               <ul class="void-ul" id="card-list" style="--count: 6;">
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">Anime News</span><span>Novità anime arrivate direttamente dal Sol Levante</span></a></div></li> <!-- Apre la pagina dell'ultima wiki di anime creata -->
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">Game News</span><span>Novità giochi da parte di Oasis</span></a></div></li> <!-- Apre la pagina dell'ultima wiki di giochi creata -->
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">Preferiti</span><span>Visuallizza di nuovo forum che ti hanno fatto dire "TI LOVVO"</span></a></div></li> <!-- Apre una delle pagine in cui hai messo il like -->
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">Random Wiki</span><span>Per gi amanti del rischio, oppure per chi vuole perdere tempo</span></a></div></li> <!-- Apre una wiki a caso puo essere sia anime o game -->
-                <li class="void-li"><div class="card"><a href=""><span class="model-name">WIKI</span><span>La WIKI delle WIIIIIIIKKKKKIII è qui che ti aspetta che fai non clicchi?!</span></a></div></li> <!-- Apre la wiki con più like di tutte -->
-                <li class="void-li"><div class="card"><a href="pelati.php"><span class="model-name">Pelato</span><span>La Wiki che non sapevi ti interessasse</span></a></div></li> <!-- Apre la pagina più fresh della wiki -->
+                <li class="void-li">
+                  <div class="card">
+                    <?php echo"<a href=".$newAnime['pathWiki'].">" ?>
+                      <span class="model-name">Anime News</span>
+                      <span>Novità anime arrivate direttamente dal Sol Levante</span>
+                    </a>
+                  </div>
+                </li> <!-- Apre la pagina dell'ultima wiki di anime creata -->
+                <li class="void-li">
+                  <div class="card">
+                  <?php echo"<a href=".$newGame['pathWiki'].">" ?>
+                      <span class="model-name">Game News</span>
+                      <span>Novità giochi da parte di Oasis</span>
+                    </a>
+                  </div>
+                </li> <!-- Apre la pagina dell'ultima wiki di giochi creata -->
+                <li class="void-li">
+                  <div class="card">
+                    <?php echo"<a href=".$firstRowFavorite['pathWiki'].">" ?>
+                      <span class="model-name">Preferiti</span>
+                      <span>Visuallizza di nuovo forum che ti hanno fatto dire "TI LOVVO"</span>
+                    </a>
+                  </div>
+                </li> <!-- Apre una delle pagine in cui hai messo il like -->
+                <li class="void-li">
+                  <div class="card">
+                    <?php echo"<a href=".$firstRowAll['pathWiki'].">" ?>
+                      <span class="model-name">Random Wiki</span>
+                      <span>Per gi amanti del rischio, oppure per chi vuole perdere tempo</span>
+                    </a>
+                  </div>
+                </li> <!-- Apre una wiki a caso puo essere sia anime o game -->
+                <li class="void-li">
+                  <div class="card">
+                    <a href="fandom.php">
+                      <span class="model-name">WIKI</span>
+                      <span>La WIKI delle WIIIIIIIKKKKKIII è qui che ti aspetta che fai non clicchi?!</span>
+                    </a>
+                  </div>
+                </li> <!-- Apre la wiki con più like di tutte -->
+                <li class="void-li">
+                  <div class="card">
+                    <a href="pelati.php">
+                      <span class="model-name">Pelato</span>
+                      <span>La Wiki che non sapevi ti interessasse</span>
+                    </a>
+                  </div>
+                </li> <!-- Apre la pagina più fresh della wiki -->
               </ul>
               <div class="last-circle"></div>
               <div class="second-circle"></div>

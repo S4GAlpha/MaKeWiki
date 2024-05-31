@@ -30,8 +30,7 @@
         die("Connessione fallita: " . $conn->connect_error);
     }
 
-    $sqlPages = "SELECT w.*, u.Nick, im.tipo, i.path, 
-                (SELECT COUNT(*) FROM messaggi m WHERE m.FK_ID_wiki = w.ID_wiki) AS CounterMessaggi,
+    $sqlPages = "SELECT w.*, u.Nick, im.tipo, i.path,
                 (SELECT COUNT(*) FROM preferenze p WHERE p.fk_ID_wiki = w.ID_wiki) AS CounterLike
                 FROM wikipages w
                 INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
@@ -285,7 +284,7 @@
             <div style="display: flex;">
               <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
               <div>
-                <a style="font-size: 12px; margin-left: 10px;">typology</a>
+                <a class="titles" style="font-size: 12px; margin-left: 10px;">typology</a>
                 <div style="margin-left: 10px;">
                   <a style="font-size: 8px;">author</a>
                   <a style="font-size: 8px;">time ago</a>
@@ -295,52 +294,13 @@
             <a style="font-size: 16px; margin-left: 10px;">descrizione post</a>
             <img src="images/gif/sus.gif" alt="" class="centered-image" />
             <div style="display: flex; margin-top: 10px; height: 40px;">
-              <button class="button-post" style="width: 40%; margin-left: 10px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);">
+              <button id="favoriteButton" class="button-post" style="width: 40%; margin-left: 10px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);">
                 <div style="display: flex;">
                   <img style="height: 20px;" src="images/navbar/users.png" alt=" " />
                   <a style="font-size: 14px;">counter like</a>
                 </div>
               </button>
-              <button class="button-post" style="width: 40%; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="visualizzaMessaggi.style.display = 'block';">
-                <div style="display: flex; margin-left: 20px;">
-                  <img style="height: 20px;" src="images/navbar/users.png" alt=" " />
-                  <a style="font-size: 14px;">counter messaggi</a>
-                </div>
-              </button>
             </div>
-              <div id="visualizzaMessaggi" style="height: 425px; display: none;">
-                <div style="display:flex; text-align: center; justify-content: center;">
-                  <button id="creaMessaggio" class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0); display: none;" onclick="aggiungiMessaggio.style.display = 'none'; salvaMessaggio.style.display = 'block'; salvaMessaggio.style.display = 'block'; creaMessaggio.style.display = 'none';">Salva Messaggio</button>
-                  <button id="salvaMessaggio" class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="aggiungiMessaggio.style.display = 'block'; salvaMessaggio.style.display = 'none'; salvaMessaggio.style.display = 'none'; creaMessaggio.style.display = 'block';">Aggiungi Messaggio</button>
-                  <button class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="visualizzaMessaggi.style.display = 'none';">Chiudi Messaggi</button>
-                </div>
-                <div id="aggiungiMessaggio" style="display: none;">
-                  <div style="display: flex;">
-                    <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
-                    <div>
-                      <div style="margin-left: 10px;">
-                        <a style="font-size: 8px;"><?php echo $nick; ?></a>
-                        <a style="font-size: 8px;">ora</a>
-                      </div>
-                      <div style="width: 60%;">
-                        <a style="font-size: 12px; display: block; width: 100%; border: none; margin-left: 10px; box-sizing: border-box;" contenteditable="true">
-                          Inserisci il messaggio
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="messaggi" style="display: flex; margin-top: 10px; height: 300px; overflow-y: auto;">
-                  <img style="width: 10%; height: 25%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
-                  <div>
-                    <div style="margin-left: 10px;">
-                      <a style="font-size: 8px;">author</a>
-                      <a style="font-size: 8px;">time ago</a>
-                    </div>
-                    <a style="font-size: 16px; margin-left: 10px;">messaggio</a>
-                  </div>
-                </div>
-              </div>
           </div>
           <div id="row" style="display: flex; text-align: center; margin-top: 0%; widht: 100%; background-color: rgba(79, 2, 151, 0);">
           </div>
@@ -352,7 +312,7 @@
                 echo "
                 <div style=\"display: flex;\">
                     <img style=\"width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;\" src=\"images/navbar/users.png\" alt=\" \" />
-                    <a style=\"font-size: 12px; margin-left: 10px;\">".$row['Titolo']."</a>
+                    <a class=\"titles\" style=\"font-size: 12px; margin-left: 10px;\">".$row['Titolo']."</a>
                     <div>
                         <div style=\"margin-left: 10px;\">
                             <a style=\"font-size: 8px;\">".$row['Nick']."</a>
@@ -363,16 +323,10 @@
                 <a style=\"font-size: 16px; margin-left: 10px;\">".$row['Descrizione']."</a>
                 <img src=\"".$pathLogo."\" alt=\"\" class=\"centered-image\" />
                 <div style=\"display: flex; margin-top: 10px; height: 40px;\">
-                    <button class=\"button-post\" style=\"width: 40%; margin-left: 10px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);\">
+                    <button id=\"favoriteButton\" class=\"button-post\" style=\"width: 40%; margin-left: 10px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);\">
                         <div style=\"display: flex;\">
                             <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\" \" />
                             <a style=\"font-size: 14px;\">".$row["CounterLike"]."</a>
-                        </div>
-                    </button>
-                    <button class=\"button-post\" style=\"width: 40%; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);\" onclick=\"visualizzaMessaggi.style.display = 'block';\">
-                        <div style=\"display: flex; margin-left: 20px;\">
-                            <img style=\"height: 20px;\" src=\"images/navbar/users.png\" alt=\" \" />
-                            <a style=\"font-size: 14px;\">".$row["CounterMessaggi"]."</a>
                         </div>
                     </button>
                 </div>";
