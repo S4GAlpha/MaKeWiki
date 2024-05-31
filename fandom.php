@@ -197,10 +197,10 @@
 
         <?php if ($nick != "") : ?>
           <div class="inner-column" style="margin-top: 0%; text-align: center;">
-            <button id="creaPost" style="display: ; color: #ffff;" class="button-post" type="submit" onclick="salvaPost.style.display = 'block'; creaPost.style.display = 'none';  visualizzaCreaPost.style.display = 'block'; visualizzaPost.style.display = 'none';" class="forms_buttons-action">
+            <button id="creaPost" style="display: block; color: #ffff;" class="button-post" type="submit" class="forms_buttons-action">
               Crea Post
             </button>
-            <button id="salvaPost" style="display: none; color: #ffff;"  class="button-post" type="submit" onclick="creaPost.style.display = 'block'; salvaPost.style.display = 'none'; visualizzaCreaPost.style.display = 'none'; visualizzaPost.style.display = 'block';" class="forms_buttons-action">Salva Post</button>
+            <button id="salvaPost" style="display: none; color: #ffff;"  class="button-post" type="submit" class="forms_buttons-action">Salva Post</button>
           </div>
           <div class="inner-column" style="margin-top: 5%; text-align: center;">
             <div class="profile-icon"></div>
@@ -252,7 +252,7 @@
               <div>
                 <ul>
                   <li>
-                    <a style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                    <a id='tPost' style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
                       Inserisci qui la tipologia
                     </a>
                   </li>
@@ -265,7 +265,7 @@
             </div>
             <ul>
               <li>
-                <a style="font-size: 16px; margin-left: 10px; display: block; width: 100%; border: none;" contenteditable="true">
+                <a id="descrizionePost" style="font-size: 16px; margin-left: 10px; display: block; width: 100%; border: none;" contenteditable="true">
                   Inserisci qui la descrizione del post
                 </a>
               </li>
@@ -276,56 +276,8 @@
               <form class="uploadForm" enctype="multipart/form-data" style="display: none;">
                   <input type="file" class="fileInput" data-index="1" accept="image/*">
               </form>
-              <div class="imageContainer" data-index="1" style="border-top-left-radius: 10px; border-top-right-radius: 10px; border-bot-left-radius: 0px; border-bot-right-radius: 0px;"></div>
+              <div id="imgPost" class="imageContainer" data-index="1" style="border-top-left-radius: 10px; border-top-right-radius: 10px; border-bot-left-radius: 0px; border-bot-right-radius: 0px;"></div>
             </div>
-
-            <div style="display: none; margin-top: 10px; height: 40px;">
-                  <button class="button-post" style="width: 40%; margin-left: 10px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);">
-                    <div style="display: flex;">
-                      <img style="height: 20px;" src="images/navbar/users.png" alt=" " />
-                      <a style="font-size: 14px;">counter like</a>
-                    </div>
-                  </button>
-                  <button class="button-post" style="width: 40%; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="visualizzaMessaggi.style.display = 'block';">
-                    <div style="display: flex; margin-left: 20px;">
-                      <img style="height: 20px;" src="images/navbar/users.png" alt=" " />
-                      <a style="font-size: 14px;">counter messaggi</a>
-                    </div>
-                  </button>
-                </div>
-                  <div id="visualizzaMessaggii" style="height: 425px; display: none;">
-                    <div style="display:flex; text-align: center; justify-content: center;">
-                      <button id="creaMessaggioo" class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0); display: none;" onclick="aggiungiMessaggio.style.display = 'none'; salvaMessaggio.style.display = 'block'; salvaMessaggio.style.display = 'block'; creaMessaggio.style.display = 'none';">Salva Messaggio</button>
-                      <button id="salvaMessaggioo" class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="aggiungiMessaggio.style.display = 'block'; salvaMessaggio.style.display = 'none'; salvaMessaggio.style.display = 'none'; creaMessaggio.style.display = 'block';">Aggiungi Messaggio</button>
-                      <button class="button-post" style="color: #ffff; width: 40%; height: 50px; background-color: rgba(79, 2, 151, 0); border: 1px solid rgba(79, 2, 151, 0);" onclick="visualizzaMessaggi.style.display = 'none';">Chiudi Messaggi</button>
-                    </div>
-                    <div id="aggiungiMessaggioo" style="display: none;">
-                      <div style="display: flex;">
-                        <img style="width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
-                        <div>
-                          <div style="margin-left: 10px;">
-                            <a style="font-size: 8px;"><?php echo $nick; ?></a>
-                            <a style="font-size: 8px;">ora</a>
-                          </div>
-                          <div style="width: 60%;">
-                            <a style="font-size: 12px; display: block; width: 100%; border: none; margin-left: 10px; box-sizing: border-box;" contenteditable="true">
-                              Inserisci il messaggio
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div id="messaggii" style="display: flex; margin-top: 10px; height: 300px; overflow-y: auto;">
-                      <img style="width: 10%; height: 25%; margin-top: 10px; margin-left: 10px;" src="images/navbar/users.png" alt=" " />
-                      <div>
-                        <div style="margin-left: 10px;">
-                          <a style="font-size: 8px;">author</a>
-                          <a style="font-size: 8px;">time ago</a>
-                        </div>
-                        <a style="font-size: 16px; margin-left: 10px;">messaggio</a>
-                      </div>
-                    </div>
-                  </div>
           </div>
         </div>
         <div id="visualizzaPost">
@@ -394,12 +346,13 @@
           </div>
           <?php
             foreach ($wikis as $row) {
-                if($row['tipo'] == "Logo"){
+                if($row['tipo'] == "Post"){
                   $pathLogo = $row['path'];
                 }
                 echo "
                 <div style=\"display: flex;\">
                     <img style=\"width: 10%; height: 10%; margin-top: 10px; margin-left: 10px;\" src=\"images/navbar/users.png\" alt=\" \" />
+                    <a style=\"font-size: 12px; margin-left: 10px;\">".$row['Titolo']."</a>
                     <div>
                         <div style=\"margin-left: 10px;\">
                             <a style=\"font-size: 8px;\">".$row['Nick']."</a>
@@ -519,5 +472,7 @@
 
   <script src="addImm.js"></script>
   <script src="scripts/getAccountImage.js"></script>
+  <script src="menuWiki.js"></script>
+  <script src="scripts/fandomManager.js"></script>
 </body>
 </html>
