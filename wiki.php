@@ -288,6 +288,7 @@
                             <img style="width: 100%; height: 100%; padding: 10px; margin-top: 0px; margin-left: 0px;" src="' . htmlspecialchars($row["LogoPath"]) . '" alt="" class="centered-image" />
                         </div>
                         <div style="width: 50%;">
+                          <a style="font-size: 12px; margin-left: 10px;">' . htmlspecialchars($row["Titolo"]) . '</a>
                             <a style="font-size: 12px; margin-left: 10px;">' . htmlspecialchars($row["Tipologia"]) . '</a>
                             <div style="margin-left: 10px;">
                                 <a style="font-size: 8px;">' . htmlspecialchars($row["Data"]) . '</a>
