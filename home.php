@@ -44,8 +44,8 @@
         while ($row = $resultWikis->fetch_assoc()) {
             $wikisAnime[] = $row;
         }
+      $newAnime=$wikisAnime[0];
     }
-    $newAnime=$wikisAnime[0];
 
     $sqlPages = "SELECT * FROM wikipages w
     INNER JOIN utenti u ON w.fk_id_utente = u.ID_utente
@@ -60,8 +60,8 @@
         while ($row = $resultWikis->fetch_assoc()) {
             $wikisGame[] = $row;
         }
+      $newGame=$wikisGame[0];
     }
-    $newGame=$wikisGame[0];
 
     $allWikis=$wikisAnime+$wikisGame;
     shuffle($allWikis);
@@ -79,12 +79,11 @@
     $favoriteWikis = [];
     if($resultFavoriteWikis->num_rows>0){
       while ($row = $resultFavoriteWikis->fetch_assoc()) {
-        echo $row['pathWiki'];
         $favoriteWikis[] = $row;
       }
+      shuffle($favoriteWikis);
+      $firstRowFavorite=$favoriteWikis[0];
     }    
-    shuffle($favoriteWikis);
-    $firstRowFavorite=$favoriteWikis[0];
 ?>
 
 <!DOCTYPE html>
@@ -226,7 +225,7 @@
                 </li> <!-- Apre la pagina dell'ultima wiki di giochi creata -->
                 <li class="void-li">
                   <div class="card">
-                    <?php echo"<a href=".$firstRowFavorite['pathWiki'].">" ?>
+                    <?php if(isset($firstRowFavorite)) {echo"<a href=".$firstRowFavorite['pathWiki'].">"; }?><!--potrebbe non avere preferiti -->
                       <span class="model-name">Preferiti</span>
                       <span>Visuallizza di nuovo forum che ti hanno fatto dire "TI LOVVO"</span>
                     </a>
