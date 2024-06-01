@@ -233,7 +233,7 @@
                 $pathLogo = $row['path'];
             }
             echo "
-            <div class=\"inner-column\" style=\"padding: 0px;\">
+            <div class=\"inner-column\" style=\"padding: 0px; margin-bottom: 5%;\">
               <img src=\"".$pathLogo."\" alt=\"\" class=\"centered-image\" style=\"border-top-left-radius: 10px; border-top-right-radius: 10px;\"/>
               <div style=\"display: flex;\">
                 <a id=\"nameAuth\">".$row['Nick']."</a>

@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
+<html lang="it"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="title">Prova Nuova Wiki</title>
+    <title id="title">
+                Inserisci dsacdasddadqui titolo
+              </title>
     <script src="adBlock.js"></script>
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap">
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/anime_game_style.css">
     <style>
@@ -188,7 +188,7 @@
       z-index: 10;
     }
     </style>
-</head>
+<style type="text/css" id="operaUserStyle"></style></head>
 
 <body>
   <div>
@@ -196,13 +196,13 @@
       <ul class="navbar-items flexbox-col">
         <li class="navbar-logo flexbox-left" style="align-items: center; height: 80px;">
           <!--LOGO-->
-          <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon"/>
+          <img style="width: 80px; height: 80px;" src="images/img/OIG1.jpg" alt="Home Icon">
         </li>
         <li class="navbar-item flexbox-left">
           <a class="navbar-item-inner flexbox-left" href="home.php">
             <div class="navbar-item-inner-icon-wrapper flexbox">
               <!--HOME-->
-              <img style="width: 20px; height: 20px;" src="images/navbar/home.png" alt="Home Icon" />
+              <img style="width: 20px; height: 20px;" src="images/navbar/home.png" alt="Home Icon">
             </div>
             <span class="link-text" style="color: #ffff">Home</span>
           </a>
@@ -211,7 +211,7 @@
           <a class="navbar-item-inner flexbox-left" href="fandom.php">
             <div class="navbar-item-inner-icon-wrapper flexbox">
               <!--NEWS-->
-              <img style="width: 20px; height: 20px;" src="images/navbar/news.png" alt="Home Icon" />
+              <img style="width: 20px; height: 20px;" src="images/navbar/news.png" alt="Home Icon">
             </div>
             <span class="link-text" style="color: #ffff">Fandom</span>
           </a>
@@ -220,7 +220,7 @@
           <a class="navbar-item-inner flexbox-left" href="anime.php">
             <div class="navbar-item-inner-icon-wrapper flexbox">
               <!--ANIME-->
-              <img style="width: 20px; height: 20px;" src="images/navbar/anime.png" alt="Home Icon" />
+              <img style="width: 20px; height: 20px;" src="images/navbar/anime.png" alt="Home Icon">
             </div>
             <span class="link-text" style="color: #ffff">Anime</span>
           </a>
@@ -229,7 +229,7 @@
           <a class="navbar-item-inner flexbox-left" href="game.php">
             <div class="navbar-item-inner-icon-wrapper flexbox">
               <!--GAME-->
-              <img style="width: 20px; height: 20px;" src="images/navbar/game.png" alt="Home Icon" />
+              <img style="width: 20px; height: 20px;" src="images/navbar/game.png" alt="Home Icon">
             </div>
             <span class="link-text" style="color: #ffff">Game</span>
           </a>
@@ -240,32 +240,31 @@
     </nav>
 
     <!-- Main -->
-    <main id="main" class="flexbox-col">
+    <main id="main" class="flexbox-col" style="background-image: url(&quot;./uploaded_images/Live_Wallpaper__Muse_Dash_Cytus_II_Collab.gif&quot;);">
       <div id="row" style="display: flex; text-align: center; margin-top: 0%;">
-        <div class="inner-column" style="padding: 0px; width: 20%; margin-left: 30%; margin-top: 0%; border-bot-left-radius: 0px; border-bot-right-radius: 0px;">
-          <img src="images/navbar/new-wiki.png" class="customButton centered-image" data-index="0" alt="" style="width: 20%; height: 50%; margin-top: 12%;"/>
+        <div class="inner-column" style="padding: 0px; width: 20%; margin-left: 30%; margin-top: 0%; pointer-events: none;">
+          <img src="images/navbar/new-wiki.png" class="customButton centered-image" data-index="0" alt="" style="width: 20%; height: 50%; margin-top: 12%; display: none;">
           <form class="uploadForm" enctype="multipart/form-data" style="display: none;">
-            <input type="file" class="fileInput" data-index="0" accept="image/*">
+            <input type="file" class="fileInput" data-index="0" accept="image/*" style="display: none;">
           </form>
-          <div class="imageContainer centered-image" data-index="0" style="width: 90%; height: 90%; margin-top: 6%; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bot-left-radius: 0px; border-bot-right-radius: 0px;"></div>
+          <div class="imageContainer centered-image" data-index="0" style="width: 90%; height: 90%; margin-top: 6%; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bot-left-radius: 0px; border-bot-right-radius: 0px;"><img src="./uploaded_images/Live_Wallpaper__Muse_Dash_Cytus_II_Collab.gif" style="width: 100%; height: 100%; border-top-left-radius: 10px; border-top-right-radius: 10px;"></div>
         </div>
         <div>
           <ul style="display: flex; align-items: center; justify-content: center; height: 70%;">
             <li>
-              <h2 id="textTitle" style="margin-top: 10%; font-size: 30px; display: block; width: 100%; margin-left: 30px; border: none;" contenteditable="true">
-                Inserisci qui titolo
+              <h2 id="textTitle" style="margin-top: 10%; font-size: 30px; display: block; width: 100%; margin-left: 30px; border: none;" contenteditable="false">
+                Inserisci dsacdasddadqui titolo
               </h2>
             </li>
           </ul>
           <ul>
             <li>
-              <a id="textList" style="font-size: 12px; display: block; width: 92%; margin-left: 30px; border: none;">
-              </a>
+              <a id="textList" style="font-size: 12px; display: block; width: 92%; margin-left: 30px; border: none;" contenteditable="false">Shiryu</a>
             </li>
           </ul>
         </div>
-        <button class="heart-button" id="favoriteButton" style="display: none;">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        <button class="heart-button" id="favoriteButton" style="display: block;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
         </button>
         <div class="favorite-message" id="favoriteMessage">Salvata wiki tra i preferiti</div>
       </div>
@@ -273,22 +272,22 @@
       <div id="row" style="display: flex; margin-top: 10%;">
         <div id="column-suggested" class="column-container" style="width: 25%; margin-left: 10%; margin-top: 0%;">
           <div class="inner-column" style="padding: 0px; margin-top: 0%;">
-            <img src="images/img/adBlocker.png" alt="" class="centered-image" id="adblock-warning" style="border-radius: 10px; display: none;"/>
-            <img src="images/img/logo.jpg" alt="" class="centered-image" id="ads" style="border-radius: 10px; display: none;"/>
+            <img src="images/img/adBlocker.png" alt="" class="centered-image" id="adblock-warning" style="border-radius: 10px; display: none;">
+            <img src="images/img/logo.jpg" alt="" class="centered-image" id="ads" style="border-radius: 10px; display: block;">
           </div>
-          <div class="inner-column" style="padding: 0px; margin-top: 5%; border-bot-left-radius: 0px; border-bot-right-radius: 0px;">
-            <img src="images/navbar/new-wiki.png" class="customButton centered-image" data-index="1" alt="" style="width: 20%; height: 100%;"/>
+          <div class="inner-column" style="padding: 0px; margin-top: 5%; pointer-events: none;">
+            <img src="images/navbar/new-wiki.png" class="customButton centered-image" data-index="1" alt="" style="width: 20%; height: 100%;">
             <form class="uploadForm" enctype="multipart/form-data" style="display: none;">
                 <input type="file" class="fileInput" data-index="1" accept="image/*">
             </form>
             <div class="imageContainer" data-index="1" style="border-top-left-radius: 10px; border-top-right-radius: 10px; border-bot-left-radius: 0px; border-bot-right-radius: 0px;"></div>
           </div>
           <div class="inner-column" style="margin-top: 0%; border-top-left-radius: 0px; border-top-right-radius: 0px;">
-            <h2 id="animeI" style="display: none;">Info Anime</h2>
+            <h2 id="animeI" style="display: block;">Info Anime</h2>
             <h2 id="gameI" style="display: none;">Info Game</h2>
             <ul>
               <li>
-                <a id="description" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                <a id="description" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                   Inserisci qui la descrizione
                 </a>
               </li>
@@ -296,7 +295,7 @@
           </div>
         </div>
 
-        <div id="anime" style="display: none; width: 100%; margin-right: 6%; text-align: center;">
+        <div id="anime" style="display: block; width: 100%; margin-right: 6%; text-align: center;">
           <div id="row" style="display: flex; margin-top: 0%; background-color: rgba(0, 0, 0, 0);">
             <div id="column-news" class="column-container" style="width: 55%; margin-left: 5%; margin-right: 6%; text-align: center;">
               <div class="inner-column" style="margin-top: 0%; padding: 10px; text-align: center; display: flex; justify-content: center;">
@@ -306,7 +305,7 @@
               </div>
               <div id="Forum">
                   <button id="new-comment">+</button>
-              </div>
+              <div class="container-commento"></div></div>
             </div>
 
             <div id="column-all" class="column-container" style="width: 35%; margin-top: 0%;">
@@ -315,56 +314,56 @@
               </div>
               <div>
               <div id="begginerGuide" style="height: 100%; overflow-y: auto;">
-                <div class="inner-column" style="margin-top: 5%; min-height: 200px; padding: 0px; height: 40%; margin-right: 10px;">
-                  <div class="video-container" id="videoContainer1">
-                    <iframe id="video1" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <input type="text" class="video-input" id="urlInput1" placeholder="Inserisci URL del video" />
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer1" style="display: block;">
+                    <iframe id="video1" src="https://www.youtube.com/embed/oVIVWosI9S8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" style="display: block;"></iframe>
+                    <input type="text" class="video-input" id="urlInput1" placeholder="Inserisci URL del video" style="display: none;" disabled="">
                   </div>
                   <ul>
                     <li>
-                      <a id="textList1" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                      <a id="textList1" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="false">
                         Inserisci qui titolo video
                       </a><br>
                     </li>
                   </ul>
                 </div>
 
-                <div class="inner-column" style="margin-top: 5%; min-height: 200px; padding: 0px; height: 40%; margin-right: 10px;">
-                  <div class="video-container" id="videoContainer2">
-                    <iframe id="video2" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <input type="text" class="video-input" id="urlInput2" placeholder="Inserisci URL del video" />
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer2" style="display: block;">
+                    <iframe id="video2" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                    <input type="text" class="video-input" id="urlInput2" placeholder="Inserisci URL del video" disabled="">
                   </div>
                   <ul>
                     <li>
-                      <a id="textList2" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                      <a id="textList2" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="false">
                         Inserisci qui titolo video
                       </a><br>
                     </li>
                   </ul>
                 </div>
 
-                <div class="inner-column" style="margin-top: 5%; min-height: 200px; padding: 0px; height: 40%; margin-right: 10px;">
-                  <div class="video-container" id="videoContainer3">
-                    <iframe id="video3" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <input type="text" class="video-input" id="urlInput3" placeholder="Inserisci URL del video" />
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer3" style="display: block;">
+                    <iframe id="video3" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                    <input type="text" class="video-input" id="urlInput3" placeholder="Inserisci URL del video" disabled="">
                   </div>
                   <ul>
                     <li>
-                      <a id="textList3" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                      <a id="textList3" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="false">
                         Inserisci qui titolo video
                       </a><br>
                     </li>
                   </ul>
                 </div>
 
-                <div class="inner-column" style="margin-top: 5%; min-height: 200px; padding: 0px; height: 40%; margin-right: 10px;">
-                  <div class="video-container" id="videoContainer4">
-                    <iframe id="video4" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <input type="text" class="video-input" id="urlInput4" placeholder="Inserisci URL del video" />
+                <div class="inner-column" style="margin-top: 5%; padding: 0px; height: 40%; margin-right: 10px;">
+                  <div class="video-container" id="videoContainer4" style="display: block;">
+                    <iframe id="video4" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                    <input type="text" class="video-input" id="urlInput4" placeholder="Inserisci URL del video" disabled="">
                   </div>
                   <ul>
                     <li>
-                      <a id="textList4" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                      <a id="textList4" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="false">
                         Inserisci qui titolo video
                       </a><br>
                     </li>
@@ -384,7 +383,7 @@
                   <div class="collapse" id="collapseFirst" style="margin-left: 0px; display: none;">
                     <ul>
                       <li>
-                        <a id="collapseFirst" onclick="toggleDiv('first', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                        <a id="collapseFirst" onclick="toggleDiv('first', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                           Nome scheda1
                         </a>
                       </li>
@@ -393,7 +392,7 @@
                   <div class="collapse" id="collapseSecond" style="margin-left: 5%; display: none;">
                     <ul>
                       <li>
-                      <a id="collapseSecond" onclick="toggleDiv('second', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                      <a id="collapseSecond" onclick="toggleDiv('second', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                           Nome scheda2
                         </a>
                       </li>
@@ -402,7 +401,7 @@
                   <div class="collapse" id="collapseThird" style="margin-left: 5%; display: none;">
                     <ul>
                       <li>
-                        <a id="collapseThird" onclick="toggleDiv('third', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                        <a id="collapseThird" onclick="toggleDiv('third', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                           Nome scheda3
                         </a>
                       </li>
@@ -411,7 +410,7 @@
                   <div class="collapse" id="collapseFour" style="margin-left: 5%; display: none;">
                     <ul>
                       <li>
-                        <a id="collapseFour" onclick="toggleDiv('four', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                        <a id="collapseFour" onclick="toggleDiv('four', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                           Nome scheda4
                         </a>
                       </li>
@@ -420,7 +419,7 @@
                   <div class="collapse" id="collapseFive" style="margin-left: 5%; display: none;">
                     <ul>
                       <li>
-                        <a id="collapseFive" onclick="toggleDiv('five', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                        <a id="collapseFive" onclick="toggleDiv('five', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                           Nome scheda5
                         </a>
                       </li>
@@ -431,7 +430,7 @@
                   <div class="collapse" id="collapseSix" style="margin-left: 0%; display: none;">
                     <ul>
                       <li>
-                        <a id="collapseSix" onclick="toggleDiv('six', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                        <a id="collapseSix" onclick="toggleDiv('six', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                           Nome scheda6
                         </a>
                       </li>
@@ -440,7 +439,7 @@
                   <div class="collapse" id="collapseSeven" style="margin-left: 5%; display: none;">
                     <ul>
                       <li>
-                        <a id="collapseSeven" onclick="toggleDiv('seven', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                        <a id="collapseSeven" onclick="toggleDiv('seven', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                           Nome scheda7
                         </a>
                       </li>
@@ -449,7 +448,7 @@
                   <div class="collapse" id="collapseEight" style="margin-left: 5%; display: none;">
                     <ul>
                       <li>
-                        <a id="collapseEigth" onclick="toggleDiv('eight', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                        <a id="collapseEigth" onclick="toggleDiv('eight', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                           Nome scheda8
                         </a>
                       </li>
@@ -458,7 +457,7 @@
                   <div class="collapse" id="collapseNine" style="margin-left: 5%; display: none;">
                     <ul>
                       <li>
-                        <a id="collapseNine" onclick="toggleDiv('nine', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                        <a id="collapseNine" onclick="toggleDiv('nine', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                           Nome scheda9
                         </a>
                       </li>
@@ -467,7 +466,7 @@
                   <div class="collapse" id="collapseTen" style="margin-left: 5%; display: none;">
                     <ul>
                       <li>
-                        <a id="collapseTen" onclick="toggleDiv('ten', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="true">
+                        <a id="collapseTen" onclick="toggleDiv('ten', this)" style="font-size: 12px; display: block; width: 100%; border: none;" contenteditable="false">
                           Nome scheda0
                         </a>
                       </li>
@@ -497,13 +496,13 @@
               <div id="video" style="height: 100%; overflow-y: auto;">
 
                 <div class="inner-column" style="margin-top: 5%; min-height: 200px; padding: 0px; height: 40%; margin-right: 10px;">
-                  <div class="video-container" id="videoContainer5">
-                    <iframe id="video5" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <input type="text" class="video-input" id="urlInput5" placeholder="Inserisci URL del video" />
+                  <div class="video-container" id="videoContainer5" style="display: block;">
+                    <iframe id="video5" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                    <input type="text" class="video-input" id="urlInput5" placeholder="Inserisci URL del video" disabled="">
                   </div>
                   <ul>
                     <li>
-                      <a id="textList5" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                      <a id="textList5" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="false">
                         Inserisci qui titolo video
                       </a><br>
                     </li>
@@ -511,13 +510,13 @@
                 </div>
 
                 <div class="inner-column" style="margin-top: 5%; min-height: 200px; padding: 0px; height: 40%; margin-right: 10px;">
-                  <div class="video-container" id="videoContainer6">
-                    <iframe id="video6" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <input type="text" class="video-input" id="urlInput6" placeholder="Inserisci URL del video" />
+                  <div class="video-container" id="videoContainer6" style="display: block;">
+                    <iframe id="video6" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                    <input type="text" class="video-input" id="urlInput6" placeholder="Inserisci URL del video" disabled="">
                   </div>
                   <ul>
                     <li>
-                      <a id="textList6" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                      <a id="textList6" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="false">
                         Inserisci qui titolo video
                       </a><br>
                     </li>
@@ -525,13 +524,13 @@
                 </div>
 
                 <div class="inner-column" style="margin-top: 5%; min-height: 200px; padding: 0px; height: 40%; margin-right: 10px;">
-                  <div class="video-container" id="videoContainer7">
-                    <iframe id="video7" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <input type="text" class="video-input" id="urlInput7" placeholder="Inserisci URL del video" />
+                  <div class="video-container" id="videoContainer7" style="display: block;">
+                    <iframe id="video7" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                    <input type="text" class="video-input" id="urlInput7" placeholder="Inserisci URL del video" disabled="">
                   </div>
                   <ul>
                     <li>
-                      <a id="textList7" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                      <a id="textList7" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="false">
                         Inserisci qui titolo video
                       </a><br>
                     </li>
@@ -539,13 +538,13 @@
                 </div>
 
                 <div class="inner-column" style="margin-top: 5%; min-height: 200px; padding: 0px; height: 40%; margin-right: 10px;">
-                  <div class="video-container" id="videoContainer8">
-                    <iframe id="video8" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    <input type="text" class="video-input" id="urlInput8" placeholder="Inserisci URL del video" />
+                  <div class="video-container" id="videoContainer8" style="display: block;">
+                    <iframe id="video8" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+                    <input type="text" class="video-input" id="urlInput8" placeholder="Inserisci URL del video" disabled="">
                   </div>
                   <ul>
                     <li>
-                      <a id="textList8" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="true">
+                      <a id="textList8" style="font-size: 12px; display: block; width: 80%; margin-left: 10%; border: none;" contenteditable="false">
                         Inserisci qui titolo video
                       </a><br>
                     </li>
@@ -554,7 +553,7 @@
               </div>
               <div id="forum" style="display: none;">
                 <button id="new-comment-2">+</button>
-              </div>
+              <div class="container-commento"></div></div>
               </div>
 
             </div>
@@ -563,23 +562,23 @@
       </div>
     </main>
 
-    <div class="fixed-card" style="max-height: 800px;">
+    <div class="fixed-card" style="max-height: 800px; display: none;">
       <h3 style="text-align: center;">Menu WIKI</h3>
       <p style="font-size: 12px; text-align: center;">Seleziona da qui le modifiche che vuoi applicare alla pagina</p>
       <p style="font-size: 12px; text-align: center;"> Niente ---- ----- Anime ----- ---- Game</p>
       <input type="range" id="typeSlider" min="-1" max="1" value="-1" onchange="toggleOptions()">
       <div id="cardSlider" style="display: none;">
-        <label  style="font-size: 12px;" for="cardRange">Numero di schede desiderato: <span id="cardValue">0</span></label>
+        <label style="font-size: 12px;" for="cardRange">Numero di schede desiderato: <span id="cardValue">0</span></label>
         <input type="range" id="cardRange" min="0" max="10" value="0" oninput="updateSlider()">
       </div>
       <div id="contentSlidersContainer" style="display: none; max-height: 230px; overflow-y: auto;">
         <!-- Slider dei contenuti verranno generati qui -->
       </div>
         <div>
-          <a  style="max-height: 76px; font-size: 12px; margin-top: 10px;" href="#" id="chooseImageLink">Choose Background Image</a>
+          <a style="max-height: 76px; font-size: 12px; margin-top: 10px;" href="#" id="chooseImageLink">Choose Background Image</a>
           <input type="file" id="backgroundImageInput" style="display: none;" accept="image/*">
         </div>
-      <a href="javascript:void(0);" id="saveButton" style="display: none; pointer-events: auto; max-height: 76px; font-size: 12px; margin-top: 10px;">Salva Wiki</a>
+      <a href="javascript:void(0);" id="saveButton" style="display: block; pointer-events: auto; max-height: 76px; font-size: 12px; margin-top: 10px;">Salva Wiki</a>
       <!-- Aggiungi il nuovo pulsante per caricare l'immagine di sfondo -->
       <div>
   </div>
@@ -589,9 +588,9 @@
     <div id="newCommentModal" class="modal" style="display: none; position: fixed; z-index: 1; left: 0;	top: 0;	width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.4);">
       <div class="modal-content">
         <form action="postMessages.php" method="post">            
-          <input id="input-email" type="hidden" name="email" value="">
-          <input id="input-wiki" type="hidden" name="wiki" value="">
-          <span class="close">&times;</span>
+          <input id="input-email" type="hidden" name="email" value="sirioraffin7@gmail.com">
+          <input id="input-wiki" type="hidden" name="wiki" value="Prova Nuova Wiki">
+          <span class="close">×</span>
           <h2>Aggiungi nuovo commento</h2>
           <textarea name="commit" id="text-commento" cols="60" rows="20"></textarea>
           <!-- Pulsanti per confermare o annullare la cancellazione -->
@@ -703,5 +702,5 @@
     });
 </script>
 <script src="scripts/getAccountImage.js"></script>
-</body>
-</html>
+
+</body></html>

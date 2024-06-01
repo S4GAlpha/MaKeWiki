@@ -138,11 +138,11 @@ function toggleOptions() {
             contentItem.innerHTML = `
                 <div class="inner-column" style="padding: 0px; text-align: center; margin-top: 5%;">
                     <div style="padding: 0px; width: 100%; margin-left: 0%; margin-top: 0%; border-bot-left-radius: 0px; border-bot-right-radius: 0px;">
-                        <img src="images/navbar/new-wiki.png" class="customButton centered-image" data-index="${countGlobale}" alt="" style="width: 20%; height: 50%; margin-top: 12%;"/>
+                        <img src="images/navbar/new-wiki.png" class="customButton centered-image" data-index="${countGlobale}" alt="" style="width: 10%; height: fit-content; margin-top: 12%;"/>
                         <form class="uploadForm" enctype="multipart/form-data" style="display: none;">
                             <input type="file" class="fileInput" data-index="${countGlobale}" accept="image/*">
                         </form>
-                        <div class="imageContainer centered-image" data-index="${countGlobale}" style="width: 90%; height: 90%; margin-top: 6%; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bot-left-radius: 0px; border-bot-right-radius: 0px;"></div>
+                        <div class="imageContainer centered-image" data-index="${countGlobale}" style="width: 90%; height: fit-content; margin-top: 6%; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bot-left-radius: 0px; border-bot-right-radius: 0px;"></div>
                     </div>
                     <div>
                         <ul>

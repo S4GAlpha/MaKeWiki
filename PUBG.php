@@ -582,8 +582,8 @@
                 </div>
               </div>
               <div id="forum" style="display: none;">
-                <button id="new-comment">+</button>
-              </div>
+                  <button id="new-comment">+</button>
+              <div class="container-commento"></div><div class="container-commento"></div></div>
               </div>
 
             </div>
